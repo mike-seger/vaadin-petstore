@@ -31,7 +31,7 @@ public class MainView extends VerticalLayout {
         this.userEditor = userEditor;
         this.grid = new Grid<>(User.class);
         this.filter = new TextField();
-        this.addNewBtn = new Button("New employee", VaadinIcon.PLUS.create());
+        this.addNewBtn = new Button("New user", VaadinIcon.PLUS.create());
 
         HorizontalLayout actions = new HorizontalLayout(filter, addNewBtn);
         add(actions, grid, userEditor);
@@ -43,23 +43,23 @@ public class MainView extends VerticalLayout {
         filter.setPlaceholder("Filter by last name");
 
         filter.setValueChangeMode(ValueChangeMode.EAGER);
-        filter.addValueChangeListener(e -> listEmployees(e.getValue()));
+        filter.addValueChangeListener(e -> listusers(e.getValue()));
 
         grid.asSingleSelect().addValueChangeListener(e -> {
-            userEditor.editEmployee(e.getValue());
+            userEditor.edituser(e.getValue());
         });
 
-        addNewBtn.addClickListener(e -> userEditor.editEmployee(new User("", "")));
+        addNewBtn.addClickListener(e -> userEditor.edituser(new User("", "")));
 
         userEditor.setChangeHandler(() -> {
             userEditor.setVisible(false);
-            listEmployees(filter.getValue());
+            listusers(filter.getValue());
         });
 
-        listEmployees(null);
+        listusers(null);
     }
 
-    void listEmployees(String filterText) {
+    void listusers(String filterText) {
         if (StringUtils.isEmpty(filterText)) {
             grid.setItems(userRepository.findAll());
         } else {

@@ -45,6 +45,6 @@ public class User {
 
     @Override
     public String toString() {
-        return String.format("Employee[id=%d, firstName='%s', lastName='%s']", id, firstName, lastName);
+        return String.format("user[id=%d, firstName='%s', lastName='%s']", id, firstName, lastName);
     }
 }

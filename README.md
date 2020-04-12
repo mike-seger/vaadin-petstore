@@ -1,8 +1,7 @@
-# Vaadin-REST
+# Vaadin Petshop
 
 ## Running
 ```
-mvn vaadin:prepare-frontend
 mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Dserver.port=9999"
 ```
 

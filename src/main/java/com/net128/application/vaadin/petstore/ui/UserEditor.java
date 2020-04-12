@@ -50,7 +50,7 @@ public class UserEditor extends VerticalLayout implements KeyNotifier {
 
         save.addClickListener(e -> save());
         delete.addClickListener(e -> delete());
-        cancel.addClickListener(e -> editEmployee(user));
+        cancel.addClickListener(e -> edituser(user));
         setVisible(false);
     }
 
@@ -68,7 +68,7 @@ public class UserEditor extends VerticalLayout implements KeyNotifier {
         void onChange();
     }
 
-    public final void editEmployee(User c) {
+    public final void edituser(User c) {
         if (c == null) {
             setVisible(false);
             return;
