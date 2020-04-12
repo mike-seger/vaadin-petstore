@@ -1,7 +1,7 @@
 package com.net128.application.vaadin.petstore;
 
-import com.net128.application.vaadin.petstore.model.Employee;
-import com.net128.application.vaadin.petstore.repo.EmployeeRepository;
+import com.net128.application.vaadin.petstore.model.User;
+import com.net128.application.vaadin.petstore.repo.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,12 +20,12 @@ public class Application {
     }
 
     @Bean
-    public CommandLineRunner loadData(EmployeeRepository repository) {
+    public CommandLineRunner loadData(UserRepository repository) {
         return (args) -> {
-            repository.save(new Employee("Bill", "Gates"));
-            repository.save(new Employee("Mark", "Zuckerberg"));
-            repository.save(new Employee("Sundar", "Pichai"));
-            repository.save(new Employee("Jeff", "Bezos"));
+            repository.save(new User("Bill", "Gates"));
+            repository.save(new User("Mark", "Zuckerberg"));
+            repository.save(new User("Sundar", "Pichai"));
+            repository.save(new User("Jeff", "Bezos"));
         };
     }
 }

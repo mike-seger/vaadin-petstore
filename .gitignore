@@ -6,3 +6,10 @@
 .idea
 /build
 /config
+
+node_modules
+/frontend
+*/flow-*/frontend
+**/webpack.generated.js
+
+*.DS_Store

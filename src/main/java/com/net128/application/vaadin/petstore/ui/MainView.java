@@ -1,7 +1,7 @@
 package com.net128.application.vaadin.petstore.ui;
 
-import com.net128.application.vaadin.petstore.model.Employee;
-import com.net128.application.vaadin.petstore.repo.EmployeeRepository;
+import com.net128.application.vaadin.petstore.model.User;
+import com.net128.application.vaadin.petstore.repo.UserRepository;
 import org.springframework.util.StringUtils;
 
 import com.vaadin.flow.component.button.Button;
@@ -16,25 +16,25 @@ import com.vaadin.flow.router.Route;
 @Route
 public class MainView extends VerticalLayout {
 
-    private final EmployeeRepository employeeRepository;
+    private final UserRepository userRepository;
 
-    private final EmployeeEditor editor;
+    private final UserEditor userEditor;
 
-    final Grid<Employee> grid;
+    final Grid<User> grid;
 
     final TextField filter;
 
     private final Button addNewBtn;
 
-    public MainView(EmployeeRepository repo, EmployeeEditor editor) {
-        this.employeeRepository = repo;
-        this.editor = editor;
-        this.grid = new Grid<>(Employee.class);
+    public MainView(UserRepository repo, UserEditor userEditor) {
+        this.userRepository = repo;
+        this.userEditor = userEditor;
+        this.grid = new Grid<>(User.class);
         this.filter = new TextField();
         this.addNewBtn = new Button("New employee", VaadinIcon.PLUS.create());
 
         HorizontalLayout actions = new HorizontalLayout(filter, addNewBtn);
-        add(actions, grid, editor);
+        add(actions, grid, userEditor);
 
         grid.setHeight("200px");
         grid.setColumns("id", "firstName", "lastName");
@@ -46,13 +46,13 @@ public class MainView extends VerticalLayout {
         filter.addValueChangeListener(e -> listEmployees(e.getValue()));
 
         grid.asSingleSelect().addValueChangeListener(e -> {
-            editor.editEmployee(e.getValue());
+            userEditor.editEmployee(e.getValue());
         });
 
-        addNewBtn.addClickListener(e -> editor.editEmployee(new Employee("", "")));
+        addNewBtn.addClickListener(e -> userEditor.editEmployee(new User("", "")));
 
-        editor.setChangeHandler(() -> {
-            editor.setVisible(false);
+        userEditor.setChangeHandler(() -> {
+            userEditor.setVisible(false);
             listEmployees(filter.getValue());
         });
 
@@ -61,9 +61,9 @@ public class MainView extends VerticalLayout {
 
     void listEmployees(String filterText) {
         if (StringUtils.isEmpty(filterText)) {
-            grid.setItems(employeeRepository.findAll());
+            grid.setItems(userRepository.findAll());
         } else {
-            grid.setItems(employeeRepository.findByLastNameStartsWithIgnoreCase(filterText));
+            grid.setItems(userRepository.findByLastNameStartsWithIgnoreCase(filterText));
         }
     }
 }

@@ -1,7 +1,7 @@
 package com.net128.application.vaadin.petstore.ui;
 
-import com.net128.application.vaadin.petstore.model.Employee;
-import com.net128.application.vaadin.petstore.repo.EmployeeRepository;
+import com.net128.application.vaadin.petstore.model.User;
+import com.net128.application.vaadin.petstore.repo.UserRepository;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.KeyNotifier;
 import com.vaadin.flow.component.button.Button;
@@ -16,11 +16,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @SpringComponent
 @UIScope
-public class EmployeeEditor extends VerticalLayout implements KeyNotifier {
+public class UserEditor extends VerticalLayout implements KeyNotifier {
 
-    private final EmployeeRepository repository;
+    private final UserRepository repository;
 
-    private Employee employee;
+    private User user;
 
     TextField firstName = new TextField("First name");
     TextField lastName = new TextField("Last name");
@@ -30,11 +30,11 @@ public class EmployeeEditor extends VerticalLayout implements KeyNotifier {
     Button delete = new Button("Delete", VaadinIcon.TRASH.create());
     HorizontalLayout actions = new HorizontalLayout(save, cancel, delete);
 
-    Binder<Employee> binder = new Binder<>(Employee.class);
+    Binder<User> binder = new Binder<>(User.class);
     private ChangeHandler changeHandler;
 
     @Autowired
-    public EmployeeEditor(EmployeeRepository repository) {
+    public UserEditor(UserRepository repository) {
         this.repository = repository;
 
         add(firstName, lastName, actions);
@@ -50,17 +50,17 @@ public class EmployeeEditor extends VerticalLayout implements KeyNotifier {
 
         save.addClickListener(e -> save());
         delete.addClickListener(e -> delete());
-        cancel.addClickListener(e -> editEmployee(employee));
+        cancel.addClickListener(e -> editEmployee(user));
         setVisible(false);
     }
 
     void delete() {
-        repository.delete(employee);
+        repository.delete(user);
         changeHandler.onChange();
     }
 
     void save() {
-        repository.save(employee);
+        repository.save(user);
         changeHandler.onChange();
     }
 
@@ -68,20 +68,20 @@ public class EmployeeEditor extends VerticalLayout implements KeyNotifier {
         void onChange();
     }
 
-    public final void editEmployee(Employee c) {
+    public final void editEmployee(User c) {
         if (c == null) {
             setVisible(false);
             return;
         }
         final boolean persisted = c.getId() != null;
         if (persisted) {
-            employee = repository.findById(c.getId()).get();
+            user = repository.findById(c.getId()).get();
         } else {
-            employee = c;
+            user = c;
         }
 
         cancel.setVisible(persisted);
-        binder.setBean(employee);
+        binder.setBean(user);
         setVisible(true);
         firstName.focus();
     }

@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Employee {
+public class User {
 
     @Id
     @GeneratedValue
@@ -15,10 +15,10 @@ public class Employee {
 
     private String lastName;
 
-    protected Employee() {
+    protected User() {
     }
 
-    public Employee(String firstName, String lastName) {
+    public User(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -47,5 +47,4 @@ public class Employee {
     public String toString() {
         return String.format("Employee[id=%d, firstName='%s', lastName='%s']", id, firstName, lastName);
     }
-
 }
