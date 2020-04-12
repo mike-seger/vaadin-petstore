@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.net128.application.vaadin</groupId>
 	<artifactId>petstore</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>petstore</name>
 	<packaging>war</packaging>
 	
@@ -73,7 +73,6 @@
 		<dependency>
 			<groupId>net.bytebuddy</groupId>
 			<artifactId>byte-buddy</artifactId>
-			<version>1.10.9</version>
 		</dependency>
 	</dependencies>
 
@@ -93,6 +92,13 @@
 				<groupId>com.vaadin</groupId>
 				<artifactId>vaadin-maven-plugin</artifactId>
 				<version>${vaadin.plugin.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-frontend</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -111,15 +117,6 @@
 					</filesets>
 				</configuration>
 			</plugin>
-			<!-- The Jetty plugin allows us to easily test the development build by running jetty:run on the command line. -->
-			<plugin>
-				<groupId>org.eclipse.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<version>${jetty.plugin.version}</version>
-				<configuration>
-					<scanIntervalSeconds>2</scanIntervalSeconds>
-				</configuration>
-			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -134,58 +131,14 @@
 		</repository>
 	</repositories>
 
-	<profiles>
-		<profile>
-			<!-- Vaadin pre-release repositories -->
-			<id>vaadin-prerelease</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-
-			<repositories>
-				<repository>
-					<id>vaadin-prereleases</id>
-					<url>http://maven.vaadin.com/vaadin-prereleases</url>
-				</repository>
-				<repository>
-					<id>vaadin-snapshots</id>
-					<url>https://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
-					<releases>
-						<enabled>false</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</repository>
-			</repositories>
-			<pluginRepositories>
-				<pluginRepository>
-					<id>vaadin-prereleases</id>
-					<url>http://maven.vaadin.com/vaadin-prereleases</url>
-				</pluginRepository>
-				<pluginRepository>
-					<id>vaadin-snapshots</id>
-					<url>https://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
-					<releases>
-						<enabled>false</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</pluginRepository>
-			</pluginRepositories>
-		</profile>
-	</profiles>
-
 	<properties>
-		<vaadin.version>13.0.9</vaadin.version>
-		<vaadin.plugin.version>13.0.9</vaadin.plugin.version>
-		<vaadin-spring-boot-starter.version>13.0.9</vaadin-spring-boot-starter.version>
-		<vaadin-server.version>8.8.5</vaadin-server.version>
-		<vaadin-push.version>8.8.5</vaadin-push.version>
-		<vaadin-client-compiled.version>8.8.5</vaadin-client-compiled.version>
-		<vaadin-themes.version>8.8.5</vaadin-themes.version>
-		<jetty.plugin.version>9.3.9.v20160517</jetty.plugin.version>
+		<vaadin.version>15.0.4</vaadin.version>
+		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
+		<vaadin-spring-boot-starter.version>${vaadin.version}</vaadin-spring-boot-starter.version>
+		<vaadin-server.version>8.10.3</vaadin-server.version>
+		<vaadin-push.version>${vaadin-server.version}</vaadin-push.version>
+		<vaadin-client-compiled.version>${vaadin-server.version}</vaadin-client-compiled.version>
+		<vaadin-themes.version>${vaadin-server.version}</vaadin-themes.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>

@@ -1,4 +1,4 @@
-package com.net128.application.vaadin.petstore.vaadin.ui;
+package com.net128.application.vaadin.petstore.ui;
 
 import com.net128.application.vaadin.petstore.model.Employee;
 import com.net128.application.vaadin.petstore.repo.EmployeeRepository;
