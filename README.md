@@ -1,4 +1,6 @@
-# Vaadin Petshop
+# Vaadin Pet Store
+
+A Vaadin proof of concept showing a pet store application.  
 
 ## Running
 ```
