@@ -2,6 +2,9 @@ package com.net128.application.vaadin.petstore.ui;
 
 import com.net128.application.vaadin.petstore.model.User;
 import com.net128.application.vaadin.petstore.repo.UserRepository;
+import com.vaadin.flow.component.UI;
+import com.vaadin.flow.dom.ThemeList;
+import com.vaadin.flow.theme.lumo.Lumo;
 import org.springframework.util.StringUtils;
 
 import com.vaadin.flow.component.button.Button;
@@ -17,49 +20,55 @@ import com.vaadin.flow.router.Route;
 public class MainView extends VerticalLayout {
 
     private final UserRepository userRepository;
-
-    private final UserEditor userEditor;
-
     final Grid<User> grid;
 
-    final TextField filter;
-
-    private final Button addNewBtn;
-
-    public MainView(UserRepository repo, UserEditor userEditor) {
-        this.userRepository = repo;
-        this.userEditor = userEditor;
+    public MainView(UserRepository userRepository, UserEditor userEditor) {
+        this.userRepository = userRepository;
         this.grid = new Grid<>(User.class);
-        this.filter = new TextField();
-        this.addNewBtn = new Button("New user", VaadinIcon.PLUS.create());
 
-        HorizontalLayout actions = new HorizontalLayout(filter, addNewBtn);
-        add(actions, grid, userEditor);
+        final TextField userNameFilter = new TextField();
+        userNameFilter.setPlaceholder("Filter by last name");
+        userNameFilter.setValueChangeMode(ValueChangeMode.EAGER);
+        userNameFilter.addValueChangeListener(e -> listUsers(e.getValue()));
 
-        grid.setHeight("200px");
+        final Button newUserButton = new Button("New User", VaadinIcon.PLUS.create());
+        newUserButton.addClickListener(e -> userEditor.edituser(new User("", "")));
+
+        final Button toggleButton = new Button("Toggle dark theme", click -> toggleDarkTheme());
+
+        HorizontalLayout actionBar = new HorizontalLayout(userNameFilter, newUserButton, toggleButton);
+        HorizontalLayout masterDetail = new HorizontalLayout(grid, userEditor);
+        masterDetail.setHeightFull();
+        masterDetail.setWidthFull();
+
+        grid.setHeightFull();
+        grid.setWidthFull();
         grid.setColumns("id", "firstName", "lastName");
         grid.getColumnByKey("id").setWidth("50px").setFlexGrow(0);
+        grid.asSingleSelect().addValueChangeListener(e -> userEditor.edituser(e.getValue()));
 
-        filter.setPlaceholder("Filter by last name");
-
-        filter.setValueChangeMode(ValueChangeMode.EAGER);
-        filter.addValueChangeListener(e -> listusers(e.getValue()));
-
-        grid.asSingleSelect().addValueChangeListener(e -> {
-            userEditor.edituser(e.getValue());
-        });
-
-        addNewBtn.addClickListener(e -> userEditor.edituser(new User("", "")));
-
+        userEditor.setWidth("400px");
         userEditor.setChangeHandler(() -> {
             userEditor.setVisible(false);
-            listusers(filter.getValue());
+            listUsers(userNameFilter.getValue());
         });
 
-        listusers(null);
+        setSizeFull();
+        add(actionBar, masterDetail);
+
+        listUsers(null);
     }
 
-    void listusers(String filterText) {
+    void toggleDarkTheme() {
+        ThemeList themeList = UI.getCurrent().getElement().getThemeList();
+        if (themeList.contains(Lumo.DARK)) { //
+            themeList.remove(Lumo.DARK);
+        } else {
+            themeList.add(Lumo.DARK);
+        }
+    }
+
+    void listUsers(String filterText) {
         if (StringUtils.isEmpty(filterText)) {
             grid.setItems(userRepository.findAll());
         } else {

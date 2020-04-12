@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.net128.application.vaadin</groupId>
 	<artifactId>petstore</artifactId>
@@ -140,15 +141,18 @@
 		<vaadin.version>14.1.25</vaadin.version>
 		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
 		<vaadin-spring-boot-starter.version>${vaadin.version}</vaadin-spring-boot-starter.version>
+
 		<vaadin-server.version>8.10.3</vaadin-server.version>
 		<vaadin-push.version>${vaadin-server.version}</vaadin-push.version>
 		<vaadin-client-compiled.version>${vaadin-server.version}</vaadin-client-compiled.version>
 		<vaadin-themes.version>${vaadin-server.version}</vaadin-themes.version>
+
+		<vaadin.widgetset.mode>local</vaadin.widgetset.mode>
+		<vaadin.theme>mytheme</vaadin.theme>
+
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<vaadin.widgetset.mode>local</vaadin.widgetset.mode>
-		<vaadin.theme>mytheme</vaadin.theme>
 		<maven-clean-plugin.version>3.0.0</maven-clean-plugin.version>
 	</properties>
 
