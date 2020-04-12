@@ -138,7 +138,7 @@
 	</repositories>
 
 	<properties>
-		<vaadin.version>14.1.25</vaadin.version>
+		<vaadin.version>15.0.4</vaadin.version>
 		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
 		<vaadin-spring-boot-starter.version>${vaadin.version}</vaadin-spring-boot-starter.version>
 
