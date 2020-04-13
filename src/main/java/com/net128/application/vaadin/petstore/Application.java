@@ -22,10 +22,10 @@ public class Application {
     @Bean
     public CommandLineRunner loadData(UserRepository repository) {
         return (args) -> {
-            repository.save(new User("Bill", "Gates"));
-            repository.save(new User("Mark", "Zuckerberg"));
-            repository.save(new User("Sundar", "Pichai"));
-            repository.save(new User("Jeff", "Bezos"));
+            repository.save(new User("Mark", "Smith"));
+            repository.save(new User("Jennifer", "Bates"));
+            repository.save(new User("Diana", "Hewitt"));
+            repository.save(new User("Albert", "Freeman"));
         };
     }
 }

@@ -8,6 +8,7 @@
 /config
 
 node_modules
+*/flow-*/frontend
 **/webpack.generated.js
 
 *.DS_Store

@@ -68,6 +68,10 @@ public class UserEditor extends VerticalLayout implements KeyNotifier {
         void onChange();
     }
 
+    public final void newUser() {
+        edituser(new User("", ""));
+    }
+
     public final void edituser(User c) {
         if (c == null) {
             setVisible(false);
@@ -83,7 +87,7 @@ public class UserEditor extends VerticalLayout implements KeyNotifier {
         cancel.setVisible(persisted);
         binder.setBean(user);
         setVisible(true);
-        firstName.focus();
+        //firstName.focus();
     }
 
     public void setChangeHandler(ChangeHandler h) {

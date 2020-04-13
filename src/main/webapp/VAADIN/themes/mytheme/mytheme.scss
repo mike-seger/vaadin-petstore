@@ -36,3 +36,7 @@
 
   // Insert your own theme rules here
 }
+
+.v-grid-cell-focused:before {
+        display: none !important;
+}
