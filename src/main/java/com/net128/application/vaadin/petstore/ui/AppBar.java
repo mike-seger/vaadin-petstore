@@ -1,6 +1,6 @@
 package com.net128.application.vaadin.petstore.ui;
 
-
+import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Header;
@@ -18,7 +18,7 @@ public class AppBar extends Header {
 		setClassName(CLASS_NAME);
 		setWidthFull();
 		setHeight("40px");
-
+		add(new Text("Pet Store"));
 		initTitle(title);
 	}
 

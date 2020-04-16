@@ -1,10 +1,14 @@
 .app-bar {
 background-color: rgb(44, 61, 82);
  /* background-color: var(--lumo-base-color);*/
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
   box-shadow: var(--lumo-box-shadow-s);
   flex-direction: column;
   position: relative;
   z-index: 1;
+  padding: 0 10px;
 }
 
 /* Container */
@@ -94,13 +98,11 @@ background-color: rgb(44, 61, 82);
      is hard coded here. */
   .app-bar {
     color: hsl(214, 100%, 98%);
-    background-color: black; /*rgb(36,36,36);*/
     /*hsl(214, 35%, 21%); */
     box-shadow: 0 2px 4px -1px hsla(214, 8%, 4%, 0.23), 0 3px 12px -1px hsla(214, 12%, 6%, 0.32);
   }
 
   .app-bar__title {
-background-color: rgb(44, 61, 82);
     color: hsl(214, 100%, 98%);
   }
 }
