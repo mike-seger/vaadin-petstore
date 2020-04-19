@@ -11,12 +11,7 @@ import javax.persistence.Id;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User extends Identifiable {
-    @lombok.NonNull
-    //@Column(nullable = false)
-    private String firstName;
-
-    @lombok.NonNull
-    //@Column(nullable = false)
-    private String lastName;
+public class Species extends Identifiable {
+    @NonNull
+    private String name;
 }

@@ -19,8 +19,10 @@ public class TabPageManager extends VerticalLayout {
 
         List<TabPage> tabPageList = new ArrayList<>(Arrays.asList(tabPages));
         Map<Tab, Component> tabsToPages = new HashMap<>();
-        tabPageList.stream().forEach(tp -> tabsToPages.put(tp.tab, tp.page));
-        tabPageList.stream().forEach(tp -> tp.page.setVisible(false));
+        tabPageList.forEach(tp -> {
+            tabsToPages.put(tp.tab, tp.page);
+            tp.page.setVisible(false);
+        });
         Tab [] tabArray = tabPageList.stream().map(tp -> tp.tab).collect(Collectors.toList()).toArray(new Tab [tabPageList.size()]);
         Component [] componentArray = tabPageList.stream().map(tp -> tp.page).collect(Collectors.toList()).toArray(new Component [tabPageList.size()]);
         componentArray[0].setVisible(true);

@@ -11,10 +11,14 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
+import com.vaadin.flow.spring.annotation.SpringComponent;
+import com.vaadin.flow.spring.annotation.UIScope;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
 
+@SpringComponent
+@UIScope
 public class UserManager extends WorkingArea {
 
     private final UserRepository userRepository;
@@ -47,7 +51,7 @@ public class UserManager extends WorkingArea {
                 KeyModifier.CONTROL, KeyModifier.ALT);
 
         grid.asSingleSelect().addValueChangeListener(
-                e -> userEditor.edituser(e.getValue()));
+                e -> userEditor.editPet(e.getValue()));
 
         HorizontalLayout actionBar = new HorizontalLayout(userNameFilter, newUserButton);
         HorizontalLayout masterDetail = new HorizontalLayout(grid, userEditor);

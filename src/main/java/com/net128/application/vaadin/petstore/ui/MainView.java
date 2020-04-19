@@ -1,5 +1,6 @@
 package com.net128.application.vaadin.petstore.ui;
 
+import com.net128.application.vaadin.petstore.repo.PetRepository;
 import com.net128.application.vaadin.petstore.repo.UserRepository;
 import com.vaadin.flow.component.*;
 import com.vaadin.flow.component.button.Button;
@@ -12,7 +13,8 @@ import com.vaadin.flow.theme.lumo.Lumo;
 @Route
 public class MainView extends VerticalLayout implements KeyNotifier {
 
-    public MainView(UserRepository userRepository, UserEditor userEditor) {
+    public MainView(
+        UserManager userManager, PetManager petManager) {
 
         final Button toggleButton = new Button("Toggle dark theme", click -> toggleDarkTheme());
         toggleButton.addClickShortcut(Key.KEY_T, KeyModifier.ALT);
@@ -25,9 +27,10 @@ public class MainView extends VerticalLayout implements KeyNotifier {
         appBar.add(toggleButton);
 
         add(new TabPageManager(
-            new TabPage("Users", new UserManager(userRepository, userEditor)),
-            new TabPage("Pets", new Div(new Text("Pets not yet implemented"))),
-            new TabPage("Transactions", new Div(new Text("Transactions not yet implemented")))
+            new TabPage("Users", userManager),//new UserManager(userRepository, userEditor)),
+            new TabPage("Pets", petManager),//new PetManager(petRepository, petEditor)),
+            new TabPage("Species", new Div(new Text("Species not yet implemented"))),
+            new TabPage("Purchases", new Div(new Text("Purchases not yet implemented")))
         ));
     }
 

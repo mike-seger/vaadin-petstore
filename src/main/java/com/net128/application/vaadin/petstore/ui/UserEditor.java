@@ -50,7 +50,7 @@ public class UserEditor extends VerticalLayout implements KeyNotifier {
 
         save.addClickListener(e -> save());
         delete.addClickListener(e -> delete());
-        cancel.addClickListener(e -> edituser(user));
+        cancel.addClickListener(e -> editPet(user));
         setVisible(false);
     }
 
@@ -69,15 +69,15 @@ public class UserEditor extends VerticalLayout implements KeyNotifier {
     }
 
     public final void newUser() {
-        edituser(new User("", ""));
+        editPet(new User());
     }
 
-    public final void edituser(User c) {
+    public final void editPet(User c) {
         if (c == null) {
             setVisible(false);
             return;
         }
-        final boolean persisted = c.getId() != null;
+        final boolean persisted = c.getId() != -1;
         if (persisted) {
             user = repository.findById(c.getId()).get();
         } else {

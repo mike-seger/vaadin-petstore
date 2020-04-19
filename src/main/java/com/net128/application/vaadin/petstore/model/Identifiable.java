@@ -1,0 +1,13 @@
+package com.net128.application.vaadin.petstore.model;
+
+import lombok.*;
+
+import javax.persistence.*;
+
+@Entity
+@Data
+public abstract class Identifiable {
+    @Id
+    @GeneratedValue
+    private long id = -1;
+}

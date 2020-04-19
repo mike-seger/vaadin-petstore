@@ -10,6 +10,9 @@ public class WorkingArea extends VerticalLayout {
 
     public WorkingArea() {
         setClassName(CLASS_NAME);
+        setMargin(false);
+        setSpacing(false);
+        setPadding(false);
         setSizeFull();
     }
 }
