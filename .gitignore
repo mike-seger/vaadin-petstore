@@ -11,3 +11,4 @@ node_modules
 **/webpack.generated.js
 
 *.DS_Store
+*~
