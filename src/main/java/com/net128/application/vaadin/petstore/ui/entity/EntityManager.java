@@ -1,6 +1,7 @@
 package com.net128.application.vaadin.petstore.ui.entity;
 
 import com.net128.application.vaadin.petstore.model.Identifiable;
+import com.net128.application.vaadin.petstore.model.Species;
 import com.net128.application.vaadin.petstore.repo.EntityChangeBroadCaster;
 import com.net128.application.vaadin.petstore.ui.WorkingArea;
 import com.vaadin.flow.component.*;
