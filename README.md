@@ -7,6 +7,11 @@ A Vaadin proof of concept showing a pet store application.
 mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Dserver.port=9999"
 ```
 
+## Generate liquibase schema from running DB
+```
+mvn liquibase:generateChangeLog
+```
+
 ## Related articles:
 
 - [Introduction to Vaadin](https://www.baeldung.com/vaadin)
