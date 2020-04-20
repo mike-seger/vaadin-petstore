@@ -11,9 +11,9 @@ import com.vaadin.flow.theme.lumo.Lumo;
 @Route
 public class MainView extends VerticalLayout implements KeyNotifier {
 
-    public MainView(
-        UserManager userManager, PetManager petManager, SpeciesManager speciesManager) {
-
+    public MainView(CustomerManager customerManager,
+            PetManager petManager,
+            SpeciesManager speciesManager) {
         final Button toggleButton = new Button("Toggle dark theme", click -> toggleDarkTheme());
         toggleButton.addClickShortcut(Key.KEY_T, KeyModifier.ALT);
         setMargin(false);
@@ -25,9 +25,9 @@ public class MainView extends VerticalLayout implements KeyNotifier {
         appBar.add(toggleButton);
 
         add(new TabPageManager(
-            new TabPage("Users", userManager),
             new TabPage("Pets", petManager),
             new TabPage("Species", speciesManager),
+            new TabPage("Users", customerManager),
             new TabPage("Purchases", new Div(new Text("Purchases not yet implemented")))
         ));
     }

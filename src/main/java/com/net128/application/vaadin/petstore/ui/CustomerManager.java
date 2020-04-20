@@ -1,14 +1,9 @@
 package com.net128.application.vaadin.petstore.ui;
 
-import com.net128.application.vaadin.petstore.model.User;
-import com.net128.application.vaadin.petstore.repo.UserRepository;
-import com.vaadin.flow.component.Key;
-import com.vaadin.flow.component.KeyModifier;
-import com.vaadin.flow.component.Text;
+import com.net128.application.vaadin.petstore.model.Customer;
+import com.net128.application.vaadin.petstore.repo.CustomerRepository;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -21,22 +16,22 @@ import java.util.List;
 
 @SpringComponent
 @UIScope
-public class UserManager extends EntityManager<User> {
+public class CustomerManager extends EntityManager<Customer> {
 
-    private final UserRepository userRepository;
+    private final CustomerRepository customerRepository;
     private TextField userNameFilter;
 
-    public UserManager(UserRepository userRepository, UserEditor userEditor) {
-        super(userEditor);
-        this.userRepository = userRepository;
+    public CustomerManager(CustomerRepository customerRepository, CustomerEditor customerEditor) {
+        super(customerEditor);
+        this.customerRepository = customerRepository;
         layout();
     }
 
-    public void setupGrid(Grid<User> grid) {
+    public void setupGrid(Grid<Customer> grid) {
         grid.setColumns("firstName", "lastName");
     }
 
-    public HorizontalLayout createActionBar(EntityEditor<User> userEditor) {
+    public HorizontalLayout createActionBar(EntityEditor<Customer> userEditor) {
         userNameFilter = new TextField();
         userNameFilter.setPlaceholder("Find in any name...");
         userNameFilter.setValueChangeMode(ValueChangeMode.EAGER);
@@ -46,14 +41,14 @@ public class UserManager extends EntityManager<User> {
         return new HorizontalLayout(userNameFilter, newUserButton);
     }
 
-    public List<User> listEntities() {
-        List<User> users;
+    public List<Customer> listEntities() {
+        List<Customer> customers;
         String filterText = userNameFilter.getValue();
         if (StringUtils.isEmpty(filterText)) {
-            users = userRepository.findAll();
+            customers = customerRepository.findAll();
         } else {
-            users = userRepository.findByLastNameContainingIgnoreCaseOrFirstNameContainingIgnoreCaseOrderById(filterText, filterText);
+            customers = customerRepository.findByLastNameContainingIgnoreCaseOrFirstNameContainingIgnoreCaseOrderById(filterText, filterText);
         }
-        return users;
+        return customers;
     }
 }

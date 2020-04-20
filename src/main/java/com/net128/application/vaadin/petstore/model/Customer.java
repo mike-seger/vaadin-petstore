@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User extends Identifiable {
+public class Customer extends Identifiable {
     @lombok.NonNull
     private String firstName;
 

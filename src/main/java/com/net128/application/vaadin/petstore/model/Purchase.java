@@ -17,7 +17,7 @@ public class Purchase extends Identifiable{
 
     @NonNull
     @ManyToOne(fetch = FetchType.EAGER)
-    private User user;
+    private Customer customer;
 
     @PrePersist
     public void prePersist() {

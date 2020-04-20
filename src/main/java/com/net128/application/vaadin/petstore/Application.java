@@ -1,11 +1,11 @@
 package com.net128.application.vaadin.petstore;
 
+import com.net128.application.vaadin.petstore.model.Customer;
 import com.net128.application.vaadin.petstore.model.Pet;
 import com.net128.application.vaadin.petstore.model.Species;
-import com.net128.application.vaadin.petstore.model.User;
 import com.net128.application.vaadin.petstore.repo.PetRepository;
 import com.net128.application.vaadin.petstore.repo.SpeciesRepository;
-import com.net128.application.vaadin.petstore.repo.UserRepository;
+import com.net128.application.vaadin.petstore.repo.CustomerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,14 +24,14 @@ public class Application {
     }
 
     @Bean
-    public CommandLineRunner loadData(UserRepository userRepository,
-              PetRepository petRepository,
-              SpeciesRepository speciesRepository) {
+    public CommandLineRunner loadData(CustomerRepository customerRepository,
+                                      PetRepository petRepository,
+                                      SpeciesRepository speciesRepository) {
         return (args) -> {
-            userRepository.save(new User("Mark", "Smith"));
-            userRepository.save(new User("Jennifer", "Bates"));
-            userRepository.save(new User("Diana", "Hewitt"));
-            userRepository.save(new User("Albert", "Freeman"));
+            customerRepository.save(new Customer("Mark", "Smith"));
+            customerRepository.save(new Customer("Jennifer", "Bates"));
+            customerRepository.save(new Customer("Diana", "Hewitt"));
+            customerRepository.save(new Customer("Albert", "Freeman"));
 
             speciesRepository.save(new Species("Cat"));
             speciesRepository.save(new Species("Dog"));
