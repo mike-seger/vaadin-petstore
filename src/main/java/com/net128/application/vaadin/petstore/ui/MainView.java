@@ -27,7 +27,7 @@ public class MainView extends VerticalLayout implements KeyNotifier {
         add(new TabPageManager(
             new TabPage("Pets", petManager),
             new TabPage("Species", speciesManager),
-            new TabPage("Users", customerManager),
+            new TabPage("Customers", customerManager),
             new TabPage("Purchases", new Div(new Text("Purchases not yet implemented")))
         ));
     }

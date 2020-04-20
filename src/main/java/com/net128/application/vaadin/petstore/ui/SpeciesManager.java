@@ -21,9 +21,9 @@ public class SpeciesManager extends EntityManager<Species> {
     private final SpeciesRepository speciesRepository;
     private TextField nameFilter;
 
-    public SpeciesManager(SpeciesRepository userRepository, SpeciesEditor userEditor) {
-        super(userEditor);
-        this.speciesRepository = userRepository;
+    public SpeciesManager(SpeciesRepository speciesRepository, SpeciesEditor speciesEditor) {
+        super(speciesEditor);
+        this.speciesRepository = speciesRepository;
         layout();
     }
 
@@ -31,24 +31,24 @@ public class SpeciesManager extends EntityManager<Species> {
         grid.setColumns("name");
     }
 
-    public HorizontalLayout createActionBar(EntityEditor<Species> userEditor) {
+    public HorizontalLayout createActionBar(EntityEditor<Species> speciesEditor) {
         nameFilter = new TextField();
         nameFilter.setPlaceholder("Find a name...");
         nameFilter.setValueChangeMode(ValueChangeMode.EAGER);
-        nameFilter.addValueChangeListener(e -> setGridData(listEntities()));
-        final Button newUserButton = new Button("New Species...", VaadinIcon.PLUS.create());
-        newUserButton.addClickListener(e -> userEditor.editNew());
-        return new HorizontalLayout(nameFilter, newUserButton);
+        nameFilter.addValueChangeListener(e -> setGridData(list()));
+        final Button newSpeciesButton = new Button("New Species...", VaadinIcon.PLUS.create());
+        newSpeciesButton.addClickListener(e -> speciesEditor.editNew());
+        return new HorizontalLayout(nameFilter, newSpeciesButton);
     }
 
-    public List<Species> listEntities() {
-        List<Species> users;
+    public List<Species> list() {
+        List<Species> species;
         String filterText = nameFilter.getValue();
         if (StringUtils.isEmpty(filterText)) {
-            users = speciesRepository.findAll();
+            species = speciesRepository.findAll();
         } else {
-            users = speciesRepository.findByNameContainingIgnoreCaseOrderById(filterText);
+            species = speciesRepository.findByNameContainingIgnoreCaseOrderById(filterText);
         }
-        return users;
+        return species;
     }
 }

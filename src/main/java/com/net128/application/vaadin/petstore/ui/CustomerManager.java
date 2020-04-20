@@ -19,7 +19,7 @@ import java.util.List;
 public class CustomerManager extends EntityManager<Customer> {
 
     private final CustomerRepository customerRepository;
-    private TextField userNameFilter;
+    private TextField customerNameFilter;
 
     public CustomerManager(CustomerRepository customerRepository, CustomerEditor customerEditor) {
         super(customerEditor);
@@ -31,19 +31,19 @@ public class CustomerManager extends EntityManager<Customer> {
         grid.setColumns("firstName", "lastName");
     }
 
-    public HorizontalLayout createActionBar(EntityEditor<Customer> userEditor) {
-        userNameFilter = new TextField();
-        userNameFilter.setPlaceholder("Find in any name...");
-        userNameFilter.setValueChangeMode(ValueChangeMode.EAGER);
-        userNameFilter.addValueChangeListener(e -> setGridData(listEntities()));
-        final Button newUserButton = new Button("New User...", VaadinIcon.PLUS.create());
-        newUserButton.addClickListener(e -> userEditor.editNew());
-        return new HorizontalLayout(userNameFilter, newUserButton);
+    public HorizontalLayout createActionBar(EntityEditor<Customer> customerEditor) {
+        customerNameFilter = new TextField();
+        customerNameFilter.setPlaceholder("Find in any name...");
+        customerNameFilter.setValueChangeMode(ValueChangeMode.EAGER);
+        customerNameFilter.addValueChangeListener(e -> setGridData(list()));
+        final Button newCustomerButton = new Button("New Customer...", VaadinIcon.PLUS.create());
+        newCustomerButton.addClickListener(e -> customerEditor.editNew());
+        return new HorizontalLayout(customerNameFilter, newCustomerButton);
     }
 
-    public List<Customer> listEntities() {
+    public List<Customer> list() {
         List<Customer> customers;
-        String filterText = userNameFilter.getValue();
+        String filterText = customerNameFilter.getValue();
         if (StringUtils.isEmpty(filterText)) {
             customers = customerRepository.findAll();
         } else {

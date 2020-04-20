@@ -46,13 +46,13 @@ public class PetManager extends EntityManager<Pet> {
         speciesFilter = new Select<>();
         speciesFilter.setEmptySelectionAllowed(true);
         speciesFilter.setItemLabelGenerator(species -> species==null?"Select species...":species.getName());
-        speciesFilter.addValueChangeListener(e -> setGridData(listEntities()));
+        speciesFilter.addValueChangeListener(e -> setGridData(list()));
         final Button addPetButton = new Button("Add Pet", VaadinIcon.PLUS.create());
         addPetButton.addClickListener(e -> petEditor.editNew());
         return new HorizontalLayout(speciesFilter, addPetButton);
     }
 
-    public List<Pet> listEntities() {
+    public List<Pet> list() {
         List<Pet> pets;
         if(speciesFilter.getOptionalValue().isPresent()) {
             pets = petRepository.findBySpecies(speciesFilter.getOptionalValue().get());

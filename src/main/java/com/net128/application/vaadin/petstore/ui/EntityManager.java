@@ -38,23 +38,23 @@ public abstract class EntityManager<T extends Identifiable> extends WorkingArea 
         entityEditor.setWidth("400px");
         entityEditor.addChangeHandler(() -> {
             entityEditor.setVisible(false);
-            grid.setItems(listEntities());
+            grid.setItems(list());
         });
 
         setupGrid(grid);
         HorizontalLayout actionBar = createActionBar(entityEditor);
         actionBar.setMargin(true);
         add(actionBar, masterDetail);
-        grid.setItems(listEntities());
+        grid.setItems(list());
         grid.setSizeFull();
     }
 
     protected void setGridData(List<T> entities) {
-        grid.setItems(listEntities());
+        grid.setItems(list());
         grid.setSizeFull();
     }
 
     public abstract void setupGrid(Grid<T> grid);
     public abstract HorizontalLayout createActionBar(EntityEditor<T> entityEditor);
-    public abstract List<T> listEntities();
+    public abstract List<T> list();
 }
