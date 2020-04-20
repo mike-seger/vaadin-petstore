@@ -6,9 +6,6 @@ import com.net128.application.vaadin.petstore.ui.entity.EntityEditor;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @SpringComponent
 @UIScope

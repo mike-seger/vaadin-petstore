@@ -1,7 +1,7 @@
 package com.net128.application.vaadin.petstore.model;
 
 import com.net128.application.vaadin.petstore.repo.EntityChangeBroadCaster;
-import lombok.*;
+import lombok.Data;
 
 import javax.persistence.*;
 

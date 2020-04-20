@@ -2,7 +2,9 @@ package com.net128.application.vaadin.petstore.model;
 
 import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 
 @Entity
 @ToString

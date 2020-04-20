@@ -4,7 +4,9 @@ import com.net128.application.vaadin.petstore.model.Identifiable;
 import com.vaadin.flow.shared.Registration;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.persistence.*;
+import javax.persistence.PostPersist;
+import javax.persistence.PostRemove;
+import javax.persistence.PostUpdate;
 import java.util.LinkedList;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
