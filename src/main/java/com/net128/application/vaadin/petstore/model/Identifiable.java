@@ -5,11 +5,11 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@Entity
+@MappedSuperclass
 @Data
 @EntityListeners(EntityChangeBroadCaster.class)
 public abstract class Identifiable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id = -1;
 }

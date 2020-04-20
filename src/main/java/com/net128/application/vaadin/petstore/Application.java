@@ -23,23 +23,23 @@ public class Application {
         SpringApplication.run(Application.class);
     }
 
-    @Bean
-    public CommandLineRunner loadData(CustomerRepository customerRepository,
-                                      PetRepository petRepository,
-                                      SpeciesRepository speciesRepository) {
-        return (args) -> {
-            customerRepository.save(new Customer("Mark", "Smith"));
-            customerRepository.save(new Customer("Jennifer", "Bates"));
-            customerRepository.save(new Customer("Diana", "Hewitt"));
-            customerRepository.save(new Customer("Albert", "Freeman"));
-
-            Species cat = speciesRepository.save(new Species("Cat"));
-            Species dog = speciesRepository.save(new Species("Dog"));
-
-            petRepository.save(new Pet("Teddy", dog));
-            petRepository.save(new Pet("Baxter", dog));
-            petRepository.save(new Pet("Whiskers", cat));
-            petRepository.save(new Pet("Bella", cat));
-        };
-    }
+//    @Bean
+//    public CommandLineRunner loadData(CustomerRepository customerRepository,
+//                                      PetRepository petRepository,
+//                                      SpeciesRepository speciesRepository) {
+//        return (args) -> {
+//            customerRepository.save(new Customer("Mark", "Smith"));
+//            customerRepository.save(new Customer("Jennifer", "Bates"));
+//            customerRepository.save(new Customer("Diana", "Hewitt"));
+//            customerRepository.save(new Customer("Albert", "Freeman"));
+//
+//            Species cat = speciesRepository.save(new Species("Cat"));
+//            Species dog = speciesRepository.save(new Species("Dog"));
+//
+//            petRepository.save(new Pet("Teddy", dog));
+//            petRepository.save(new Pet("Baxter", dog));
+//            petRepository.save(new Pet("Whiskers", cat));
+//            petRepository.save(new Pet("Bella", cat));
+//        };
+//    }
 }
