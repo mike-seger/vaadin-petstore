@@ -42,7 +42,9 @@ public abstract class EntityManager<T extends Identifiable> extends WorkingArea 
         });
 
         setupGrid(grid);
-        add(createActionBar(entityEditor), masterDetail);
+        HorizontalLayout actionBar = createActionBar(entityEditor);
+        actionBar.setMargin(true);
+        add(actionBar, masterDetail);
         grid.setItems(listEntities());
         grid.setSizeFull();
     }

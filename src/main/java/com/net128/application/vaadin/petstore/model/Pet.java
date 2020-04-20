@@ -5,15 +5,15 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Data
+@ToString
+@Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Pet extends Identifiable {
     @NonNull
-    //@Column(nullable = false)
     private String name = "";
 
     @NonNull
-    @ManyToOne(fetch = FetchType.EAGER, optional = true)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Species species;
 }

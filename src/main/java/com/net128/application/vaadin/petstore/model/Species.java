@@ -8,7 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-@Data
+@ToString
+@Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Species extends Identifiable {

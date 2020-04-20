@@ -2,21 +2,17 @@ package com.net128.application.vaadin.petstore.model;
 
 import lombok.*;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
 @Entity
-@Data
+@ToString
+@Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class User extends Identifiable {
     @lombok.NonNull
-    //@Column(nullable = false)
     private String firstName;
 
     @lombok.NonNull
-    //@Column(nullable = false)
     private String lastName;
 }

@@ -6,16 +6,17 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Data
+@ToString
+@Getter @Setter
 public class Purchase extends Identifiable{
     private LocalDateTime date;
 
     @NonNull
-    @ManyToOne(fetch = FetchType.EAGER, optional = true)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Pet pet;
 
     @NonNull
-    @ManyToOne(fetch = FetchType.EAGER, optional = true)
+    @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
     @PrePersist

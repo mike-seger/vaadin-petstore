@@ -19,11 +19,16 @@ import java.util.List;
 @UIScope
 public class PetManager extends EntityManager<Pet> {
     final private PetRepository petRepository;
+    final private SpeciesRepository speciesRepository;
     private Select<Species> speciesFilter;
 
-    public PetManager(PetRepository petRepository, PetEditor petEditor, SpeciesRepository speciesRepository) {
+    public PetManager(PetRepository petRepository,
+              PetEditor petEditor,
+              SpeciesRepository speciesRepository
+    ) {
         super(petEditor);
         this.petRepository = petRepository;
+        this.speciesRepository = speciesRepository;
         layout();
         speciesFilter.setDataProvider(DataProvider.ofCollection(speciesRepository.findAll()));
     }
@@ -33,28 +38,29 @@ public class PetManager extends EntityManager<Pet> {
         grid.getColumnByKey("species.name").setHeader("Species");
     }
 
-    public HorizontalLayout createActionBar(EntityEditor<Pet> entityEditor) {
+    public HorizontalLayout createActionBar(EntityEditor<Pet> petEditor) {
         speciesFilter = new Select<>();
         speciesFilter.setEmptySelectionAllowed(true);
-        speciesFilter.setItemLabelGenerator(species -> species==null?"":species.getName());
+        speciesFilter.setItemLabelGenerator(species -> species==null?"Select species...":species.getName());
         speciesFilter.addValueChangeListener(e -> setGridData(listEntities()));
         final Button addPetButton = new Button("Add Pet", VaadinIcon.PLUS.create());
-        addPetButton.addClickListener(e -> entityEditor.editNew());
+        addPetButton.addClickListener(e -> petEditor.editNew());
         return new HorizontalLayout(speciesFilter, addPetButton);
     }
 
     public List<Pet> listEntities() {
         List<Pet> pets;
         if(speciesFilter.getOptionalValue().isPresent()) {
-            Species species = speciesFilter.getOptionalValue().get();
-            if(species==null) {
-                pets = petRepository.findAll();
-            } else {
-                pets = petRepository.findBySpecies(species);
-            }
+            pets = petRepository.findBySpecies(speciesFilter.getOptionalValue().get());
         } else {
             pets = petRepository.findAll();
         }
         return pets;
+    }
+
+    public void entityChanged() {
+        speciesFilter.clear();
+        speciesFilter.removeAll();
+        speciesFilter.setDataProvider(DataProvider.ofCollection(speciesRepository.findAll()));
     }
 }

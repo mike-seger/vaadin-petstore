@@ -2,10 +2,12 @@ package com.net128.application.vaadin.petstore.ui;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.tabs.Tab;
+import lombok.Data;
 
+@Data
 public class TabPage {
-    Tab tab;
-    Component page;
+    private Tab tab;
+    private Component page;
 
     public TabPage(Tab tab, Component page) {
         this.tab = tab;

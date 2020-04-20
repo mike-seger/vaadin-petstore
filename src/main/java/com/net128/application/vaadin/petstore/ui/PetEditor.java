@@ -15,20 +15,29 @@ import com.vaadin.flow.spring.annotation.UIScope;
 public class PetEditor extends EntityEditor<Pet> {
     protected Select<Species> species;
     protected TextField name;
+
     private final SpeciesRepository speciesRepository;
 
-    public PetEditor(PetRepository repository, SpeciesRepository speciesRepository) {
+    public PetEditor(PetRepository repository,
+             SpeciesRepository speciesRepository) {
         super(repository);
         this.speciesRepository = speciesRepository;
         layout();
     }
 
+    @Override
     protected void layout() {
         species = new Select<>();
         species.setDataProvider(DataProvider.ofCollection(speciesRepository.findAll()));
-        species.setItemLabelGenerator(Species::getName);
+        species.setItemLabelGenerator(species -> species==null?"Select species...":species.getName());
         name = new TextField("Name");
         add(name, species);
         super.layout();
+    }
+
+    public void entityChanged() {
+        species.removeAll();
+        species.clear();
+        species.setDataProvider(DataProvider.ofCollection(speciesRepository.findAll()));
     }
 }
