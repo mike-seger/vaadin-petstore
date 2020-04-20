@@ -3,9 +3,10 @@ package com.net128.application.vaadin.petstore.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
-@Getter @Setter
+@Data
 public abstract class Identifiable {
     @Id
     @GeneratedValue

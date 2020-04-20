@@ -12,33 +12,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class SpeciesEditor extends EntityEditor<Species> {
 
     protected TextField name = new TextField("Name");
-    private final PetManager petManager;
-    private final PetEditor petEditor;
 
     @Autowired
-    public SpeciesEditor(SpeciesRepository repository,
-            PetManager petManager,
-            PetEditor petEditor) {
+    public SpeciesEditor(SpeciesRepository repository) {
         super(repository);
-        this.petManager = petManager;
-        this.petEditor = petEditor;
         layout();
     }
 
     protected void layout() {
         add(name);
         super.layout();
-    }
-
-    void delete() {
-        super.delete();
-        petManager.entityChanged();
-        petEditor.entityChanged();
-    }
-
-    void save() {
-        super.save();
-        petManager.entityChanged();
-        petEditor.entityChanged();
     }
 }

@@ -19,10 +19,16 @@ public class PetEditor extends EntityEditor<Pet> {
     private final SpeciesRepository speciesRepository;
 
     public PetEditor(PetRepository repository,
-             SpeciesRepository speciesRepository) {
+             SpeciesRepository speciesRepository,
+             SpeciesEditor speciesEditor) {
         super(repository);
         this.speciesRepository = speciesRepository;
         layout();
+        speciesEditor.addChangeHandler(() -> {
+            species.removeAll();
+            species.clear();
+            species.setDataProvider(DataProvider.ofCollection(speciesRepository.findAll()));
+        });
     }
 
     @Override
@@ -33,11 +39,5 @@ public class PetEditor extends EntityEditor<Pet> {
         name = new TextField("Name");
         add(name, species);
         super.layout();
-    }
-
-    public void entityChanged() {
-        species.removeAll();
-        species.clear();
-        species.setDataProvider(DataProvider.ofCollection(speciesRepository.findAll()));
     }
 }

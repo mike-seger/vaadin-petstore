@@ -19,18 +19,22 @@ import java.util.List;
 @UIScope
 public class PetManager extends EntityManager<Pet> {
     final private PetRepository petRepository;
-    final private SpeciesRepository speciesRepository;
     private Select<Species> speciesFilter;
 
     public PetManager(PetRepository petRepository,
               PetEditor petEditor,
-              SpeciesRepository speciesRepository
+              SpeciesRepository speciesRepository,
+              SpeciesEditor speciesEditor
     ) {
         super(petEditor);
         this.petRepository = petRepository;
-        this.speciesRepository = speciesRepository;
         layout();
         speciesFilter.setDataProvider(DataProvider.ofCollection(speciesRepository.findAll()));
+        speciesEditor.addChangeHandler(() -> {
+            speciesFilter.clear();
+            speciesFilter.removeAll();
+            speciesFilter.setDataProvider(DataProvider.ofCollection(speciesRepository.findAll()));
+        });
     }
 
     public void setupGrid(Grid<Pet> grid) {
@@ -56,11 +60,5 @@ public class PetManager extends EntityManager<Pet> {
             pets = petRepository.findAll();
         }
         return pets;
-    }
-
-    public void entityChanged() {
-        speciesFilter.clear();
-        speciesFilter.removeAll();
-        speciesFilter.setDataProvider(DataProvider.ofCollection(speciesRepository.findAll()));
     }
 }

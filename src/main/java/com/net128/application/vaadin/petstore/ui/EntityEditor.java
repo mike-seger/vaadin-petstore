@@ -16,6 +16,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringComponent
 @UIScope
@@ -31,7 +33,7 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
     HorizontalLayout actions = new HorizontalLayout(save, cancel, delete);
 
     final private Binder<T> binder;
-    private ChangeHandler changeHandler;
+    final private List<ChangeHandler> changeHandlerList=new ArrayList<>();
 
     @Autowired
     public EntityEditor(JpaRepository<T, Long> repository) {
@@ -60,12 +62,12 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
 
     void delete() {
         repository.delete(entity);
-        changeHandler.onChange();
+        changeHandlerList.forEach(ChangeHandler::onChange);
     }
 
     void save() {
         repository.save(entity);
-        changeHandler.onChange();
+        changeHandlerList.forEach(ChangeHandler::onChange);
     }
 
     void editNew() {
@@ -110,7 +112,7 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
         }
     }
 
-    public void setChangeHandler(ChangeHandler h) {
-        changeHandler = h;
+    public void addChangeHandler(ChangeHandler handler) {
+        changeHandlerList.add(handler);
     }
 }

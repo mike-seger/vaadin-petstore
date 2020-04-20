@@ -36,7 +36,7 @@ public abstract class EntityManager<T extends Identifiable> extends WorkingArea 
         masterDetail.setSizeFull();
         masterDetail.setHeight("400px");
         entityEditor.setWidth("400px");
-        entityEditor.setChangeHandler(() -> {
+        entityEditor.addChangeHandler(() -> {
             entityEditor.setVisible(false);
             grid.setItems(listEntities());
         });
