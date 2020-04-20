@@ -10,10 +10,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Pet extends Identifiable {
-    @NonNull
     private String name = "";
 
-    @NonNull
     @ManyToOne(fetch = FetchType.EAGER)
     private Species species;
 }

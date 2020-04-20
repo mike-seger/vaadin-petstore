@@ -1,25 +1,24 @@
-package com.net128.application.vaadin.petstore.ui;
+package com.net128.application.vaadin.petstore.ui.entity.editor;
 
 import com.net128.application.vaadin.petstore.model.Species;
 import com.net128.application.vaadin.petstore.repo.SpeciesRepository;
+import com.net128.application.vaadin.petstore.ui.entity.EntityEditor;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @SpringComponent
 @UIScope
 public class SpeciesEditor extends EntityEditor<Species> {
 
-    protected TextField name = new TextField("Name");
+    protected TextField name;
 
-    @Autowired
     public SpeciesEditor(SpeciesRepository repository) {
         super(repository);
-        layout();
     }
 
-    protected void layout() {
+    public void layout() {
+        name = new TextField("Name");
         add(name);
         super.layout();
     }

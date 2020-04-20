@@ -1,7 +1,7 @@
-package com.net128.application.vaadin.petstore.ui;
+package com.net128.application.vaadin.petstore.ui.entity;
 
 import com.net128.application.vaadin.petstore.model.Identifiable;
-
+import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.KeyNotifier;
 import com.vaadin.flow.component.button.Button;
@@ -11,37 +11,41 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
 
 @SpringComponent
 @UIScope
-public class EntityEditor<T extends Identifiable> extends VerticalLayout implements KeyNotifier {
+public class EntityEditor<T extends Identifiable> extends VerticalLayout implements EntityChangeAware, KeyNotifier {
 
-    private final JpaRepository<T, Long> repository;
+    final private JpaRepository<T, Long> repository;
 
     private T entity;
 
-    Button save = new Button("Save", VaadinIcon.CHECK.create());
-    Button cancel = new Button("Cancel");
-    Button delete = new Button("Delete", VaadinIcon.TRASH.create());
-    HorizontalLayout actions = new HorizontalLayout(save, cancel, delete);
-
     final private Binder<T> binder;
-    final private List<ChangeHandler> changeHandlerList=new ArrayList<>();
 
-    @Autowired
+    private Button cancel;
+
+    private EntityChangedHandler entityChangedHandler;
+
     public EntityEditor(JpaRepository<T, Long> repository) {
         this.repository = repository;
         binder = new Binder<>(getTypeParameterClass());
     }
 
-    protected void layout() {
+    protected void onAttach(AttachEvent attachEvent) {
+        super.onAttach(attachEvent);
+        layout();
+    }
+
+    public void layout() {
+        cancel = new Button("Cancel");
+        final Button save = new Button("Save", VaadinIcon.CHECK.create());
+        final Button delete = new Button("Delete", VaadinIcon.TRASH.create());
+        final HorizontalLayout actions = new HorizontalLayout(save, cancel, delete);
+
         add(actions);
         binder.bindInstanceFields(this);
         setSpacing(true);
@@ -58,19 +62,20 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
             setVisible(false);
         });
         setVisible(false);
+        entityChanged(null);
     }
 
     void delete() {
         repository.delete(entity);
-        changeHandlerList.forEach(ChangeHandler::onChange);
+        setVisible(false);
     }
 
     void save() {
-        repository.save(entity);
-        changeHandlerList.forEach(ChangeHandler::onChange);
+        entity = repository.save(entity);
+        setVisible(false);
     }
 
-    void editNew() {
+    public void editNew() {
         edit(getNewT());
     }
 
@@ -93,8 +98,19 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
         setVisible(true);
     }
 
-    public interface ChangeHandler {
-        void onChange();
+    public interface EntityChangedHandler {
+        void entityChanged(Identifiable entity);
+    }
+
+    public void setEntityChangedHandler(EntityChangedHandler entityChangedHandler) {
+        this.entityChangedHandler = entityChangedHandler;
+    }
+
+    @Override
+    public void entityChanged(Identifiable entity) {
+        if(entityChangedHandler != null) {
+            entityChangedHandler.entityChanged(entity);
+        }
     }
 
     @SuppressWarnings ("unchecked")
@@ -110,9 +126,5 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
         } catch (InstantiationException|IllegalAccessException e) {
             throw new RuntimeException("Failed to create new entity", e);
         }
-    }
-
-    public void addChangeHandler(ChangeHandler handler) {
-        changeHandlerList.add(handler);
     }
 }

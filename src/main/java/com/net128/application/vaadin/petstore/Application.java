@@ -33,13 +33,13 @@ public class Application {
             customerRepository.save(new Customer("Diana", "Hewitt"));
             customerRepository.save(new Customer("Albert", "Freeman"));
 
-            speciesRepository.save(new Species("Cat"));
-            speciesRepository.save(new Species("Dog"));
+            Species cat = speciesRepository.save(new Species("Cat"));
+            Species dog = speciesRepository.save(new Species("Dog"));
 
-            petRepository.save(new Pet("Teddy", speciesRepository.findOneByName("Dog")));
-            petRepository.save(new Pet("Baxter", speciesRepository.findOneByName("Dog")));
-            petRepository.save(new Pet("Whiskers", speciesRepository.findOneByName("Cat")));
-            petRepository.save(new Pet("Bella", speciesRepository.findOneByName("Cat")));
+            petRepository.save(new Pet("Teddy", dog));
+            petRepository.save(new Pet("Baxter", dog));
+            petRepository.save(new Pet("Whiskers", cat));
+            petRepository.save(new Pet("Bella", cat));
         };
     }
 }

@@ -10,9 +10,6 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Customer extends Identifiable {
-    @lombok.NonNull
-    private String firstName;
-
-    @lombok.NonNull
-    private String lastName;
+    private String firstName = "";
+    private String lastName = "";
 }

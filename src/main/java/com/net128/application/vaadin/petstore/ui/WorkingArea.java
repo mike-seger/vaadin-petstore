@@ -13,6 +13,5 @@ public class WorkingArea extends VerticalLayout {
         setMargin(false);
         setSpacing(false);
         setPadding(false);
-        setSizeFull();
     }
 }

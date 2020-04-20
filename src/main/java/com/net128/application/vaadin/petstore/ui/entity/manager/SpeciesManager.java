@@ -1,10 +1,11 @@
-package com.net128.application.vaadin.petstore.ui;
+package com.net128.application.vaadin.petstore.ui.entity.manager;
 
 import com.net128.application.vaadin.petstore.model.Species;
 import com.net128.application.vaadin.petstore.repo.SpeciesRepository;
-import com.vaadin.flow.component.button.Button;
+import com.net128.application.vaadin.petstore.ui.entity.EntityEditor;
+import com.net128.application.vaadin.petstore.ui.entity.EntityManager;
+import com.net128.application.vaadin.petstore.ui.entity.editor.SpeciesEditor;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
@@ -18,27 +19,26 @@ import java.util.List;
 @UIScope
 public class SpeciesManager extends EntityManager<Species> {
 
-    private final SpeciesRepository speciesRepository;
-    private TextField nameFilter;
+    final private SpeciesRepository speciesRepository;
+    final private TextField nameFilter = new TextField();
 
     public SpeciesManager(SpeciesRepository speciesRepository, SpeciesEditor speciesEditor) {
         super(speciesEditor);
         this.speciesRepository = speciesRepository;
-        layout();
     }
 
     public void setupGrid(Grid<Species> grid) {
-        grid.setColumns("name");
+        grid.removeAllColumns();
+        grid.addColumn("name").setAutoWidth(true);
+        grid.setSizeUndefined();
+        grid.setHeightFull();
     }
 
     public HorizontalLayout createActionBar(EntityEditor<Species> speciesEditor) {
-        nameFilter = new TextField();
-        nameFilter.setPlaceholder("Find a name...");
+        nameFilter.setPlaceholder("Find by name...");
         nameFilter.setValueChangeMode(ValueChangeMode.EAGER);
-        nameFilter.addValueChangeListener(e -> setGridData(list()));
-        final Button newSpeciesButton = new Button("New Species...", VaadinIcon.PLUS.create());
-        newSpeciesButton.addClickListener(e -> speciesEditor.editNew());
-        return new HorizontalLayout(nameFilter, newSpeciesButton);
+        nameFilter.addValueChangeListener(e -> updateGrid());
+        return new HorizontalLayout(nameFilter);
     }
 
     public List<Species> list() {

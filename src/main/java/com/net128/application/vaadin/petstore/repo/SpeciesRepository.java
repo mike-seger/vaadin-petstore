@@ -6,6 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface SpeciesRepository extends JpaRepository<Species, Long> {
-    Species findOneByName(String name);
     List<Species> findByNameContainingIgnoreCaseOrderById(String name);
 }

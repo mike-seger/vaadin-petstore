@@ -31,10 +31,14 @@
 
 @import "../valo/valo.scss";
 
-@mixin mytheme {
+@mixin petstore-theme {
   @include valo;
 
   // Insert your own theme rules here
+}
+
+body {
+  overflow: hidden; /* Hide scrollbars */
 }
 
 .v-grid-cell-focused:before {

@@ -3,6 +3,7 @@ package com.net128.application.vaadin.petstore.model;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
@@ -11,11 +12,9 @@ import java.time.LocalDateTime;
 public class Purchase extends Identifiable{
     private LocalDateTime date;
 
-    @NonNull
     @ManyToOne(fetch = FetchType.EAGER)
     private Pet pet;
 
-    @NonNull
     @ManyToOne(fetch = FetchType.EAGER)
     private Customer customer;
 

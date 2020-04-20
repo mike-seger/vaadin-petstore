@@ -13,6 +13,5 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Species extends Identifiable {
-    @NonNull
-    private String name;
+    private String name= "";
 }

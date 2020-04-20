@@ -1,0 +1,6 @@
+databaseChangeLog:
+  - includeAll:
+    path: ./changes/
+  - changeset:
+    id: 1
+    author: 'vaadin-petstore'

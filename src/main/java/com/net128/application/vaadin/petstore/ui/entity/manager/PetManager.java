@@ -1,12 +1,14 @@
-package com.net128.application.vaadin.petstore.ui;
+package com.net128.application.vaadin.petstore.ui.entity.manager;
 
+import com.net128.application.vaadin.petstore.model.Identifiable;
 import com.net128.application.vaadin.petstore.model.Pet;
 import com.net128.application.vaadin.petstore.model.Species;
 import com.net128.application.vaadin.petstore.repo.PetRepository;
 import com.net128.application.vaadin.petstore.repo.SpeciesRepository;
-import com.vaadin.flow.component.button.Button;
+import com.net128.application.vaadin.petstore.ui.entity.EntityEditor;
+import com.net128.application.vaadin.petstore.ui.entity.EntityManager;
+import com.net128.application.vaadin.petstore.ui.entity.editor.PetEditor;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.data.provider.DataProvider;
@@ -19,22 +21,23 @@ import java.util.List;
 @UIScope
 public class PetManager extends EntityManager<Pet> {
     final private PetRepository petRepository;
-    private Select<Species> speciesFilter;
+    final private SpeciesRepository speciesRepository;
+    final private Select<Species> speciesFilter = new Select<>();
 
     public PetManager(PetRepository petRepository,
               PetEditor petEditor,
-              SpeciesRepository speciesRepository,
-              SpeciesEditor speciesEditor
-    ) {
+              SpeciesRepository speciesRepository
+        ) {
         super(petEditor);
         this.petRepository = petRepository;
-        layout();
+        this.speciesRepository = speciesRepository;
         speciesFilter.setDataProvider(DataProvider.ofCollection(speciesRepository.findAll()));
-        speciesEditor.addChangeHandler(() -> {
-            speciesFilter.clear();
-            speciesFilter.removeAll();
-            speciesFilter.setDataProvider(DataProvider.ofCollection(speciesRepository.findAll()));
-        });
+    }
+
+    public void entityChanged(Identifiable entity) {
+        speciesFilter.removeAll();
+        speciesFilter.setDataProvider(DataProvider.ofCollection(speciesRepository.findAll()));
+        super.entityChanged(entity);
     }
 
     public void setupGrid(Grid<Pet> grid) {
@@ -43,22 +46,13 @@ public class PetManager extends EntityManager<Pet> {
     }
 
     public HorizontalLayout createActionBar(EntityEditor<Pet> petEditor) {
-        speciesFilter = new Select<>();
         speciesFilter.setEmptySelectionAllowed(true);
         speciesFilter.setItemLabelGenerator(species -> species==null?"Select species...":species.getName());
-        speciesFilter.addValueChangeListener(e -> setGridData(list()));
-        final Button addPetButton = new Button("Add Pet", VaadinIcon.PLUS.create());
-        addPetButton.addClickListener(e -> petEditor.editNew());
-        return new HorizontalLayout(speciesFilter, addPetButton);
+        speciesFilter.addValueChangeListener(e -> updateGrid());
+        return new HorizontalLayout(speciesFilter);
     }
 
     public List<Pet> list() {
-        List<Pet> pets;
-        if(speciesFilter.getOptionalValue().isPresent()) {
-            pets = petRepository.findBySpecies(speciesFilter.getOptionalValue().get());
-        } else {
-            pets = petRepository.findAll();
-        }
-        return pets;
+        return petRepository.filter(speciesFilter.getValue());
     }
 }
