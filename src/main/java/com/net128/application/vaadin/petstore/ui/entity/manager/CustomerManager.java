@@ -6,6 +6,7 @@ import com.net128.application.vaadin.petstore.ui.entity.EntityEditor;
 import com.net128.application.vaadin.petstore.ui.entity.EntityManager;
 import com.net128.application.vaadin.petstore.ui.entity.editor.CustomerEditor;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
@@ -34,6 +35,7 @@ public class CustomerManager extends EntityManager<Customer> {
         customerNameFilter.setPlaceholder("Find in any name...");
         customerNameFilter.setValueChangeMode(ValueChangeMode.EAGER);
         customerNameFilter.addValueChangeListener(e -> updateGrid());
+        customerNameFilter.setPrefixComponent(VaadinIcon.SEARCH.create());
         return new HorizontalLayout(customerNameFilter);
     }
 

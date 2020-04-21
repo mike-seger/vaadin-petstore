@@ -6,6 +6,8 @@ import com.net128.application.vaadin.petstore.ui.entity.EntityEditor;
 import com.net128.application.vaadin.petstore.ui.entity.EntityManager;
 import com.net128.application.vaadin.petstore.ui.entity.editor.SpeciesEditor;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
@@ -38,6 +40,7 @@ public class SpeciesManager extends EntityManager<Species> {
         nameFilter.setPlaceholder("Find by name...");
         nameFilter.setValueChangeMode(ValueChangeMode.EAGER);
         nameFilter.addValueChangeListener(e -> updateGrid());
+        nameFilter.setPrefixComponent(VaadinIcon.SEARCH.create());
         return new HorizontalLayout(nameFilter);
     }
 

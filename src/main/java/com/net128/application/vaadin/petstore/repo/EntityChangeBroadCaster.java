@@ -28,9 +28,7 @@ public class EntityChangeBroadCaster {
     }
 
     public static synchronized void broadcastEntityChanged(Identifiable changedEntity) {
-        for (Consumer<Identifiable> listener : listeners) {
-            executor.execute(() -> listener.accept(changedEntity));
-        }
+        listeners.forEach(l -> executor.execute(() -> l.accept(changedEntity)));
     }
 
     @PostPersist
