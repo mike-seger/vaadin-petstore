@@ -1,3 +1,5 @@
+server.servlet.context-path: /petstore
+
 server.port: 9999
 spring:
   main.allow-bean-definition-overriding: true
@@ -20,3 +22,5 @@ spring:
 
 liquibase:
   change-log: db/changelog/db.changelog-master.yaml
+
+vaadin.urlMapping: /ui/*
