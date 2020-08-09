@@ -6,7 +6,7 @@ A Vaadin proof of concept showing a pet store application.
 ```
 mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Dserver.port=9999"
 ```
-Open http://localhost:9999/petstore/ui/
+Open http://localhost:9999/
 
 ## Generate liquibase schema from running DB
 ```
