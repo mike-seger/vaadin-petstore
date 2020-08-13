@@ -2,25 +2,23 @@ package com.net128.application.vaadin.petstore.ui;
 
 import com.net128.application.vaadin.petstore.ui.entity.manager.CustomerManager;
 import com.net128.application.vaadin.petstore.ui.entity.manager.PetManager;
+import com.net128.application.vaadin.petstore.ui.entity.manager.PurchaseManager;
 import com.net128.application.vaadin.petstore.ui.entity.manager.SpeciesManager;
-import com.vaadin.flow.component.*;
+import com.vaadin.flow.component.Key;
+import com.vaadin.flow.component.KeyModifier;
+import com.vaadin.flow.component.KeyNotifier;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.JsModule;
-import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.page.Push;
 import com.vaadin.flow.dom.ThemeList;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.lumo.Lumo;
-import com.vaadin.server.FontAwesome;
-import com.vaadin.ui.themes.ValoTheme;
 
 @Route
-@Push
 @CssImport("./styles/components/main-view.css")
 @JsModule("@vaadin/vaadin-lumo-styles/presets/compact.js")
 /*
@@ -30,8 +28,9 @@ https://vaadin.com/learn/tutorials/themes-and-styling-in-vaadin
 public class MainView extends VerticalLayout implements KeyNotifier {
 
     public MainView(CustomerManager customerManager,
-                    PetManager petManager,
-                    SpeciesManager speciesManager) {
+            PetManager petManager,
+            SpeciesManager speciesManager,
+            PurchaseManager purchaseManager) {
         //final Button toggleButton = new Button("Toggle dark theme", click -> toggleDarkTheme());
         Button toggleButton = new Button(VaadinIcon.MENU.create(), click -> toggleDarkTheme());
         //square.setIcon(VaadinIcon.MENU.create());
@@ -49,7 +48,8 @@ public class MainView extends VerticalLayout implements KeyNotifier {
             new TabPage("Pets", petManager),
             new TabPage("Species", speciesManager),
             new TabPage("Customers", customerManager),
-            new TabPage("Purchases", new Div(new Text("Purchases not yet implemented")))
+            new TabPage("Purchases", purchaseManager)
+            //new TabPage("Purchases", new Div(new Text("Purchases not yet implemented")))
         ));
     }
 

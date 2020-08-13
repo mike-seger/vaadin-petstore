@@ -40,6 +40,9 @@ databaseChangeLog:
         - column:
             name: SPECIES_ID
             type: BIGINT
+        - column:
+            name: PRICE
+            type: DECIMAL
         tableName: PET
 - changeSet:
     id: create purchase

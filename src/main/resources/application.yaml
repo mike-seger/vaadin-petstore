@@ -25,3 +25,15 @@ liquibase:
   change-log: db/changelog/db.changelog-master.yaml
 
 vaadin.urlMapping: /ui/*
+
+logging.level.liquibase: debug
+
+management:
+  endpoints:
+    configprops.enabled: true
+    beans.enabled: true
+    shutdown.enabled: true
+    enabled-by-default: true
+    sensitive: false
+    enabled: true
+    web.exposure.include: "*"

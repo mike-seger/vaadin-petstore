@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
+import java.math.BigDecimal;
 
 @Entity
 @ToString
@@ -16,4 +17,6 @@ public class Pet extends Identifiable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Species species;
+
+    private Double price;
 }
