@@ -13,6 +13,7 @@ import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
@@ -122,8 +123,8 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
 
     private T getNewT() {
         try {
-            return getTypeParameterClass().newInstance();
-        } catch (InstantiationException|IllegalAccessException e) {
+            return getTypeParameterClass().getDeclaredConstructor().newInstance();
+        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             throw new RuntimeException("Failed to create new entity", e);
         }
     }

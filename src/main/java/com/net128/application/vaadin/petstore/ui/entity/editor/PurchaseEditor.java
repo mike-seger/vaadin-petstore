@@ -19,13 +19,13 @@ public class PurchaseEditor extends EntityEditor<Purchase> {
     protected Select<Customer> customer;
     protected Select<Pet> pet;
 
-    final private PetRepository petRepository;
     final private CustomerRepository customerRepository;
+    final private PetRepository petRepository;
 
-    public PurchaseEditor(PurchaseRepository repository, PetRepository petRepository, CustomerRepository customerRepository) {
+    public PurchaseEditor(PurchaseRepository repository, CustomerRepository customerRepository, PetRepository petRepository) {
         super(repository);
-        this.petRepository = petRepository;
         this.customerRepository = customerRepository;
+        this.petRepository = petRepository;
     }
 
     public void layout() {
