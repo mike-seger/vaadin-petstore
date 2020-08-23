@@ -19,8 +19,10 @@ public class CustomerEditor extends EntityEditor<Customer> {
     }
 
     public void layout() {
-        firstName = new TextField("First name");
-        lastName = new TextField("Last name");
+        firstName = new TextField();
+        firstName.setPlaceholder("Enter first mame...");
+        lastName = new TextField();
+        lastName.setPlaceholder("Enter last mame...");
         add(firstName, lastName);
         super.layout();
     }

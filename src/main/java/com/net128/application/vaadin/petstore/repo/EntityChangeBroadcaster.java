@@ -13,7 +13,7 @@ import java.util.concurrent.Executors;
 import java.util.function.Consumer;
 
 @Slf4j
-public class EntityChangeBroadCaster {
+public class EntityChangeBroadcaster {
     final private static Executor executor = Executors.newSingleThreadExecutor();
     final private static LinkedList<Consumer<Identifiable>> listeners = new LinkedList<>();
 
@@ -21,7 +21,7 @@ public class EntityChangeBroadCaster {
             Consumer<Identifiable> listener) {
         listeners.add(listener);
         return () -> {
-            synchronized (EntityChangeBroadCaster.class) {
+            synchronized (EntityChangeBroadcaster.class) {
                 listeners.remove(listener);
             }
         };

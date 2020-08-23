@@ -18,7 +18,8 @@ public class SpeciesEditor extends EntityEditor<Species> {
     }
 
     public void layout() {
-        name = new TextField("Name");
+        name = new TextField();
+        name.setPlaceholder("Enter name...");
         add(name);
         super.layout();
     }

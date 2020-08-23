@@ -11,9 +11,11 @@ import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
+import lombok.extern.slf4j.Slf4j;
 
 @SpringComponent
 @UIScope
+@Slf4j
 public class PurchaseEditor extends EntityEditor<Purchase> {
 
     protected Select<Customer> customer;
@@ -22,7 +24,9 @@ public class PurchaseEditor extends EntityEditor<Purchase> {
     final private CustomerRepository customerRepository;
     final private PetRepository petRepository;
 
-    public PurchaseEditor(PurchaseRepository repository, CustomerRepository customerRepository, PetRepository petRepository) {
+    public PurchaseEditor(PurchaseRepository repository,
+            CustomerRepository customerRepository,
+            PetRepository petRepository) {
         super(repository);
         this.customerRepository = customerRepository;
         this.petRepository = petRepository;
@@ -31,16 +35,20 @@ public class PurchaseEditor extends EntityEditor<Purchase> {
     public void layout() {
         customer = new Select<>();
         customer.setItemLabelGenerator(customer -> customer==null?"Select customer...":(customer.getLastName()+" "+customer.getFirstName()));
-        setEntityChangedHandler(entity ->  {
-            customer.removeAll();
-            customer.setDataProvider(DataProvider.ofCollection(customerRepository.findAll()));
-        });
-
+        customer.setPlaceholder("Select customer...");
         pet = new Select<>();
         pet.setItemLabelGenerator(pet -> pet==null?"Select pet...":pet.getName());
-        setEntityChangedHandler(entity ->  {
-            pet.removeAll();
-            pet.setDataProvider(DataProvider.ofCollection(petRepository.findAll()));
+        pet.setPlaceholder("Select pet...");
+
+        setEntityChangedHandler(entity -> {
+            if(entity==null || entity instanceof Customer) {
+                customer.removeAll();
+                customer.setDataProvider(DataProvider.ofCollection(customerRepository.findAllOrdered()));
+            }
+            if(entity==null || entity instanceof Pet) {
+                pet.removeAll();
+                pet.setDataProvider(DataProvider.ofCollection(petRepository.findAllOrdered()));
+            }
         });
 
         add(customer, pet);

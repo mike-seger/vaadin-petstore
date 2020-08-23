@@ -1,7 +1,7 @@
 package com.net128.application.vaadin.petstore.ui.entity;
 
 import com.net128.application.vaadin.petstore.model.Identifiable;
-import com.net128.application.vaadin.petstore.repo.EntityChangeBroadCaster;
+import com.net128.application.vaadin.petstore.repo.EntityChangeBroadcaster;
 import com.net128.application.vaadin.petstore.ui.WorkingArea;
 import com.vaadin.flow.component.*;
 import com.vaadin.flow.component.button.Button;
@@ -19,7 +19,7 @@ import java.util.List;
 @SpringComponent
 @UIScope
 @Slf4j
-public abstract class EntityManager<T extends Identifiable> extends WorkingArea implements EntityChangeAware {
+public abstract class EntityManager<T extends Identifiable> extends WorkingArea implements EntityChangeAware, EntityTyped<T> {
     @Getter
     final private EntityEditor<T> entityEditor;
     final private Grid<T> grid;
@@ -44,7 +44,7 @@ public abstract class EntityManager<T extends Identifiable> extends WorkingArea 
 
         setupGrid(grid);
         HorizontalLayout actionBar = createActionBar(entityEditor);
-        final Button newEntityButton = new Button("Add...", VaadinIcon.PLUS.create());
+        final Button newEntityButton = new Button("New "+getTypeName()+"...", VaadinIcon.PLUS.create());
         newEntityButton.addClickListener(e -> entityEditor.editNew());
         actionBar.add(newEntityButton);
 
@@ -56,8 +56,8 @@ public abstract class EntityManager<T extends Identifiable> extends WorkingArea 
     protected void updateGrid() {
         grid.setItems(list());
         grid.setWidthFull();
-        //grid.setHeightByRows(true);
-        grid.setHeight("400px");
+        grid.setHeightFull();
+        grid.setMinHeight("400px");
         grid.setVerticalScrollingEnabled(true);
         log.info("Grid H: {}", grid.getHeight());
         masterDetail.setWidthFull();
@@ -70,7 +70,7 @@ public abstract class EntityManager<T extends Identifiable> extends WorkingArea 
 
     protected void onAttach(AttachEvent attachEvent) {
         UI ui = attachEvent.getUI();
-        registration = EntityChangeBroadCaster.register(
+        registration = EntityChangeBroadcaster.register(
             entity -> ui.access(() -> entityChanged(entity)));
         layout();
     }
