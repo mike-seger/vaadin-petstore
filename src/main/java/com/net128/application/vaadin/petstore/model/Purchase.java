@@ -12,14 +12,16 @@ import java.time.LocalDateTime;
 @ToString
 @Getter @Setter
 @Table(uniqueConstraints= {
-    @UniqueConstraint(columnNames = {"pet_id"})
+    //FIXME This doesn't kick in in H2!!
+    @UniqueConstraint(columnNames = {Purchase.petID})
 })
 public class Purchase extends Identifiable{
+    final static String petID = "pet_id";
     @NotNull
     private LocalDateTime date;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="pet_id")
+    @JoinColumn(name=petID)
     @NotNull
     private Pet pet;
 
