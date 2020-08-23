@@ -3,6 +3,8 @@ package com.net128.application.vaadin.petstore.model;
 import lombok.*;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @ToString
@@ -10,5 +12,6 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Species extends Identifiable {
-    private String name= "";
+    @NotBlank
+    private String name;
 }

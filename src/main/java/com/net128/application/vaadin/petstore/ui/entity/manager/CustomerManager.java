@@ -28,7 +28,7 @@ public class CustomerManager extends EntityManager<Customer> {
     }
 
     public void setupGrid(Grid<Customer> grid) {
-        grid.setColumns("firstName", "lastName");
+        grid.setColumns("firstName", "lastName", "address", "phone");
     }
 
     public HorizontalLayout createActionBar(EntityEditor<Customer> customerEditor) {

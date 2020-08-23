@@ -5,7 +5,9 @@ import lombok.*;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
-import java.math.BigDecimal;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @ToString
@@ -13,10 +15,14 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Pet extends Identifiable {
-    private String name = "";
+    @NotBlank
+    private String name;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @NotNull
     private Species species;
 
+    @NotNull
+    @Min(value = 1)
     private Double price;
 }

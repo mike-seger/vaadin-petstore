@@ -13,6 +13,8 @@ public class CustomerEditor extends EntityEditor<Customer> {
 
     protected TextField firstName;
     protected TextField lastName;
+    protected TextField address;
+    protected TextField phone;
 
     public CustomerEditor(CustomerRepository repository) {
         super(repository);
@@ -23,7 +25,11 @@ public class CustomerEditor extends EntityEditor<Customer> {
         firstName.setPlaceholder("Enter first mame...");
         lastName = new TextField();
         lastName.setPlaceholder("Enter last mame...");
-        add(firstName, lastName);
+        address = new TextField();
+        address.setPlaceholder("Enter address...");
+        phone = new TextField();
+        phone.setPlaceholder("Enter phone number...");
+        add(firstName, lastName, address, phone);
         super.layout();
     }
 }

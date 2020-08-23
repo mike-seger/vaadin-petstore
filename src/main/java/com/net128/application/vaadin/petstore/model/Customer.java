@@ -3,7 +3,7 @@ package com.net128.application.vaadin.petstore.model;
 import lombok.*;
 
 import javax.persistence.Entity;
-import javax.persistence.Transient;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @ToString
@@ -11,6 +11,12 @@ import javax.persistence.Transient;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Customer extends Identifiable {
-    private String firstName = "";
-    private String lastName = "";
+    @NotBlank
+    private String firstName;
+    @NotBlank
+    private String lastName;
+    @NotBlank
+    private String address;
+    @NotBlank
+    private String phone;
 }

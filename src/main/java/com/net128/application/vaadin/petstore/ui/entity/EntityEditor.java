@@ -1,23 +1,30 @@
 package com.net128.application.vaadin.petstore.ui.entity;
 
+import com.net128.application.vaadin.petstore.RootPackage;
 import com.net128.application.vaadin.petstore.model.Identifiable;
+import com.net128.application.vaadin.petstore.util.ValidationExceptionFormatter;
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.KeyNotifier;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import javax.validation.ConstraintViolationException;
 import java.lang.reflect.InvocationTargetException;
 
 @SpringComponent
 @UIScope
+@Slf4j
 public class EntityEditor<T extends Identifiable> extends VerticalLayout implements EntityChangeAware, KeyNotifier, EntityTyped<T> {
 
     final private JpaRepository<T, Long> repository;
@@ -26,11 +33,12 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
 
     final private Binder<T> binder;
 
-    private Button cancel;
+    private Button delete;
 
     private EntityChangedHandler entityChangedHandler;
 
     private Text title;
+    private Label errorMessage;
 
     public EntityEditor(JpaRepository<T, Long> repository) {
         this.repository = repository;
@@ -46,12 +54,18 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
     }
 
     public void layout() {
-        cancel = new Button("Cancel");
+        final Button cancel = new Button("Cancel");
         final Button save = new Button("Save", VaadinIcon.CHECK.create());
-        final Button delete = new Button("Delete", VaadinIcon.TRASH.create());
+        delete = new Button("Delete", VaadinIcon.TRASH.create());
         final HorizontalLayout actions = new HorizontalLayout(save, cancel, delete);
 
         add(actions);
+
+        errorMessage = new Label();
+        errorMessage.getElement().getStyle().set("color", "hsl(3, 92%, 53%)");
+        errorMessage.getElement().getStyle().set("white-space", "pre-wrap");
+        add(errorMessage);
+
         binder.bindInstanceFields(this);
         setSpacing(true);
 
@@ -70,14 +84,28 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
         entityChanged(null);
     }
 
-    void delete() {
+    protected void delete() {
         repository.delete(entity);
         setVisible(false);
     }
 
-    void save() {
-        entity = repository.save(entity);
-        setVisible(false);
+    protected void save() {
+        try {
+            entity = repository.save(entity);
+            setVisible(false);
+        } catch(Exception e) {
+            log.info("Error saving entity", e);
+            errorMessage.setVisible(true);
+            String message;
+            if(e instanceof ConstraintViolationException) {
+                message = ValidationExceptionFormatter.format(
+                    (ConstraintViolationException)e);
+            } else {
+                message = ExceptionUtils.getRootCause(e).getMessage();
+                message = message.replaceAll(RootPackage.class.getPackage().getName() + "[.]", "");
+            }
+            errorMessage.setText(message);
+        }
     }
 
     public void editNew() {
@@ -85,6 +113,7 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
     }
 
     void edit(T currentEntity) {
+        errorMessage.setVisible(false);
         if (currentEntity == null) {
             setVisible(false);
             return;
@@ -100,9 +129,13 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
             entity = currentEntity;
         }
 
-        cancel.setVisible(persisted);
+        delete.setVisible(persisted);
         binder.setBean(entity);
         setVisible(true);
+    }
+
+    public T getCurrentEntity() {
+        return entity;
     }
 
     public interface EntityChangedHandler {

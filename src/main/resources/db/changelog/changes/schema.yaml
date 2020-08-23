@@ -15,9 +15,23 @@ databaseChangeLog:
             type: BIGINT
         - column:
             name: FIRST_NAME
+            constraints:
+                nullable: false
             type: VARCHAR(255)
         - column:
             name: LAST_NAME
+            constraints:
+                nullable: false
+            type: VARCHAR(255)
+        - column:
+            name: ADDRESS
+            constraints:
+                nullable: false
+            type: VARCHAR(255)
+        - column:
+            name: PHONE
+            constraints:
+                nullable: false
             type: VARCHAR(255)
         tableName: CUSTOMER
 - changeSet:
@@ -36,12 +50,18 @@ databaseChangeLog:
             type: BIGINT
         - column:
             name: NAME
+            constraints:
+                nullable: false
             type: VARCHAR(255)
         - column:
             name: SPECIES_ID
+            constraints:
+                nullable: false
             type: BIGINT
         - column:
             name: PRICE
+            constraints:
+                nullable: false
             type: DECIMAL
         tableName: PET
 - changeSet:
@@ -60,12 +80,18 @@ databaseChangeLog:
             type: BIGINT
         - column:
             name: DATE
+            constraints:
+                nullable: false
             type: TIMESTAMP
         - column:
             name: CUSTOMER_ID
+            constraints:
+                nullable: false
             type: BIGINT
         - column:
             name: PET_ID
+            constraints:
+                nullable: false
             type: BIGINT
         tableName: PURCHASE
 - changeSet:
