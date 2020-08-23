@@ -14,4 +14,9 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
         }
         return findByLastNameContainingIgnoreCaseOrFirstNameContainingIgnoreCaseOrderById(name, name);
     }
+
+    List<Customer> findByOrderByLastNameAscFirstNameAsc();
+    default List<Customer> findAllOrdered() {
+        return findByOrderByLastNameAscFirstNameAsc();
+    }
 }

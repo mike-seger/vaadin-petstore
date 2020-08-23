@@ -11,5 +11,5 @@ import javax.persistence.*;
 public abstract class Identifiable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id = -1L;
+    private Long id;
 }

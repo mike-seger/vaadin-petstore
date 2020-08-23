@@ -30,13 +30,16 @@ public class PetEditor extends EntityEditor<Pet> {
     @Override
     public void layout() {
         species = new Select<>();
+        species.setPlaceholder("Select species...");
         species.setItemLabelGenerator(species -> species==null?"Select species...":species.getName());
         setEntityChangedHandler(entity ->  {
             species.removeAll();
             species.setDataProvider(DataProvider.ofCollection(speciesRepository.findAll()));
         });
-        name = new TextField("Name");
-        price = new NumberField("Price");
+        name = new TextField();
+        name.setPlaceholder("Enter name...");
+        price = new NumberField();
+        price.setPlaceholder("Enter price (USD)");
         price.setMin(0.1);
         add(name, species, price);
         super.layout();

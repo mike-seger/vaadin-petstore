@@ -23,4 +23,9 @@ public interface PetRepository extends JpaRepository<Pet, Long> {
     default List<Pet> filter(Species ... species) {
         return filter(Arrays.asList(species));
     }
+
+    List<Pet> findByOrderByNameAsc();
+    default List<Pet> findAllOrdered() {
+        return findByOrderByNameAsc();
+    }
 }

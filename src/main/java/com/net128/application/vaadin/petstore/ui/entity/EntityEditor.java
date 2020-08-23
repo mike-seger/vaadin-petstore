@@ -4,6 +4,7 @@ import com.net128.application.vaadin.petstore.model.Identifiable;
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.KeyNotifier;
+import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -14,12 +15,10 @@ import com.vaadin.flow.spring.annotation.UIScope;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 
 @SpringComponent
 @UIScope
-public class EntityEditor<T extends Identifiable> extends VerticalLayout implements EntityChangeAware, KeyNotifier {
+public class EntityEditor<T extends Identifiable> extends VerticalLayout implements EntityChangeAware, KeyNotifier, EntityTyped<T> {
 
     final private JpaRepository<T, Long> repository;
 
@@ -31,6 +30,8 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
 
     private EntityChangedHandler entityChangedHandler;
 
+    private Text title;
+
     public EntityEditor(JpaRepository<T, Long> repository) {
         this.repository = repository;
         binder = new Binder<>(getTypeParameterClass());
@@ -39,6 +40,9 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
     protected void onAttach(AttachEvent attachEvent) {
         super.onAttach(attachEvent);
         layout();
+
+        title = new Text("");
+        addComponentAtIndex(0, title);
     }
 
     public void layout() {
@@ -85,12 +89,14 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
             setVisible(false);
             return;
         }
-        final boolean persisted = currentEntity.getId() != -1;
+        final boolean persisted = currentEntity.getId() != null;
         if (persisted) {
+            title.setText("Edit "+getTypeName());
             if(repository.findById(currentEntity.getId()).isPresent()) {
                 entity = repository.findById(currentEntity.getId()).get();
             }
         } else {
+            title.setText("New "+getTypeName());
             entity = currentEntity;
         }
 
@@ -112,13 +118,6 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
         if(entityChangedHandler != null) {
             entityChangedHandler.entityChanged(entity);
         }
-    }
-
-    @SuppressWarnings ("unchecked")
-    protected Class<T> getTypeParameterClass() {
-        Type type = getClass().getGenericSuperclass();
-        ParameterizedType paramType = (ParameterizedType) type;
-        return (Class<T>) paramType.getActualTypeArguments()[0];
     }
 
     private T getNewT() {

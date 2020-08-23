@@ -17,6 +17,7 @@ import com.vaadin.flow.dom.ThemeList;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.lumo.Lumo;
+import lombok.extern.slf4j.Slf4j;
 
 @Route
 @CssImport("./styles/components/main-view.css")
@@ -25,12 +26,14 @@ import com.vaadin.flow.theme.lumo.Lumo;
 https://vaadin.com/learn/tutorials/themes-and-styling-in-vaadin
  */
 @Theme(value = Lumo.class, variant = Lumo.DARK)
+@Slf4j
 public class MainView extends VerticalLayout implements KeyNotifier {
 
     public MainView(CustomerManager customerManager,
             PetManager petManager,
             SpeciesManager speciesManager,
             PurchaseManager purchaseManager) {
+
         //final Button toggleButton = new Button("Toggle dark theme", click -> toggleDarkTheme());
         Button toggleButton = new Button(VaadinIcon.MENU.create(), click -> toggleDarkTheme());
         //square.setIcon(VaadinIcon.MENU.create());

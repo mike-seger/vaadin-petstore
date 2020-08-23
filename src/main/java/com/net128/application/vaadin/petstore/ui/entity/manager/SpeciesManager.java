@@ -48,7 +48,7 @@ public class SpeciesManager extends EntityManager<Species> {
         List<Species> species;
         String filterText = nameFilter.getValue();
         if (StringUtils.isEmpty(filterText)) {
-            species = speciesRepository.findAll();
+            species = speciesRepository.findAllOrdered();
         } else {
             species = speciesRepository.findByNameContainingIgnoreCaseOrderById(filterText);
         }
