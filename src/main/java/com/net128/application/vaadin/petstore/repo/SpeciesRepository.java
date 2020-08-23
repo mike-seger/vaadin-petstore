@@ -1,6 +1,5 @@
 package com.net128.application.vaadin.petstore.repo;
 
-import com.net128.application.vaadin.petstore.model.Customer;
 import com.net128.application.vaadin.petstore.model.Species;
 import org.springframework.data.jpa.repository.JpaRepository;
 
