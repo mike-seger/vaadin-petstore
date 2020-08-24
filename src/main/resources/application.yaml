@@ -14,12 +14,11 @@ spring:
     username: petuser
     password: petpass
   jpa:
-    generate-ddl: false
+    database: h2
+    generate-ddl: true
     properties:
-      #database-platform: org.hibernate.dialect.PostgreSQL10Dialect
       hibernate:
         ddl-auto: none
-        #ddl-auto: create
         dialect: org.hibernate.dialect.H2Dialect
         format_sql: true
     jpa:
