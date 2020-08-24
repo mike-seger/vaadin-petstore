@@ -60,7 +60,8 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
 
         errorMessage = new Label();
         errorMessage.getElement().getStyle().set("color", "hsl(3, 92%, 53%)");
-        errorMessage.getElement().getStyle().set("white-space", "pre-wrap");
+        errorMessage.getElement().getStyle().set("white-space", "pre-wrap");        errorMessage.getElement().getStyle().set("white-space", "pre-wrap");
+        errorMessage.getElement().getStyle().set("font-size", "14px");
         add(errorMessage);
 
         binder.bindInstanceFields(this);
