@@ -1,8 +1,7 @@
 package com.net128.application.vaadin.petstore.ui.entity;
 
-import com.net128.application.vaadin.petstore.RootPackage;
 import com.net128.application.vaadin.petstore.model.Identifiable;
-import com.net128.application.vaadin.petstore.util.ValidationExceptionFormatter;
+import com.net128.application.vaadin.petstore.util.ExceptionFormatter;
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.KeyNotifier;
@@ -16,10 +15,8 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import javax.validation.ConstraintViolationException;
 import java.lang.reflect.InvocationTargetException;
 
 @SpringComponent
@@ -96,15 +93,7 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
         } catch(Exception e) {
             log.info("Error saving entity", e);
             errorMessage.setVisible(true);
-            String message;
-            if(e instanceof ConstraintViolationException) {
-                message = ValidationExceptionFormatter.format(
-                    (ConstraintViolationException)e);
-            } else {
-                message = ExceptionUtils.getRootCause(e).getMessage();
-                message = message.replaceAll(RootPackage.class.getPackage().getName() + "[.]", "");
-            }
-            errorMessage.setText(message);
+            errorMessage.setText(ExceptionFormatter.format(e));
         }
     }
 
