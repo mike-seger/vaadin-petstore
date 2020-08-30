@@ -7,7 +7,7 @@ import com.net128.application.vaadin.petstore.repo.CustomerRepository;
 import com.net128.application.vaadin.petstore.repo.PetRepository;
 import com.net128.application.vaadin.petstore.repo.PurchaseRepository;
 import com.net128.application.vaadin.petstore.ui.entity.EntityEditor;
-import com.vaadin.flow.component.select.Select;
+import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
@@ -18,8 +18,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class PurchaseEditor extends EntityEditor<Purchase> {
 
-    protected Select<Customer> customer;
-    protected Select<Pet> pet;
+    protected ComboBox<Customer> customer;
+    protected ComboBox<Pet> pet;
 
     final private CustomerRepository customerRepository;
     final private PetRepository petRepository;
@@ -33,20 +33,15 @@ public class PurchaseEditor extends EntityEditor<Purchase> {
     }
 
     public void layout() {
-        customer = new Select<>();
-        customer.setItemLabelGenerator(customer -> customer==null?"Select customer...":(customer.getLastName()+" "+customer.getFirstName()));
-        customer.setLabel("Customer");
-        pet = new Select<>();
-        pet.setLabel("Pet");
-        pet.setItemLabelGenerator(pet -> pet==null?"Select pet...":pet.getName());
-
+        customer = new ComboBox<>("Customer");
+        customer.setItemLabelGenerator(c -> c==null?"Select customer...":c.getLastName()+" "+c.getFirstName());
+        pet = new ComboBox<>("Pet");
+        pet.setItemLabelGenerator(c -> c==null?"Select pet...":c.getName());
         setEntityChangedHandler(entity -> {
             if(entity==null || entity instanceof Customer) {
-                customer.removeAll();
                 customer.setDataProvider(DataProvider.ofCollection(customerRepository.findAllOrdered()));
             }
             if(entity==null || entity instanceof Pet) {
-                pet.removeAll();
                 pet.setDataProvider(DataProvider.ofCollection(petRepository.findAllOrdered()));
             }
         });

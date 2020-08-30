@@ -22,11 +22,14 @@ import java.util.Arrays;
 @SpringComponent
 @UIScope
 @Slf4j
-public class EntityEditor<T extends Identifiable> extends VerticalLayout implements EntityChangeAware, KeyNotifier, EntityTyped<T> {
+public class EntityEditor<T extends Identifiable> extends VerticalLayout implements EntityChangeAware, KeyNotifier, EntityTyped<T>, HasValue.ValueChangeListener<HasValue.ValueChangeEvent<?>> {
 
     final private JpaRepository<T, Long> repository;
 
     private T entity;
+
+    //FIXME this flag shouldn't be required - validationBinder.hasChanges returns false in several cases though
+    private boolean dirty;
 
     final private BeanValidationBinder<T> validationBinder;
 
@@ -50,18 +53,18 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
 
     @Override
     public void add(Component... components) {
-        Arrays.stream(components).forEach(c ->
-        {
-            editFields.addFormItem(c, c.getElement().getProperty("label"));
+        Arrays.stream(components).forEach(c -> {
+            String label = c.getElement().getProperty("label");
+            editFields.addFormItem(c, new Label(label));
             c.getElement().setProperty("label", null);
         });
     }
 
     public void layout() {
         editFields.setResponsiveSteps(
-            new FormLayout.ResponsiveStep("25em", 1),
-            new FormLayout.ResponsiveStep("32em", 2),
-            new FormLayout.ResponsiveStep("40em", 3));
+            new FormLayout.ResponsiveStep("18em", 1),
+            new FormLayout.ResponsiveStep("36em", 2),
+            new FormLayout.ResponsiveStep("54em", 3));
 
         final Button cancel = new Button("Cancel");
         final Button save = new Button("Save", VaadinIcon.CHECK.create());
@@ -74,38 +77,56 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
 
         errorMessage = new Label();
         errorMessage.getElement().getStyle().set("color", "hsl(3, 92%, 53%)");
-        errorMessage.getElement().getStyle().set("white-space", "pre-wrap");        errorMessage.getElement().getStyle().set("white-space", "pre-wrap");
+        errorMessage.getElement().getStyle().set("white-space", "pre-wrap");
         errorMessage.getElement().getStyle().set("font-size", "14px");
         super.add(errorMessage);
 
         validationBinder.bindInstanceFields(this);
+        validationBinder.addValueChangeListener(this);
+
         setSpacing(true);
 
+        save.addClickShortcut(Key.ENTER);
         save.getElement().getThemeList().add("primary");
         delete.getElement().getThemeList().add("error");
 
-        addKeyPressListener(Key.ENTER, e -> save());
+        //addKeyPressListener(Key.ENTER, e -> save());
 
         save.addClickListener(e -> save());
         delete.addClickListener(e -> delete());
-        cancel.addClickListener(e -> {
-            edit(entity);
-            setVisible(false);
-        });
+        cancel.addClickListener(e -> cancel());
         setVisible(false);
         entityChanged(null);
     }
 
+    protected void cancel() {
+        entity = null;
+        validationBinder.removeBean();
+        setVisible(false);
+        validationBinder.removeBean();
+        validationBinder.validate();
+        validationBinder.readBean(null);
+        validationBinder.writeBeanAsDraft(null);
+        entityChanged(null);
+        dirty = false;
+    }
+
     protected void delete() {
         repository.delete(entity);
+        validationBinder.removeBean();
         setVisible(false);
-        validationBinder.setBean(null);
+        dirty = false;
     }
 
     protected void save() {
         try {
             if(validationBinder.validate().isOk()) {
                 entity = repository.save(entity);
+                //validationBinder.readBean(entity);
+                validationBinder.writeBean(entity);
+                validationBinder.removeBean();
+                dirty = false;
+                entityChanged(null);
                 setVisible(false);
             }
         } catch(Exception e) {
@@ -118,18 +139,49 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
     }
 
     public void editNew() {
-       // setVisible(false);
-        edit(getNewT());
+        if(validationBinder.hasChanges() || dirty) {
+            showDiscardMessage();
+            return;
+        }
+        T currentEntity = getNewT();
+        validationBinder.setBean(currentEntity);
+//        validationBinder.getFields().forEach(f -> {
+//            f.clear();
+//            if (f instanceof HasValidation) {
+//                HasValidation fieldWithValidation = (HasValidation) f;
+//                fieldWithValidation.setInvalid(false);
+//                fieldWithValidation.setErrorMessage(null);
+//            }
+//            f.setRequiredIndicatorVisible(false);
+//        });
+        edit(currentEntity);
+    }
 
+    public void showDiscardMessage() {
+        errorMessage.setVisible(true);
+        errorMessage.setText("Press 'Save' to save changes\nor 'Cancel' to discard current edits.");
     }
 
     void edit(T currentEntity) {
-        entity = null;
-        errorMessage.setVisible(false);
         if (currentEntity == null) {
             setVisible(false);
             return;
         }
+
+        //String currentEntityJson = currentEntity.toJsonString();
+        //String entityJson = validationBinder.readBean(entity);
+        setVisible(true);
+//        if(initialEntityJson != null && (!currentEntityJson.equals(initialEntityJson) ||
+//            !currentEntityJson.equals(entityJson) || !initialEntityJson.equals(entityJson)))
+        if(validationBinder.hasChanges() || dirty) {
+            showDiscardMessage();
+            return;
+        }
+
+        //initialEntityJson = currentEntityJson;
+        entity = null;
+        errorMessage.setVisible(false);
+
         final boolean persisted = currentEntity.getId() != null;
         if (persisted) {
             title.setText("Edit "+getTypeName());
@@ -138,32 +190,21 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
             }
             validationBinder.setBean(entity);
         } else {
-            //validationBinder.setBean(entity);
-            //validationBinder.removeBean();
-            //validationBinder.
             entity = currentEntity;
-            validationBinder.setBean(entity);
-            validationBinder.getFields().forEach(f ->
-                {
-                    f.clear();
-                    if (f instanceof HasValidation) {
-                        HasValidation fieldWithValidation = (HasValidation) f;
-                        fieldWithValidation.setInvalid(false);
-                    }
-                });
-            //validationBinder.removeBean();
             title.setText("New "+getTypeName());
         }
 
-
         delete.setVisible(persisted);
-        //binder.setBean(entity);
-
-        setVisible(true);
     }
 
     public T getCurrentEntity() {
         return entity;
+    }
+
+    @Override
+    public void valueChanged(HasValue.ValueChangeEvent<?> valueChangeEvent) {
+        log.info("Value Change Event: {}", valueChangeEvent.getValue());
+        dirty = entity!=null;
     }
 
     public interface EntityChangedHandler {
