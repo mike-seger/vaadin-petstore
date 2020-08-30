@@ -35,10 +35,10 @@ public class PurchaseEditor extends EntityEditor<Purchase> {
     public void layout() {
         customer = new Select<>();
         customer.setItemLabelGenerator(customer -> customer==null?"Select customer...":(customer.getLastName()+" "+customer.getFirstName()));
-        customer.setPlaceholder("Select customer...");
+        customer.setLabel("Customer");
         pet = new Select<>();
+        pet.setLabel("Pet");
         pet.setItemLabelGenerator(pet -> pet==null?"Select pet...":pet.getName());
-        pet.setPlaceholder("Select pet...");
 
         setEntityChangedHandler(entity -> {
             if(entity==null || entity instanceof Customer) {
