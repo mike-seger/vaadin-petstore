@@ -41,7 +41,6 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
 
     public EntityEditor(JpaRepository<T, Long> repository) {
         this.repository = repository;
-        //binder = new Binder<>(getTypeParameterClass());
         validationBinder = new BeanValidationBinder<>(getTypeParameterClass());
     }
 
@@ -80,7 +79,6 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
         errorMessage.getElement().getStyle().set("font-size", "14px");
         super.add(errorMessage);
 
-        //binder.bindInstanceFields(this);
         validationBinder.bindInstanceFields(this);
         setSpacing(true);
 
@@ -107,7 +105,6 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
 
     protected void save() {
         try {
-            validationBinder.setValidatorsDisabled(false);
             if(validationBinder.validate().isOk()) {
                 entity = repository.save(entity);
                 setVisible(false);
@@ -122,13 +119,7 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
     }
 
     public void editNew() {
-        edit(entity);
         setVisible(false);
-        //validationBinder.setV
-        //validationBinder.setBean(null);
-        //setRequiredIndicatorVisible(false);
-        //validationBinder.is
-        //validationBinder.getFields().forEach(f -> validationBinder.getBinding(f.).setValidatorsDisabled(false);
         edit(getNewT());
     }
 
@@ -146,11 +137,9 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
             if(repository.findById(currentEntity.getId()).isPresent()) {
                 entity = repository.findById(currentEntity.getId()).get();
             }
-            validationBinder.setValidatorsDisabled(false);
         } else {
             title.setText("New "+getTypeName());
             entity = currentEntity;
-            validationBinder.setValidatorsDisabled(true);
         }
 
         validationBinder.setBean(entity);

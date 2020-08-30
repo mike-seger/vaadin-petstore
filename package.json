@@ -8,8 +8,8 @@
     "@vaadin/vaadin-grid": "5.6.7",
     "@vaadin/vaadin-icons": "4.3.1",
     "@vaadin/vaadin-split-layout": "4.2.0",
-    "@vaadin/vaadin-combo-box": "5.2.0",
-    "@vaadin/vaadin-core-shrinkwrap": "14.3.4",
+    "@vaadin/vaadin-combo-box": "5.1.1",
+    "@vaadin/vaadin-core-shrinkwrap": "16.0.3",
     "@vaadin/vaadin-upload": "4.3.0",
     "@vaadin/vaadin-dialog": "2.4.3",
     "@vaadin/vaadin-select": "2.2.0",
@@ -64,8 +64,8 @@
       "@vaadin/vaadin-grid": "5.6.7",
       "@vaadin/vaadin-icons": "4.3.1",
       "@vaadin/vaadin-split-layout": "4.2.0",
-      "@vaadin/vaadin-combo-box": "5.2.0",
-      "@vaadin/vaadin-core-shrinkwrap": "14.3.4",
+      "@vaadin/vaadin-combo-box": "5.1.1",
+      "@vaadin/vaadin-core-shrinkwrap": "16.0.3",
       "@vaadin/vaadin-upload": "4.3.0",
       "@vaadin/vaadin-dialog": "2.4.3",
       "@vaadin/vaadin-select": "2.2.0",
@@ -114,6 +114,6 @@
       "chokidar": "^3.4.0",
       "webpack-babel-multi-target-plugin": "2.3.3"
     },
-    "hash": "65700a1202cd277e50790b0f27a2911cefe84ee6eeae45b75ccb85ca7740504f"
+    "hash": "149971687cacc86ce3fad75e1d1a8c62a3a6f67fa7f748a83869ebc86228dbe9"
   }
 }
