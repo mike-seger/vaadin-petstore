@@ -55,6 +55,8 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
     public void add(Component... components) {
         Arrays.stream(components).forEach(c -> {
             String label = c.getElement().getProperty("label");
+            label = label==null?
+                formatFieldNameAsLabel(getFieldName(c, this)) : label;
             editFields.addFormItem(c, new Label(label));
             c.getElement().setProperty("label", null);
         });
@@ -70,6 +72,17 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
         final Button save = new Button("Save", VaadinIcon.CHECK.create());
         delete = new Button("Delete", VaadinIcon.TRASH.create());
         final HorizontalLayout actions = new HorizontalLayout(save, cancel, delete);
+
+        validationBinder.getFields().forEach(f -> {
+            //f.clear();
+//            if (f instanceof HasValidation) {
+//                HasValidation fieldWithValidation = (HasValidation) f;
+//                fieldWithValidation.setInvalid(false);
+//                fieldWithValidation.setErrorMessage(null);
+//            }
+
+            f.setRequiredIndicatorVisible(false);
+        });
 
         super.add(title);
         super.add(editFields);
@@ -97,6 +110,32 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
         cancel.addClickListener(e -> cancel());
         setVisible(false);
         entityChanged(null);
+    }
+
+    private static String formatFieldNameAsLabel(String fieldName) {
+        if(fieldName==null) {
+            return null;
+        }
+        String name = fieldName.replaceAll("([a-z])([A-Z]+)", "$1 $2");
+        return name.substring(0, 1).toUpperCase() + name.substring(1);
+    }
+
+    private static String getFieldName(Object fieldObject, Object parent) {
+        java.lang.reflect.Field[] allFields = parent.getClass().getDeclaredFields();
+        for (java.lang.reflect.Field field : allFields) {
+            field.setAccessible(true);
+            Object currentFieldObject;
+            try {
+                currentFieldObject = field.get(parent);
+            } catch (Exception e) {
+                return null;
+            }
+            boolean isWantedField = fieldObject.equals(currentFieldObject);
+            if (isWantedField) {
+                return field.getName();
+            }
+        }
+        return null;
     }
 
     protected void cancel() {

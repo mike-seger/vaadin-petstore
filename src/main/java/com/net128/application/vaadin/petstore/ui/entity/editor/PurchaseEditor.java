@@ -33,10 +33,10 @@ public class PurchaseEditor extends EntityEditor<Purchase> {
     }
 
     public void layout() {
-        customer = new ComboBox<>("Customer");
-        customer.setItemLabelGenerator(c -> c==null?"Select customer...":c.getLastName()+" "+c.getFirstName());
-        pet = new ComboBox<>("Pet");
-        pet.setItemLabelGenerator(c -> c==null?"Select pet...":c.getName());
+        customer = new ComboBox<>();
+        customer.setItemLabelGenerator(c -> c==null?"":c.getLastName()+" "+c.getFirstName());
+        pet = new ComboBox<>();
+        pet.setItemLabelGenerator(c -> c==null?"":c.getName());
         setEntityChangedHandler(entity -> {
             if(entity==null || entity instanceof Customer) {
                 customer.setDataProvider(DataProvider.ofCollection(customerRepository.findAllOrdered()));
