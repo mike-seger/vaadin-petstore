@@ -42,5 +42,9 @@ body {
 }
 
 .v-grid-cell-focused:before {
-        display: none !important;
+    display: none !important;
+}
+
+.v-tooltip .v-errormessage {
+    white-space: pre;
 }

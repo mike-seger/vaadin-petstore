@@ -71,6 +71,7 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
         final Button cancel = new Button("Cancel");
         final Button save = new Button("Save", VaadinIcon.CHECK.create());
         delete = new Button("Delete", VaadinIcon.TRASH.create());
+        redButton(delete);
         final HorizontalLayout actions = new HorizontalLayout(save, cancel, delete);
 
         validationBinder.getFields().forEach(f -> {
@@ -81,10 +82,7 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
         super.add(editFields);
         super.add(actions);
 
-        errorMessage = new Label();
-        errorMessage.getElement().getStyle().set("color", "hsl(3, 92%, 53%)");
-        errorMessage.getElement().getStyle().set("white-space", "pre-wrap");
-        errorMessage.getElement().getStyle().set("font-size", "14px");
+        errorMessage = customMultilineLabel(null);
         super.add(errorMessage);
 
         validationBinder.bindInstanceFields(this);
@@ -94,13 +92,26 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
 
         save.addClickShortcut(Key.ENTER);
         save.getElement().getThemeList().add("primary");
-        delete.getElement().getThemeList().add("error");
+        //delete.getElement().getThemeList().add("error");
 
         save.addClickListener(e -> save());
         delete.addClickListener(e -> delete());
         cancel.addClickListener(e -> cancel());
         setVisible(false);
         entityChanged(null);
+    }
+
+    private void redButton(Button button) {
+        button.getElement().getStyle().set("color", "white");
+        button.getElement().getStyle().set("background", "hsl(0, 68%, 62%)");
+    }
+
+    private Label customMultilineLabel(String text) {
+        Label label = new Label(text);
+        label.getElement().getStyle().set("color", "hsl(3, 92%, 53%)");
+        label.getElement().getStyle().set("white-space", "pre-wrap");
+        label.getElement().getStyle().set("font-size", "14px");
+        return label;
     }
 
     private static String formatFieldNameAsLabel(String fieldName) {
@@ -174,15 +185,6 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
         }
         T currentEntity = getNewT();
         validationBinder.setBean(currentEntity);
-//        validationBinder.getFields().forEach(f -> {
-//            f.clear();
-//            if (f instanceof HasValidation) {
-//                HasValidation fieldWithValidation = (HasValidation) f;
-//                fieldWithValidation.setInvalid(false);
-//                fieldWithValidation.setErrorMessage(null);
-//            }
-//            f.setRequiredIndicatorVisible(false);
-//        });
         edit(currentEntity);
     }
 
@@ -197,17 +199,12 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
             return;
         }
 
-        //String currentEntityJson = currentEntity.toJsonString();
-        //String entityJson = validationBinder.readBean(entity);
         setVisible(true);
-//        if(initialEntityJson != null && (!currentEntityJson.equals(initialEntityJson) ||
-//            !currentEntityJson.equals(entityJson) || !initialEntityJson.equals(entityJson)))
         if(validationBinder.hasChanges() || dirty) {
             showDiscardMessage();
             return;
         }
 
-        //initialEntityJson = currentEntityJson;
         entity = null;
         errorMessage.setVisible(false);
 
