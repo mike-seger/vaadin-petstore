@@ -16,7 +16,7 @@
 	</parent>
 
 	<properties>
-		<vaadin.version>16.0.2</vaadin.version>
+		<vaadin.version>14.3.4</vaadin.version>
 		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
 		<vaadin-spring-boot-starter.version>${vaadin.version}</vaadin-spring-boot-starter.version>
 
@@ -25,7 +25,7 @@
 		<vaadin-client-compiled.version>${vaadin-server.version}</vaadin-client-compiled.version>
 		<vaadin-themes.version>${vaadin-server.version}</vaadin-themes.version>
 
-		<vaadin-flow.version>3.1.6</vaadin-flow.version>
+		<vaadin-flow.version>3.1.7</vaadin-flow.version>
 
 		<vaadin.widgetset.mode>local</vaadin.widgetset.mode>
 		<vaadin.theme>petstore-theme</vaadin.theme>

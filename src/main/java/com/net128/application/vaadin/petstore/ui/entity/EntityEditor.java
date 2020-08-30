@@ -10,7 +10,6 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
-import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
 import lombok.extern.slf4j.Slf4j;
@@ -36,9 +35,9 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
 
     private EntityChangedHandler entityChangedHandler;
 
-    private Text title = new Text("");
+    final private Text title = new Text("");
     private Label errorMessage;
-    private FormLayout editFields = new FormLayout();
+    final private FormLayout editFields = new FormLayout();
 
     public EntityEditor(JpaRepository<T, Long> repository) {
         this.repository = repository;
@@ -108,9 +107,11 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
 
     protected void save() {
         try {
-            validationBinder.validate();
-            entity = repository.save(entity);
-            setVisible(false);
+            validationBinder.setValidatorsDisabled(false);
+            if(validationBinder.validate().isOk()) {
+                entity = repository.save(entity);
+                setVisible(false);
+            }
         } catch(Exception e) {
             log.info("Error saving entity", e);
             if(! (e instanceof ConstraintViolationException)) {
@@ -123,8 +124,11 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
     public void editNew() {
         edit(entity);
         setVisible(false);
-        validationBinder.setV
-        validationBinder.setBean(null);
+        //validationBinder.setV
+        //validationBinder.setBean(null);
+        //setRequiredIndicatorVisible(false);
+        //validationBinder.is
+        //validationBinder.getFields().forEach(f -> validationBinder.getBinding(f.).setValidatorsDisabled(false);
         edit(getNewT());
     }
 
@@ -142,12 +146,14 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
             if(repository.findById(currentEntity.getId()).isPresent()) {
                 entity = repository.findById(currentEntity.getId()).get();
             }
-            validationBinder.setBean(entity);
+            validationBinder.setValidatorsDisabled(false);
         } else {
             title.setText("New "+getTypeName());
             entity = currentEntity;
-            validationBinder.setBean(entity);
+            validationBinder.setValidatorsDisabled(true);
         }
+
+        validationBinder.setBean(entity);
 
         delete.setVisible(persisted);
         //binder.setBean(entity);
