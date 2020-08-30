@@ -74,13 +74,6 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
         final HorizontalLayout actions = new HorizontalLayout(save, cancel, delete);
 
         validationBinder.getFields().forEach(f -> {
-            //f.clear();
-//            if (f instanceof HasValidation) {
-//                HasValidation fieldWithValidation = (HasValidation) f;
-//                fieldWithValidation.setInvalid(false);
-//                fieldWithValidation.setErrorMessage(null);
-//            }
-
             f.setRequiredIndicatorVisible(false);
         });
 
@@ -102,8 +95,6 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
         save.addClickShortcut(Key.ENTER);
         save.getElement().getThemeList().add("primary");
         delete.getElement().getThemeList().add("error");
-
-        //addKeyPressListener(Key.ENTER, e -> save());
 
         save.addClickListener(e -> save());
         delete.addClickListener(e -> delete());
@@ -161,7 +152,6 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
         try {
             if(validationBinder.validate().isOk()) {
                 entity = repository.save(entity);
-                //validationBinder.readBean(entity);
                 validationBinder.writeBean(entity);
                 validationBinder.removeBean();
                 dirty = false;
