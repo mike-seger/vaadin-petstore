@@ -13,7 +13,6 @@ import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.page.Push;
 import com.vaadin.flow.dom.ThemeList;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.Theme;
@@ -28,7 +27,6 @@ https://vaadin.com/learn/tutorials/themes-and-styling-in-vaadin
  */
 @Theme(value = Lumo.class, variant = Lumo.DARK)
 @Slf4j
-@Push
 public class MainView extends VerticalLayout implements KeyNotifier {
 
     public MainView(CustomerManager customerManager,

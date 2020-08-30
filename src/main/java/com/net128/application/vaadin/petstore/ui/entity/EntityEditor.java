@@ -28,7 +28,6 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
 
     private T entity;
 
-    //final private Binder<T> binder;
     final private BeanValidationBinder<T> validationBinder;
 
     private Button delete;
@@ -119,12 +118,12 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
     }
 
     public void editNew() {
-        setVisible(false);
+       // setVisible(false);
         edit(getNewT());
+
     }
 
     void edit(T currentEntity) {
-        //validationBinder
         entity = null;
         errorMessage.setVisible(false);
         if (currentEntity == null) {
@@ -137,12 +136,25 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
             if(repository.findById(currentEntity.getId()).isPresent()) {
                 entity = repository.findById(currentEntity.getId()).get();
             }
+            validationBinder.setBean(entity);
         } else {
-            title.setText("New "+getTypeName());
+            //validationBinder.setBean(entity);
+            //validationBinder.removeBean();
+            //validationBinder.
             entity = currentEntity;
+            validationBinder.setBean(entity);
+            validationBinder.getFields().forEach(f ->
+                {
+                    f.clear();
+                    if (f instanceof HasValidation) {
+                        HasValidation fieldWithValidation = (HasValidation) f;
+                        fieldWithValidation.setInvalid(false);
+                    }
+                });
+            //validationBinder.removeBean();
+            title.setText("New "+getTypeName());
         }
 
-        validationBinder.setBean(entity);
 
         delete.setVisible(persisted);
         //binder.setBean(entity);
