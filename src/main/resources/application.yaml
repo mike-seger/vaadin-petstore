@@ -1,5 +1,6 @@
 server.servlet.context-path: /petstore
 
+# Use PORT env var/sys prop from services like Heroku
 server.port: ${PORT:9999}
 
 spring:
