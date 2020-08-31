@@ -34,8 +34,8 @@ java -jar target/*war
 
 ### Heroku
 ```
-heroku deploy:jar target/*.war --app ms-vaadin-petstore
-heroku ps:scale web=1 -a ms-vaadin-petstore
+heroku deploy:jar target/*.war --app your-vaadin-petstore-application
+heroku ps:scale web=1 -a your-vaadin-petstore-application
 ```
 
 ## Related articles
