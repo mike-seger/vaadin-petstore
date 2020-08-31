@@ -1,9 +1,9 @@
 package com.net128.application.vaadin.petstore.ui;
 
-import com.net128.application.vaadin.petstore.ui.entity.manager.CustomerManager;
-import com.net128.application.vaadin.petstore.ui.entity.manager.PetManager;
-import com.net128.application.vaadin.petstore.ui.entity.manager.PurchaseManager;
-import com.net128.application.vaadin.petstore.ui.entity.manager.SpeciesManager;
+import com.net128.application.vaadin.petstore.ui.entity.managers.CustomerManager;
+import com.net128.application.vaadin.petstore.ui.entity.managers.PetManager;
+import com.net128.application.vaadin.petstore.ui.entity.managers.PurchaseManager;
+import com.net128.application.vaadin.petstore.ui.entity.managers.SpeciesManager;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.KeyModifier;
 import com.vaadin.flow.component.KeyNotifier;

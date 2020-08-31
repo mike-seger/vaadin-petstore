@@ -1,10 +1,10 @@
-package com.net128.application.vaadin.petstore.ui.entity.manager;
+package com.net128.application.vaadin.petstore.ui.entity.managers;
 
 import com.net128.application.vaadin.petstore.model.Purchase;
 import com.net128.application.vaadin.petstore.repo.PurchaseRepository;
 import com.net128.application.vaadin.petstore.ui.entity.generic.EntityEditor;
 import com.net128.application.vaadin.petstore.ui.entity.generic.EntityManager;
-import com.net128.application.vaadin.petstore.ui.entity.editor.PurchaseEditor;
+import com.net128.application.vaadin.petstore.ui.entity.editors.PurchaseEditor;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.icon.VaadinIcon;

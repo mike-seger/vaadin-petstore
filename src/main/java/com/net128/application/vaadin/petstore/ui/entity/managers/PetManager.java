@@ -1,4 +1,4 @@
-package com.net128.application.vaadin.petstore.ui.entity.manager;
+package com.net128.application.vaadin.petstore.ui.entity.managers;
 
 import com.net128.application.vaadin.petstore.model.Identifiable;
 import com.net128.application.vaadin.petstore.model.Pet;
@@ -7,7 +7,7 @@ import com.net128.application.vaadin.petstore.repo.PetRepository;
 import com.net128.application.vaadin.petstore.repo.SpeciesRepository;
 import com.net128.application.vaadin.petstore.ui.entity.generic.EntityEditor;
 import com.net128.application.vaadin.petstore.ui.entity.generic.EntityManager;
-import com.net128.application.vaadin.petstore.ui.entity.editor.PetEditor;
+import com.net128.application.vaadin.petstore.ui.entity.editors.PetEditor;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.select.Select;

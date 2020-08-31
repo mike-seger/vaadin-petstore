@@ -1,4 +1,4 @@
-package com.net128.application.vaadin.petstore.ui.entity.editor;
+package com.net128.application.vaadin.petstore.ui.entity.editors;
 
 import com.net128.application.vaadin.petstore.model.Pet;
 import com.net128.application.vaadin.petstore.model.Species;
