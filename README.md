@@ -5,7 +5,7 @@ The application uses Vaadin 16+, Spring Boot 2.3+, JPA and Liquibase to show all
 
 ![Screenshot](doc/vaadin-petstore.png)
 
-Access this application at:
+Try out this application at:
 [ms-vaadin-petstore @ heroku](https://ms-vaadin-petstore.herokuapp.com/)
 
 ## Running
