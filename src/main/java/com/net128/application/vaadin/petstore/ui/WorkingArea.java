@@ -1,6 +1,7 @@
 package com.net128.application.vaadin.petstore.ui;
 
 import com.vaadin.flow.component.dependency.CssImport;
+import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 @CssImport("./styles/components/working-area.css")

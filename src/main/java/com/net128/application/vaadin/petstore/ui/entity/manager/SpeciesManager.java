@@ -31,8 +31,6 @@ public class SpeciesManager extends EntityManager<Species> {
     public void setupGrid(Grid<Species> grid) {
         grid.removeAllColumns();
         grid.addColumn("name").setAutoWidth(true);
-        grid.setSizeUndefined();
-        grid.setHeightFull();
     }
 
     public HorizontalLayout createActionBar(EntityEditor<Species> speciesEditor) {

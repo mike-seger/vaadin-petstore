@@ -1,14 +1,15 @@
 .app-bar {
-background-color: rgb(44, 61, 82);
+  background-color: rgb(44, 61, 82);
  /* background-color: var(--lumo-base-color);*/
   color: white;
   font-size: 22px;
   font-weight: bold;
   box-shadow: var(--lumo-box-shadow-s);
-  flex-direction: column;
+  /*flex-direction: row;*/
   position: relative;
   z-index: 1;
   padding: 0 10px;
+  flex: 0.2;
 }
 
 /* Container */

@@ -1,3 +1,16 @@
 body {
   overflow: hidden;
 }
+
+.main-view {
+    flex-direction: column;
+}
+
+.tabPageManager {
+    margin-bottom: 0;
+}
+
+.master-grid {
+    height: calc(100vh - 152px);
+    overflow-y: auto;
+}

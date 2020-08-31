@@ -12,6 +12,7 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.dom.ThemeList;
 import com.vaadin.flow.router.Route;
@@ -27,33 +28,34 @@ https://vaadin.com/learn/tutorials/themes-and-styling-in-vaadin
  */
 @Theme(value = Lumo.class, variant = Lumo.DARK)
 @Slf4j
-public class MainView extends VerticalLayout implements KeyNotifier {
+public class MainView extends FlexLayout implements KeyNotifier {
 
     public MainView(CustomerManager customerManager,
             PetManager petManager,
             SpeciesManager speciesManager,
             PurchaseManager purchaseManager) {
 
+        setClassName("main-view");
         //final Button toggleButton = new Button("Toggle dark theme", click -> toggleDarkTheme());
         Button toggleButton = new Button(VaadinIcon.MENU.create(), click -> toggleDarkTheme());
         //square.setIcon(VaadinIcon.MENU.create());
         //square.addStyleName(ValoTheme.BUTTON_ICON_ONLY + " " + ValoTheme.BUTTON_SMALL + " square");
 
         toggleButton.addClickShortcut(Key.KEY_T, KeyModifier.ALT);
-        setMargin(false);
-        setSpacing(false);
-        setPadding(false);
 
         AppBar appBar = new AppBar("Pet Store", toggleButton);
         add(appBar);
 
-        add(new TabPageManager(
-            new TabPage("Pets", petManager),
-            new TabPage("Species", speciesManager),
-            new TabPage("Customers", customerManager),
-            new TabPage("Purchases", purchaseManager)
-            //new TabPage("Purchases", new Div(new Text("Purchases not yet implemented")))
-        ));
+        TabPageManager tabPageManager = new TabPageManager(
+                new TabPage("Pets", petManager),
+                new TabPage("Species", speciesManager),
+                new TabPage("Customers", customerManager),
+                new TabPage("Purchases", purchaseManager)
+        );
+
+        tabPageManager.setClassName("tabPageManager");
+
+        add(tabPageManager);
     }
 
     void toggleDarkTheme() {

@@ -42,6 +42,7 @@ public abstract class EntityManager<T extends Identifiable> extends WorkingArea 
         masterDetail.add(grid, entityEditor);
         entityEditor.setWidthFull();
 
+        grid.setClassName("master-grid");
         setupGrid(grid);
         HorizontalLayout actionBar = createActionBar(entityEditor);
         final Button newEntityButton = new Button("New "+getTypeName()+"...", VaadinIcon.PLUS.create());
@@ -56,8 +57,6 @@ public abstract class EntityManager<T extends Identifiable> extends WorkingArea 
     protected void updateGrid() {
         grid.setItems(list());
         grid.setWidthFull();
-        grid.setHeightFull();
-        grid.setMinHeight("400px");
         grid.setVerticalScrollingEnabled(true);
         log.info("Grid H: {}", grid.getHeight());
         masterDetail.setWidthFull();
