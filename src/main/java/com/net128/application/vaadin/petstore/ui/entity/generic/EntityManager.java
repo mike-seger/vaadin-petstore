@@ -38,11 +38,11 @@ public abstract class EntityManager<T extends Identifiable> extends WorkingArea 
 
         grid.asSingleSelect().addValueChangeListener(
             e -> entityEditor.edit(e.getValue()));
+        grid.setClassName("entity-grid");
 
         masterDetail.add(grid, entityEditor);
         entityEditor.setWidthFull();
 
-        grid.setClassName("master-grid");
         setupGrid(grid);
         HorizontalLayout actionBar = createActionBar(entityEditor);
         final Button newEntityButton = new Button("New "+getTypeName()+"...", VaadinIcon.PLUS.create());
