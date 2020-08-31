@@ -22,6 +22,16 @@ mvn liquibase:generateChangeLog
 
 ## Deployment 
 
+In order to deploy the application productively, you can build the procutiob WAR file by running:
+```
+mvn clean package -Pproduction
+```
+
+You can the use the WAR file with any servlet container or you can simply run it:
+```
+java -jar target/*war
+```
+
 ### Heroku
 ```
 heroku deploy:jar target/*.war --app ms-vaadin-petstore
