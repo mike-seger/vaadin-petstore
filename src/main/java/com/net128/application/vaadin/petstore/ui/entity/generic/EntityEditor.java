@@ -1,4 +1,4 @@
-package com.net128.application.vaadin.petstore.ui.entity;
+package com.net128.application.vaadin.petstore.ui.entity.generic;
 
 import com.net128.application.vaadin.petstore.model.Identifiable;
 import com.net128.application.vaadin.petstore.util.ExceptionFormatter;
@@ -17,12 +17,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.validation.ConstraintViolationException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @SpringComponent
 @UIScope
 @Slf4j
-public class EntityEditor<T extends Identifiable> extends VerticalLayout implements EntityChangeAware, KeyNotifier, EntityTyped<T>, HasValue.ValueChangeListener<HasValue.ValueChangeEvent<?>> {
+public abstract class EntityEditor<T extends Identifiable> extends VerticalLayout implements EntityChangeAware, KeyNotifier, EntityTyped<T>, HasValue.ValueChangeListener<HasValue.ValueChangeEvent<?>> {
 
     final private JpaRepository<T, Long> repository;
 
@@ -51,9 +53,8 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
         layout();
     }
 
-    @Override
-    public void add(Component... components) {
-        Arrays.stream(components).forEach(c -> {
+    private void addFormFields(List<Component> formFields) {
+        formFields.forEach(c -> {
             String label = c.getElement().getProperty("label");
             label = label==null?
                 formatFieldNameAsLabel(getFieldName(c, this)) : label;
@@ -63,6 +64,7 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
     }
 
     public void layout() {
+        addFormFields(createInputFields());
         editFields.setResponsiveSteps(
             new FormLayout.ResponsiveStep("18em", 1),
             new FormLayout.ResponsiveStep("36em", 2),
@@ -74,9 +76,7 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
         redButton(delete);
         final HorizontalLayout actions = new HorizontalLayout(save, cancel, delete);
 
-        validationBinder.getFields().forEach(f -> {
-            f.setRequiredIndicatorVisible(false);
-        });
+        validationBinder.getFields().forEach(f -> f.setRequiredIndicatorVisible(false));
 
         super.add(title);
         super.add(editFields);
@@ -246,6 +246,12 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
         if(entityChangedHandler != null) {
             entityChangedHandler.entityChanged(entity);
         }
+    }
+
+    public abstract List<Component> createInputFields();
+
+    protected List<Component> componentList(Component ... components) {
+        return new ArrayList<>(Arrays.asList(components));
     }
 
     private T getNewT() {

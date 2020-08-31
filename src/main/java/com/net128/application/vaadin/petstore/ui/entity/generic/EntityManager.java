@@ -1,4 +1,4 @@
-package com.net128.application.vaadin.petstore.ui.entity;
+package com.net128.application.vaadin.petstore.ui.entity.generic;
 
 import com.net128.application.vaadin.petstore.model.Identifiable;
 import com.net128.application.vaadin.petstore.repo.EntityChangeBroadcaster;
@@ -55,7 +55,7 @@ public abstract class EntityManager<T extends Identifiable> extends WorkingArea 
     }
 
     protected void updateGrid() {
-        grid.setItems(list());
+        grid.setItems(filter());
         grid.setWidthFull();
         grid.setVerticalScrollingEnabled(true);
         log.info("Grid H: {}", grid.getHeight());
@@ -81,5 +81,5 @@ public abstract class EntityManager<T extends Identifiable> extends WorkingArea 
 
     public abstract void setupGrid(Grid<T> grid);
     public abstract HorizontalLayout createActionBar(EntityEditor<T> entityEditor);
-    public abstract List<T> list();
+    public abstract List<T> filter();
 }

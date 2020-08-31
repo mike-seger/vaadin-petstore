@@ -1,4 +1,4 @@
-package com.net128.application.vaadin.petstore.ui.entity;
+package com.net128.application.vaadin.petstore.ui.entity.generic;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

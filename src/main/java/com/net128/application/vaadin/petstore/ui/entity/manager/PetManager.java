@@ -5,8 +5,8 @@ import com.net128.application.vaadin.petstore.model.Pet;
 import com.net128.application.vaadin.petstore.model.Species;
 import com.net128.application.vaadin.petstore.repo.PetRepository;
 import com.net128.application.vaadin.petstore.repo.SpeciesRepository;
-import com.net128.application.vaadin.petstore.ui.entity.EntityEditor;
-import com.net128.application.vaadin.petstore.ui.entity.EntityManager;
+import com.net128.application.vaadin.petstore.ui.entity.generic.EntityEditor;
+import com.net128.application.vaadin.petstore.ui.entity.generic.EntityManager;
 import com.net128.application.vaadin.petstore.ui.entity.editor.PetEditor;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -52,7 +52,7 @@ public class PetManager extends EntityManager<Pet> {
         return new HorizontalLayout(speciesFilter);
     }
 
-    public List<Pet> list() {
+    public List<Pet> filter() {
         return petRepository.filter(speciesFilter.getValue());
     }
 }

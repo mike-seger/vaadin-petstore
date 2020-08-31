@@ -1,4 +1,4 @@
-package com.net128.application.vaadin.petstore.ui.entity;
+package com.net128.application.vaadin.petstore.ui.entity.generic;
 
 import com.net128.application.vaadin.petstore.model.Identifiable;
 

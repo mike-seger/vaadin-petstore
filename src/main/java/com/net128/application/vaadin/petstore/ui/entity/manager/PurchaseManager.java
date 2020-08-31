@@ -2,8 +2,8 @@ package com.net128.application.vaadin.petstore.ui.entity.manager;
 
 import com.net128.application.vaadin.petstore.model.Purchase;
 import com.net128.application.vaadin.petstore.repo.PurchaseRepository;
-import com.net128.application.vaadin.petstore.ui.entity.EntityEditor;
-import com.net128.application.vaadin.petstore.ui.entity.EntityManager;
+import com.net128.application.vaadin.petstore.ui.entity.generic.EntityEditor;
+import com.net128.application.vaadin.petstore.ui.entity.generic.EntityManager;
 import com.net128.application.vaadin.petstore.ui.entity.editor.PurchaseEditor;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.grid.Grid;
@@ -57,7 +57,7 @@ public class PurchaseManager extends EntityManager<Purchase> {
         return new HorizontalLayout(nameFilter, startDate, endDate);
     }
 
-    public List<Purchase> list() {
+    public List<Purchase> filter() {
         return repository.filter(nameFilter.getValue(), startDate.getValue(), endDate.getValue());
     }
 }

@@ -32,8 +32,6 @@ public interface PurchaseRepository extends JpaRepository<Purchase, Long> {
     List<Purchase> findAllOrdered();
 
     default List<Purchase> filter(String name, LocalDate startDate, LocalDate endDate) {
-        System.out.println(startDate);
-        System.out.println(endDate);
         if(StringUtils.isEmpty(name) && startDate==null && endDate==null) {
             return findAllOrdered();
         }

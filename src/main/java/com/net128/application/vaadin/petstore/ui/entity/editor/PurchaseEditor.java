@@ -6,12 +6,15 @@ import com.net128.application.vaadin.petstore.model.Purchase;
 import com.net128.application.vaadin.petstore.repo.CustomerRepository;
 import com.net128.application.vaadin.petstore.repo.PetRepository;
 import com.net128.application.vaadin.petstore.repo.PurchaseRepository;
-import com.net128.application.vaadin.petstore.ui.entity.EntityEditor;
+import com.net128.application.vaadin.petstore.ui.entity.generic.EntityEditor;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.List;
 
 @SpringComponent
 @UIScope
@@ -32,7 +35,8 @@ public class PurchaseEditor extends EntityEditor<Purchase> {
         this.petRepository = petRepository;
     }
 
-    public void layout() {
+    @Override
+    public List<Component> createInputFields() {
         customer = new ComboBox<>();
         customer.setItemLabelGenerator(c -> c==null?"":c.getLastName()+" "+c.getFirstName());
         pet = new ComboBox<>();
@@ -46,7 +50,6 @@ public class PurchaseEditor extends EntityEditor<Purchase> {
             }
         });
 
-        add(customer, pet);
-        super.layout();
+        return componentList(customer, pet);
     }
 }
