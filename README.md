@@ -46,3 +46,4 @@ heroku ps:scale web=1 -a unique-vaadin-petstore-application
 - [Introduction to Vaadin](https://www.baeldung.com/vaadin)
 - [Vaadin Components](https://vaadin.com/components)
 - [Sample Application with Spring Boot and Vaadin](https://www.baeldung.com/spring-boot-vaadin)
+- [Vaadin 10: Templating your views with FlexLayout](https://mekaso.rocks/vaadin-10-templating-your-views-with-flexlayout)
