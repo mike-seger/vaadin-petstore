@@ -27,7 +27,7 @@ In order to deploy the application productively, you can build the production WA
 mvn clean package -Pproduction
 ```
 
-You can then deploy the WAR file in any servlet such as [Tomcat](http://tomcat.apache.org/), [Jetty](https://www.eclipse.org/jetty/) or you can simply run it as a JAR file:
+You can then deploy the WAR file in any servlet-capable server such as [Tomcat](http://tomcat.apache.org/), [Jetty](https://www.eclipse.org/jetty/) or you can simply run it as a JAR file:
 ```
 java -jar target/*war
 ```
