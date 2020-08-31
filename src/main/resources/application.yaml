@@ -9,8 +9,9 @@ spring:
       enabled: true
       path: /h2
   datasource:
-    #url:  jdbc:h2:mem:vaadin-petstore
-    url: jdbc:h2:file:~/vaadin-petstore
+    url:  jdbc:h2:mem:vaadin-petstore
+    #file-based H2 results in liquibase checksum errors
+    #url: jdbc:h2:file:~/vaadin-petstore
     username: petuser
     password: petpass
   jpa:

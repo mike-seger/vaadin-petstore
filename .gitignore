@@ -6,6 +6,7 @@
 .idea
 /build
 /config
+/config1/
 
 node_modules
 **/webpack.generated.js

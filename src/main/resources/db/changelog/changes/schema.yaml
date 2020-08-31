@@ -16,22 +16,22 @@ databaseChangeLog:
         - column:
             name: FIRST_NAME
             constraints:
-                nullable: false
+              nullable: false
             type: VARCHAR(255)
         - column:
             name: LAST_NAME
             constraints:
-                nullable: false
+              nullable: false
             type: VARCHAR(255)
         - column:
             name: ADDRESS
             constraints:
-                nullable: false
+              nullable: false
             type: VARCHAR(255)
         - column:
             name: PHONE
             constraints:
-                nullable: false
+              nullable: false
             type: VARCHAR(255)
         tableName: CUSTOMER
 - changeSet:
@@ -51,17 +51,17 @@ databaseChangeLog:
         - column:
             name: NAME
             constraints:
-                nullable: false
+              nullable: false
             type: VARCHAR(255)
         - column:
             name: SPECIES_ID
             constraints:
-                nullable: false
+              nullable: false
             type: BIGINT
         - column:
             name: PRICE
             constraints:
-                nullable: false
+              nullable: false
             type: DECIMAL
         tableName: PET
 - changeSet:
@@ -81,17 +81,17 @@ databaseChangeLog:
         - column:
             name: DATE
             constraints:
-                nullable: false
+              nullable: false
             type: TIMESTAMP
         - column:
             name: CUSTOMER_ID
             constraints:
-                nullable: false
+              nullable: false
             type: BIGINT
         - column:
             name: PET_ID
             constraints:
-                nullable: false
+              nullable: false
             type: BIGINT
         tableName: PURCHASE
 - changeSet:
@@ -120,7 +120,7 @@ databaseChangeLog:
         columns:
         - column:
             name: CUSTOMER_ID
-        indexName: FK2PEHE23HWDCYQL94C531RBF70_INDEX_9
+        indexName: FK_PURCHASE_TO_CUSTOMER_INDEX
         tableName: PURCHASE
 - changeSet:
     id: create pet to species index
@@ -130,7 +130,7 @@ databaseChangeLog:
         columns:
         - column:
             name: SPECIES_ID
-        indexName: FK99R3YE65N5D263QXACWFU6EF1_INDEX_1
+        indexName: FK_PETTOSPECIES_INDEX
         tableName: PET
 - changeSet:
     id: create purchae to pet index
@@ -140,7 +140,7 @@ databaseChangeLog:
         columns:
         - column:
             name: PET_ID
-        indexName: FKG45AM5A8S90EOP5BJG3TT0CEM_INDEX_9
+        indexName: FK_PURCHASETOPET
         tableName: PURCHASE
 - changeSet:
     id: create purchase to customer fk
@@ -149,7 +149,7 @@ databaseChangeLog:
     - addForeignKeyConstraint:
         baseColumnNames: CUSTOMER_ID
         baseTableName: PURCHASE
-        constraintName: FK2PEHE23HWDCYQL94C531RBF70
+        constraintName: FK_CUSTOMERTOPET
         deferrable: false
         initiallyDeferred: false
         onDelete: RESTRICT
@@ -164,7 +164,7 @@ databaseChangeLog:
     - addForeignKeyConstraint:
         baseColumnNames: SPECIES_ID
         baseTableName: PET
-        constraintName: FK99R3YE65N5D263QXACWFU6EF1
+        constraintName: FK_PETTOSPECIES
         deferrable: false
         initiallyDeferred: false
         onDelete: RESTRICT
@@ -179,7 +179,7 @@ databaseChangeLog:
     - addForeignKeyConstraint:
         baseColumnNames: PET_ID
         baseTableName: PURCHASE
-        constraintName: FKG45AM5A8S90EOP5BJG3TT0CEM
+        constraintName: FK_PURCHASETOPET
         deferrable: false
         initiallyDeferred: false
         onDelete: RESTRICT
