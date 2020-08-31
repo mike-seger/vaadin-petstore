@@ -6,6 +6,9 @@ JPA and Liquibase.
 
 ![Screenshot](doc/vaadin-petstore.png)
 
+Access this application at:
+[ms-vaadin-petstore @ heroku](https://ms-vaadin-petstore.herokuapp.com/)
+
 ## Running
 ```
 mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Dserver.port=9999"
@@ -16,6 +19,14 @@ Open http://localhost:9999/
 A file from the current DB data can be generated in order to pre-populate a new DB with other than the provided default data in [changelog/](src/main/resources/db/changelog/). 
 ```
 mvn liquibase:generateChangeLog
+```
+
+## Deployment 
+
+### Heroku
+```
+heroku deploy:jar target/*.war --app ms-vaadin-petstore
+heroku ps:scale web=1 -a ms-vaadin-petstore
 ```
 
 ## Related articles

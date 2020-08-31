@@ -1,6 +1,6 @@
 server.servlet.context-path: /petstore
 
-server.port: 9999
+server.port: ${PORT:9999}
 
 spring:
   main.allow-bean-definition-overriding: true
