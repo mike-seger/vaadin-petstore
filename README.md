@@ -12,7 +12,7 @@ Try out this application at:
 ```
 mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Dserver.port=9999"
 ```
-If successful, you can open http://localhost:9999/ to access your vaadin-petstore locally. 
+If successful, you can then open http://localhost:9999/ in your web browser to access your vaadin-petstore locally. 
 
 ## Generate liquibase schema snapshot from DB
 A file from the current DB data can be generated in order to pre-populate a new DB with other than the provided default data in [changelog/](src/main/resources/db/changelog/). 
