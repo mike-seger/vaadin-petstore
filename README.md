@@ -33,7 +33,7 @@ java -jar target/*war
 ```
 
 ### Heroku
-You can register for a free account at [Heroku](https://heroku.com/). Once registered, you can directly deploy the WAR file above, by creating a new app with your unique name.
+You can get a free account at [Heroku](https://heroku.com/). Once registered, you can directly deploy the WAR file above, by creating a new app with your unique name.
 If you have installed [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line), then you can run the following commands:
 ```
 heroku login
