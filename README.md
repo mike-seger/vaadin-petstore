@@ -1,6 +1,6 @@
 # Vaadin Pet Store
 
-A Vaadin proof of concept showing a pet store application.
+A Vaadin proof of concept showing a pet store application.  
 The application makes use of Vaadin 16+, Spring Boot 2.3+, 
 JPA and Liquibase.
 
