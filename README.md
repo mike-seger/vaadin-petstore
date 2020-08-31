@@ -22,12 +22,12 @@ mvn liquibase:generateChangeLog
 
 ## Deployment 
 
-In order to deploy the application productively, you can build the procutiob WAR file by running:
+In order to deploy the application productively, you can build the production WAR file by running:
 ```
 mvn clean package -Pproduction
 ```
 
-You can the use the WAR file with any servlet container or you can simply run it:
+You can then deploy the WAR file in any servlet such as [Tomcat](http://tomcat.apache.org/), [Jetty](https://www.eclipse.org/jetty/) or you can simply run it as a JAR file:
 ```
 java -jar target/*war
 ```
