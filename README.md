@@ -38,7 +38,8 @@ heroku deploy:jar target/*.war --app your-vaadin-petstore-application
 heroku ps:scale web=1 -a your-vaadin-petstore-application
 ```
 
-## Related articles
+## Useful links
 
 - [Introduction to Vaadin](https://www.baeldung.com/vaadin)
+- [Vaadin Components](https://vaadin.com/components)
 - [Sample Application with Spring Boot and Vaadin](https://www.baeldung.com/spring-boot-vaadin)
