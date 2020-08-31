@@ -33,7 +33,10 @@ java -jar target/*war
 ```
 
 ### Heroku
+You can directly deploy the WAR file to [Heroku](https://heroku.com/), by creating a new app with your unique name.
+If you have installed [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line), then you can run the following commands:
 ```
+heroku login
 heroku deploy:jar target/*.war --app your-vaadin-petstore-application
 heroku ps:scale web=1 -a your-vaadin-petstore-application
 ```
