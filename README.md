@@ -34,7 +34,7 @@ java -jar target/*war
 
 ### Heroku
 A free account can be created at [Heroku](https://heroku.com/). Once registered, the WAR file above can directly be deployed, by creating a new app with a unique name.
-Provided [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line) is installed, then the following commands should be run:
+Provided [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line) is installed, then the following commands should be run for deployment:
 ```
 heroku login
 heroku deploy:jar target/*.war --app unique-vaadin-petstore-application
