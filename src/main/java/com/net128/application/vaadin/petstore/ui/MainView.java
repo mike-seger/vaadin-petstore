@@ -46,13 +46,13 @@ public class MainView extends FlexLayout implements KeyNotifier {
         add(appBar);
 
         TabPageManager tabPageManager = new TabPageManager(
-                new TabPage("Pets", petManager),
-                new TabPage("Species", speciesManager),
-                new TabPage("Customers", customerManager),
-                new TabPage("Purchases", purchaseManager)
+            new TabPage("Pets", petManager),
+            new TabPage("Species", speciesManager),
+            new TabPage("Customers", customerManager),
+            new TabPage("Purchases", purchaseManager)
         );
 
-        tabPageManager.setClassName("tabPageManager");
+        tabPageManager.setClassName("tab-page-manager");
 
         add(tabPageManager);
     }

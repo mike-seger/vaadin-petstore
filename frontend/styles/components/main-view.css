@@ -6,11 +6,12 @@ body {
     flex-direction: column;
 }
 
-.tabPageManager {
-    margin-bottom: 0;
+.tab-page-manager {
+    margin: -12px;
+    margin-top: -8px;
 }
 
 .entity-grid {
-    height: calc(100vh - 152px);
+    height: calc(100vh - 136px);
     overflow-y: auto;
 }
