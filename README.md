@@ -12,7 +12,7 @@ Try out this application at:
 ```
 mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Dserver.port=9999"
 ```
-If successful, you can then open http://localhost:9999/ in your web browser to access your vaadin-petstore locally. 
+If successful, the vaadin-petstore can be accessed locally by opening http://localhost:9999/ in a web browser . 
 
 ## Generate liquibase schema snapshot from DB
 A file from the current DB data can be generated in order to pre-populate a new DB with other than the provided default data in [changelog/](src/main/resources/db/changelog/). 
@@ -22,23 +22,23 @@ mvn liquibase:generateChangeLog
 
 ## Deployment 
 
-In order to deploy the application productively, you can build the production WAR file by running:
+In order to deploy the application productively, the production WAR file can be built by running:
 ```
 mvn clean package -Pproduction
 ```
 
-You can then deploy the WAR file in any servlet-capable server such as [Tomcat](http://tomcat.apache.org/), [Jetty](https://www.eclipse.org/jetty/) or you can simply run it as a JAR file:
+The WAR file can be deployed in any servlet-capable server such as [Tomcat](http://tomcat.apache.org/), [Jetty](https://www.eclipse.org/jetty/) or it can simply be run as a JAR file:
 ```
 java -jar target/*war
 ```
 
 ### Heroku
-You can get a free account at [Heroku](https://heroku.com/). Once registered, you can directly deploy the WAR file above, by creating a new app with your unique name.
-If you have installed [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line), then you can run the following commands:
+A free account can be created at [Heroku](https://heroku.com/). Once registered, the WAR file above can directly be deployed, by creating a new app with a unique name.
+Provided [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line) is installed, then the following commands should be run:
 ```
 heroku login
-heroku deploy:jar target/*.war --app your-vaadin-petstore-application
-heroku ps:scale web=1 -a your-vaadin-petstore-application
+heroku deploy:jar target/*.war --app unique-vaadin-petstore-application
+heroku ps:scale web=1 -a unique-vaadin-petstore-application
 ```
 
 ## Further Reading
