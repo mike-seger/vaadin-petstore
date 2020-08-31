@@ -24,7 +24,7 @@ import java.util.List;
 @SpringComponent
 @UIScope
 @Slf4j
-public abstract class EntityEditor<T extends Identifiable> extends VerticalLayout implements EntityChangeAware, KeyNotifier, EntityTyped<T>, HasValue.ValueChangeListener<HasValue.ValueChangeEvent<?>> {
+public class EntityEditor<T extends Identifiable> extends VerticalLayout implements EntityChangeAware, KeyNotifier, EntityTyped<T>, HasValue.ValueChangeListener<HasValue.ValueChangeEvent<?>> {
 
     final private JpaRepository<T, Long> repository;
 
@@ -82,7 +82,7 @@ public abstract class EntityEditor<T extends Identifiable> extends VerticalLayou
         super.add(editFields);
         super.add(actions);
 
-        errorMessage = customMultilineLabel(null);
+        errorMessage = customMultilineLabel();
         super.add(errorMessage);
 
         validationBinder.bindInstanceFields(this);
@@ -106,8 +106,8 @@ public abstract class EntityEditor<T extends Identifiable> extends VerticalLayou
         button.getElement().getStyle().set("background", "hsl(0, 68%, 62%)");
     }
 
-    private Label customMultilineLabel(String text) {
-        Label label = new Label(text);
+    private Label customMultilineLabel() {
+        Label label = new Label();
         label.getElement().getStyle().set("color", "hsl(3, 92%, 53%)");
         label.getElement().getStyle().set("white-space", "pre-wrap");
         label.getElement().getStyle().set("font-size", "14px");
@@ -248,7 +248,9 @@ public abstract class EntityEditor<T extends Identifiable> extends VerticalLayou
         }
     }
 
-    public abstract List<Component> createInputFields();
+    protected List<Component> createInputFields() {
+        return componentList();
+    }
 
     protected List<Component> componentList(Component ... components) {
         return new ArrayList<>(Arrays.asList(components));
