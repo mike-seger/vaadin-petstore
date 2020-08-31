@@ -1,8 +1,7 @@
 # Vaadin Pet Store
 
-A Vaadin proof of concept showing a pet store application.  
-The application makes use of Vaadin 16+, Spring Boot 2.3+, 
-JPA and Liquibase.
+A pet store management application implemented in [Vaadin](https://vaadin.com/).  
+The application uses Vaadin 16+, Spring Boot 2.3+, JPA and Liquibase to show all [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations.
 
 ![Screenshot](doc/vaadin-petstore.png)
 
