@@ -58,7 +58,6 @@ public abstract class EntityManager<T extends Identifiable> extends WorkingArea 
         grid.setItems(filter());
         grid.setWidthFull();
         grid.setVerticalScrollingEnabled(true);
-        log.info("Grid H: {}", grid.getHeight());
         masterDetail.setWidthFull();
     }
 

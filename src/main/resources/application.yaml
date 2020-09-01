@@ -11,8 +11,8 @@ spring:
       path: /h2
   datasource:
     url:  jdbc:h2:mem:vaadin-petstore
-    #file-based H2 results in liquibase checksum errors
-    #url: jdbc:h2:file:~/vaadin-petstore
+    # file-based H2 results in liquibase checksum errors
+    # url: jdbc:h2:file:~/vaadin-petstore
     username: petuser
     password: petpass
   jpa:
@@ -23,8 +23,9 @@ spring:
         ddl-auto: none
         dialect: org.hibernate.dialect.H2Dialect
         format_sql: true
-    jpa:
-      show-sql: true
+    show-sql: false
+    open-in-view: false
+  mustache.check-template-location: false
 
 liquibase:
   change-log: db/changelog/db.changelog-master.yaml
@@ -32,11 +33,15 @@ liquibase:
 vaadin.urlMapping: /ui/*
 
 logging.level:
-  liquibase: debug
-  org.hibernate.SQL: debug
-  org.hibernate.type.descriptor.sql.BasicBinder: trace
-  org.springframework.jdbc.core.JdbcTemplate: debug
-  org.springframework.jdbc.core.StatementCreatorUtils: trace
+  org.atmosphere.cpr: warn
+  # debug
+  liquibase: info
+  org.hibernate.SQL: info
+  # trace
+  org.hibernate.type.descriptor.sql.BasicBinder: info
+  org.springframework.jdbc.core.StatementCreatorUtils: info
+  # debug
+  org.springframework.jdbc.core.JdbcTemplate: info
 
 management:
   endpoints:

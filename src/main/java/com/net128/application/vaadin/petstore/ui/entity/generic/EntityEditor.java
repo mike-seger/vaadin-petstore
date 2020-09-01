@@ -147,7 +147,6 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
         validationBinder.removeBean();
         validationBinder.validate();
         validationBinder.readBean(null);
-        validationBinder.writeBeanAsDraft(null);
         entityChanged(null);
         dirty = false;
     }
