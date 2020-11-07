@@ -14,6 +14,17 @@ mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Dserver.port=9999"
 ```
 If successful, the vaadin-petstore can be accessed locally by opening http://localhost:9999/ in a web browser . 
 
+### Using Docker
+Build image:
+```
+mvn clean spring-boot:build-image -Pproduction
+```
+
+Run:
+```
+docker run -it -p9999:9999 petstore:1.0.0-SNAPSHOT
+```
+
 ## Generate liquibase schema snapshot from DB
 A file from the current DB data can be generated in order to pre-populate a new DB with other than the provided default data in [changelog/](src/main/resources/db/changelog/). 
 ```
