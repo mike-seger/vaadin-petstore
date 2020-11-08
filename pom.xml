@@ -247,6 +247,9 @@
 					<layers>
 						<enabled>true</enabled>
 					</layers>
+					<image>
+						<name>docker.io/polarspace/${project.artifactId}:${project.version}</name>
+					</image>
 				</configuration>
 			</plugin>
 		</plugins>
