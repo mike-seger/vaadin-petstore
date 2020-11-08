@@ -55,7 +55,7 @@
     "webpack": "4.42.0",
     "webpack-babel-multi-target-plugin": "2.3.3",
     "webpack-cli": "3.3.11",
-    "webpack-dev-server": "^3.11.0",
+    "webpack-dev-server": "3.11.0",
     "webpack-merge": "4.2.2",
     "validator": "12.0.0",
     "lit-html": "1.2.1",
@@ -123,6 +123,6 @@
       "@types/validator": "10.11.3",
       "lit-element": "2.3.1"
     },
-    "hash": "cd9feeadc443bf76397586c123f31b681f0979021f81547613333cdb7c4acd25"
+    "hash": "109e4e44852f51b06c491a4d9783aa9b6b6202e2e3e5e5912cc46ef6adec0740"
   }
 }

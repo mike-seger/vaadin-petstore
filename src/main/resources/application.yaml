@@ -9,20 +9,22 @@ spring:
     console:
       enabled: true
       path: /h2
+      settings:
+        web-allow-others: true
   datasource:
     url:  jdbc:h2:mem:vaadin-petstore;DB_CLOSE_ON_EXIT=FALSE
-    # file-based H2 results in liquibase checksum errors
-    # url: jdbc:h2:file:~/vaadin-petstore
     username: petuser
     password: petpass
   jpa:
     database: h2
-    generate-ddl: true
+    generate-ddl: false
     properties:
       hibernate:
         ddl-auto: none
         dialect: org.hibernate.dialect.H2Dialect
         format_sql: true
+        jdbc.lob.non_contextual_creation: true
+        temp.use_jdbc_metadata_defaults: false
     show-sql: false
     open-in-view: false
   mustache.check-template-location: false
