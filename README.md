@@ -40,7 +40,7 @@ docker run -it -p9999:9999 petstore:1.0.0-SNAPSHOT
 ```
 
 ### Run in Heroku
-A free account can be created at [Heroku](https://heroku.com/). Once registered, the WAR file above can directly be deployed, by creating a new app with a unique name.
+A free account can be created at [Heroku](https://heroku.com/). Once registered, the WAR file above can directly be deployed by creating a new app with a unique name.
 Provided [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line) is installed, then the following commands must be run in order to deploy the WAR file:
 ```
 heroku login
