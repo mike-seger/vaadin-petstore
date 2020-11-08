@@ -14,23 +14,6 @@ mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Dserver.port=9999"
 ```
 If successful, the vaadin-petstore can be accessed locally by opening http://localhost:9999/ in a web browser . 
 
-### Using Docker
-Build image:
-```
-mvn clean spring-boot:build-image -Pproduction
-```
-
-Run:
-```
-docker run -it -p9999:9999 petstore:1.0.0-SNAPSHOT
-```
-
-## Generate liquibase schema snapshot from DB
-A file from the current DB data can be generated in order to pre-populate a new DB with other than the provided default data in [changelog/](src/main/resources/db/changelog/). 
-```
-mvn liquibase:generateChangeLog
-```
-
 ## Deployment 
 
 In order to deploy the application productively, the production WAR file can be built by running:
@@ -43,7 +26,20 @@ The WAR file can be deployed in any servlet-capable server such as [Tomcat](http
 java -jar target/*war
 ```
 
-### Heroku
+## Advanced
+
+### Run with Docker
+Build image:
+```
+mvn clean spring-boot:build-image -Pproduction
+```
+
+Run:
+```
+docker run -it -p9999:9999 petstore:1.0.0-SNAPSHOT
+```
+
+### Run in Heroku
 A free account can be created at [Heroku](https://heroku.com/). Once registered, the WAR file above can directly be deployed, by creating a new app with a unique name.
 Provided [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line) is installed, then the following commands must be run in order to deploy the WAR file:
 ```
@@ -51,6 +47,14 @@ heroku login
 heroku deploy:jar target/*.war --app unique-vaadin-petstore-application
 heroku ps:scale web=1 -a unique-vaadin-petstore-application
 ```
+
+### Generate liquibase schema snapshot from DB
+A file from the current DB data can be generated in order to pre-populate a new DB with other than the provided default data in [changelog/](src/main/resources/db/changelog/). 
+```
+mvn liquibase:generateChangeLog
+```
+
+
 
 ## Further Reading
 
