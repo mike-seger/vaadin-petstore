@@ -22,7 +22,7 @@
 		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
 		<vaadin-spring-boot-starter.version>${vaadin.version}</vaadin-spring-boot-starter.version>
 
-		<vaadin-server.version>8.12.0</vaadin-server.version>
+		<vaadin-server.version>8.12.3</vaadin-server.version>
 		<vaadin-push.version>${vaadin-server.version}</vaadin-push.version>
 		<vaadin-client-compiled.version>${vaadin-server.version}</vaadin-client-compiled.version>
 		<vaadin-themes.version>${vaadin-server.version}</vaadin-themes.version>
