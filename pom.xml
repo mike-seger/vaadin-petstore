@@ -18,7 +18,7 @@
 	<properties>
 		<spring-boot.version>2.3.5.RELEASE</spring-boot.version>
 		
-		<vaadin.version>16.0.5</vaadin.version>
+		<vaadin.version>19.0.4</vaadin.version>
 		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
 		<vaadin-spring-boot-starter.version>${vaadin.version}</vaadin-spring-boot-starter.version>
 
