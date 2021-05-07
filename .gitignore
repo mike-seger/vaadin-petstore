@@ -8,8 +8,22 @@
 /config
 /config1/
 
+# Vaadin
 node_modules
-**/webpack.generated.js
+frontend/generated/
+vaadin-login-flow-integration-tests/error-screenshots/
+**/build-tools/node
+**/build-tools/node_modules
+**/package-lock.json
+**/bower_components/
+pnpm-lock.yaml
+pnpmfile.js	
+package*.json
+webpack.*.js
+tsconfig.json
+types.d.ts
+.npmrc
+
 
 *.DS_Store
 *~

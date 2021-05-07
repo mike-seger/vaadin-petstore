@@ -25,7 +25,6 @@ import lombok.extern.slf4j.Slf4j;
 /*
 https://vaadin.com/learn/tutorials/themes-and-styling-in-vaadin
  */
-@Theme(value = Lumo.class, variant = Lumo.DARK)
 @Slf4j
 public class MainView extends FlexLayout implements KeyNotifier {
 
@@ -37,8 +36,7 @@ public class MainView extends FlexLayout implements KeyNotifier {
         setClassName("main-view");
         //final Button toggleButton = new Button("Toggle dark theme", click -> toggleDarkTheme());
         Button toggleButton = new Button(VaadinIcon.MENU.create(), click -> toggleDarkTheme());
-        //square.setIcon(VaadinIcon.MENU.create());
-        //square.addStyleName(ValoTheme.BUTTON_ICON_ONLY + " " + ValoTheme.BUTTON_SMALL + " square");
+
 
         toggleButton.addClickShortcut(Key.KEY_T, KeyModifier.ALT);
 

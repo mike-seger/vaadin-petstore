@@ -18,11 +18,11 @@
 	<properties>
 		<spring-boot.version>2.3.5.RELEASE</spring-boot.version>
 		
-		<vaadin.version>16.0.5</vaadin.version>
+		<vaadin.version>19.0.4</vaadin.version>
 		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
 		<vaadin-spring-boot-starter.version>${vaadin.version}</vaadin-spring-boot-starter.version>
 
-		<vaadin-server.version>8.12.0</vaadin-server.version>
+		<vaadin-server.version>8.12.3</vaadin-server.version>
 		<vaadin-push.version>${vaadin-server.version}</vaadin-push.version>
 		<vaadin-client-compiled.version>${vaadin-server.version}</vaadin-client-compiled.version>
 		<vaadin-themes.version>${vaadin-server.version}</vaadin-themes.version>
@@ -40,7 +40,8 @@
 		
 		<jetty.version>9.4.34.v20201102</jetty.version>
 		<h2.version>1.4.200</h2.version>
-		<liquibase.version>4.1.1</liquibase.version>
+		<liquibase.version>4.3.3</liquibase.version>
+		<lombok.version>1.18.20</lombok.version>
 	</properties>
 
 	<dependencyManagement>
@@ -130,7 +131,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.16</version>
+			<version>${lombok.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -250,6 +251,20 @@
 					<image>
 						<name>docker.io/polarspace/${project.artifactId}:${project.version}</name>
 					</image>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>${lombok.version}</version>
+						</path>
+					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
 		</plugins>
