@@ -18,27 +18,27 @@
 	<properties>
 		<spring-boot.version>2.3.5.RELEASE</spring-boot.version>
 		
-		<vaadin.version>19.0.4</vaadin.version>
+		<vaadin.version>19.0.6</vaadin.version>
 		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
 		<vaadin-spring-boot-starter.version>${vaadin.version}</vaadin-spring-boot-starter.version>
 
-		<vaadin-server.version>8.12.3</vaadin-server.version>
+		<vaadin-server.version>8.13.0</vaadin-server.version>
 		<vaadin-push.version>${vaadin-server.version}</vaadin-push.version>
 		<vaadin-client-compiled.version>${vaadin-server.version}</vaadin-client-compiled.version>
 		<vaadin-themes.version>${vaadin-server.version}</vaadin-themes.version>
 
-		<vaadin-flow.version>4.0.5</vaadin-flow.version>
+		<vaadin-flow.version>6.0.8</vaadin-flow.version>
 
 		<vaadin.widgetset.mode>local</vaadin.widgetset.mode>
 		<vaadin.theme>petstore-theme</vaadin.theme>
 
-		<hibernate-validator.version>6.1.6.Final</hibernate-validator.version>
+		<hibernate-validator.version>6.2.0.Final</hibernate-validator.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
 		
-		<jetty.version>9.4.34.v20201102</jetty.version>
+		<jetty.version>9.4.40.v20210413</jetty.version>
 		<h2.version>1.4.200</h2.version>
 		<liquibase.version>4.3.3</liquibase.version>
 		<lombok.version>1.18.20</lombok.version>
@@ -137,7 +137,7 @@
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>42.2.18</version>
+			<version>42.2.20</version>
 		</dependency>
 		<dependency>
 			<groupId>org.liquibase</groupId>
@@ -253,20 +253,20 @@
 					</image>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
-				<configuration>
-					<annotationProcessorPaths>
-						<path>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-							<version>${lombok.version}</version>
-						</path>
-					</annotationProcessorPaths>
-				</configuration>
-			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-compiler-plugin</artifactId>-->
+<!--				<version>3.8.1</version>-->
+<!--				<configuration>-->
+<!--					<annotationProcessorPaths>-->
+<!--						<path>-->
+<!--							<groupId>org.projectlombok</groupId>-->
+<!--							<artifactId>lombok</artifactId>-->
+<!--							<version>${lombok.version}</version>-->
+<!--						</path>-->
+<!--					</annotationProcessorPaths>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
 		</plugins>
 	</build>
 
