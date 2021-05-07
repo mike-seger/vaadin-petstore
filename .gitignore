@@ -17,7 +17,7 @@ vaadin-login-flow-integration-tests/error-screenshots/
 **/package-lock.json
 **/bower_components/
 pnpm-lock.yaml
-pnpmfile.js	
+pnpmfile.js
 package*.json
 webpack.*.js
 tsconfig.json
