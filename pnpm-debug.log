@@ -1,0 +1,934 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 debug pnpm": {
+    "isCaseSensitive": false,
+    "store": "/Users/michael/.pnpm-store/2"
+  },
+  "2 info pnpm": {
+    "message": "Using hooks from: /Users/michael/git/vaadin-petstore/pnpmfile.js",
+    "prefix": "/Users/michael/git/vaadin-petstore"
+  },
+  "3 info pnpm": {
+    "message": "readPackage hook is declared. Manifests of dependencies might get overridden",
+    "prefix": "/Users/michael/git/vaadin-petstore"
+  },
+  "4 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "no-name",
+      "license": "UNLICENSED",
+      "dependencies": {
+        "@polymer/iron-icon": "3.0.1",
+        "@polymer/iron-list": "3.0.2",
+        "@polymer/polymer": "3.2.0",
+        "@vaadin/flow-frontend": "./target/flow-frontend",
+        "@vaadin/form": "./target/flow-frontend/form",
+        "@vaadin/router": "1.7.2",
+        "@vaadin/vaadin-accordion": "1.1.0",
+        "@vaadin/vaadin-app-layout": "2.1.0",
+        "@vaadin/vaadin-button": "2.3.0",
+        "@vaadin/vaadin-checkbox": "2.3.0",
+        "@vaadin/vaadin-combo-box": "5.1.1",
+        "@vaadin/vaadin-context-menu": "4.4.0",
+        "@vaadin/vaadin-core-shrinkwrap": "16.0.5",
+        "@vaadin/vaadin-custom-field": "1.1.0",
+        "@vaadin/vaadin-date-picker": "4.1.1",
+        "@vaadin/vaadin-date-time-picker": "1.1.0",
+        "@vaadin/vaadin-details": "1.1.0",
+        "@vaadin/vaadin-dialog": "2.4.3",
+        "@vaadin/vaadin-form-layout": "2.2.0",
+        "@vaadin/vaadin-grid": "5.6.7",
+        "@vaadin/vaadin-icons": "4.3.1",
+        "@vaadin/vaadin-item": "2.2.0",
+        "@vaadin/vaadin-list-box": "1.3.0",
+        "@vaadin/vaadin-login": "1.1.0",
+        "@vaadin/vaadin-lumo-styles": "1.6.0",
+        "@vaadin/vaadin-material-styles": "1.3.2",
+        "@vaadin/vaadin-menu-bar": "1.1.0",
+        "@vaadin/vaadin-notification": "1.5.0",
+        "@vaadin/vaadin-ordered-layout": "1.3.0",
+        "@vaadin/vaadin-progress-bar": "1.2.0",
+        "@vaadin/vaadin-radio-button": "1.3.1",
+        "@vaadin/vaadin-select": "2.2.0",
+        "@vaadin/vaadin-split-layout": "4.2.0",
+        "@vaadin/vaadin-tabs": "3.1.0",
+        "@vaadin/vaadin-text-field": "2.6.2",
+        "@vaadin/vaadin-time-picker": "2.1.1",
+        "@vaadin/vaadin-upload": "4.3.0"
+      },
+      "devDependencies": {
+        "@types/validator": "10.11.3",
+        "awesome-typescript-loader": "5.2.1",
+        "chokidar": "^3.4.0",
+        "compression-webpack-plugin": "^5.0.1",
+        "copy-webpack-plugin": "^6.0.4",
+        "html-webpack-plugin": "3.2.0",
+        "lit-element": "2.3.1",
+        "lit-html": "1.2.1",
+        "progress-webpack-plugin": "0.0.24",
+        "raw-loader": "4.0.0",
+        "script-ext-html-webpack-plugin": "2.1.4",
+        "terser": "4.6.7",
+        "typescript": "3.8.3",
+        "validator": "12.0.0",
+        "webpack": "4.42.0",
+        "webpack-babel-multi-target-plugin": "2.3.3",
+        "webpack-cli": "3.3.11",
+        "webpack-dev-server": "3.10.3",
+        "webpack-merge": "4.2.2"
+      },
+      "vaadin": {
+        "dependencies": {
+          "@vaadin/router": "1.7.2",
+          "@polymer/polymer": "3.2.0",
+          "@vaadin/vaadin-grid": "5.6.7",
+          "@vaadin/vaadin-icons": "4.3.1",
+          "@vaadin/vaadin-split-layout": "4.2.0",
+          "@vaadin/vaadin-combo-box": "5.1.1",
+          "@vaadin/vaadin-core-shrinkwrap": "16.0.5",
+          "@vaadin/vaadin-upload": "4.3.0",
+          "@vaadin/vaadin-dialog": "2.4.3",
+          "@vaadin/vaadin-select": "2.2.0",
+          "@vaadin/vaadin-app-layout": "2.1.0",
+          "@vaadin/vaadin-item": "2.2.0",
+          "@vaadin/vaadin-notification": "1.5.0",
+          "@vaadin/vaadin-progress-bar": "1.2.0",
+          "@vaadin/vaadin-ordered-layout": "1.3.0",
+          "@vaadin/vaadin-login": "1.1.0",
+          "@vaadin/vaadin-button": "2.3.0",
+          "@vaadin/vaadin-date-picker": "4.1.1",
+          "@vaadin/vaadin-text-field": "2.6.2",
+          "@vaadin/vaadin-menu-bar": "1.1.0",
+          "@vaadin/vaadin-custom-field": "1.1.0",
+          "@vaadin/vaadin-form-layout": "2.2.0",
+          "@vaadin/vaadin-accordion": "1.1.0",
+          "@polymer/iron-list": "3.0.2",
+          "@vaadin/vaadin-list-box": "1.3.0",
+          "@vaadin/vaadin-checkbox": "2.3.0",
+          "@vaadin/vaadin-details": "1.1.0",
+          "@polymer/iron-icon": "3.0.1",
+          "@vaadin/vaadin-time-picker": "2.1.1",
+          "@vaadin/vaadin-context-menu": "4.4.0",
+          "@vaadin/vaadin-tabs": "3.1.0",
+          "@vaadin/vaadin-radio-button": "1.3.1",
+          "@vaadin/vaadin-lumo-styles": "1.6.0",
+          "@vaadin/vaadin-material-styles": "1.3.2",
+          "@vaadin/vaadin-date-time-picker": "1.1.0",
+          "lit-element": "2.3.1",
+          "@webcomponents/webcomponentsjs": "^2.2.10"
+        },
+        "devDependencies": {
+          "compression-webpack-plugin": "3.1.0",
+          "raw-loader": "4.0.0",
+          "webpack-cli": "3.3.11",
+          "script-ext-html-webpack-plugin": "2.1.4",
+          "awesome-typescript-loader": "5.2.1",
+          "terser": "4.6.7",
+          "copy-webpack-plugin": "5.1.1",
+          "webpack": "4.42.0",
+          "progress-webpack-plugin": "0.0.24",
+          "html-webpack-plugin": "3.2.0",
+          "typescript": "3.8.3",
+          "webpack-merge": "4.2.2",
+          "webpack-dev-server": "3.10.3",
+          "chokidar": "^3.4.0",
+          "webpack-babel-multi-target-plugin": "2.3.3",
+          "validator": "12.0.0",
+          "lit-html": "1.2.1",
+          "@types/validator": "10.11.3",
+          "lit-element": "2.3.1"
+        },
+        "hash": "0ff6a3fc3d28c3adc66e8b1b0c6d279c17c77076e00405718369d318764c61a6"
+      }
+    },
+    "prefix": "/Users/michael/git/vaadin-petstore"
+  },
+  "5 debug pnpm:stage": {
+    "prefix": "/Users/michael/git/vaadin-petstore",
+    "stage": "resolution_started"
+  },
+  "6 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@types/validator/10.11.3",
+    "wanted": {
+      "name": "@types/validator",
+      "rawSpec": "10.11.3"
+    }
+  },
+  "7 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@types/validator/10.11.3",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "8 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/html-webpack-plugin/3.2.0",
+    "wanted": {
+      "name": "html-webpack-plugin",
+      "rawSpec": "3.2.0"
+    }
+  },
+  "9 debug pnpm:deprecation": {
+    "deprecated": "3.x is no longer supported",
+    "depth": 0,
+    "pkgId": "registry.npmjs.org/html-webpack-plugin/3.2.0",
+    "pkgName": "html-webpack-plugin",
+    "pkgVersion": "3.2.0",
+    "prefix": "/Users/michael/git/vaadin-petstore"
+  },
+  "10 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/html-webpack-plugin/3.2.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "11 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/awesome-typescript-loader/5.2.1",
+    "wanted": {
+      "name": "awesome-typescript-loader",
+      "rawSpec": "5.2.1"
+    }
+  },
+  "12 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/awesome-typescript-loader/5.2.1",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "13 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/lit-element/2.3.1",
+    "wanted": {
+      "name": "lit-element",
+      "rawSpec": "2.3.1"
+    }
+  },
+  "14 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "15 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/progress-webpack-plugin/0.0.24",
+    "wanted": {
+      "name": "progress-webpack-plugin",
+      "rawSpec": "0.0.24"
+    }
+  },
+  "16 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/progress-webpack-plugin/0.0.24",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "17 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/raw-loader/4.0.0",
+    "wanted": {
+      "name": "raw-loader",
+      "rawSpec": "4.0.0"
+    }
+  },
+  "18 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/raw-loader/4.0.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "19 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/lit-html/1.2.1",
+    "wanted": {
+      "name": "lit-html",
+      "rawSpec": "1.2.1"
+    }
+  },
+  "20 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/lit-html/1.2.1",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "21 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/script-ext-html-webpack-plugin/2.1.4",
+    "wanted": {
+      "name": "script-ext-html-webpack-plugin",
+      "rawSpec": "2.1.4"
+    }
+  },
+  "22 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/script-ext-html-webpack-plugin/2.1.4",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "23 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/terser/4.6.7",
+    "wanted": {
+      "name": "terser",
+      "rawSpec": "4.6.7"
+    }
+  },
+  "24 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/terser/4.6.7",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "25 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/validator/12.0.0",
+    "wanted": {
+      "name": "validator",
+      "rawSpec": "12.0.0"
+    }
+  },
+  "26 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/validator/12.0.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "27 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/webpack-babel-multi-target-plugin/2.3.3",
+    "wanted": {
+      "name": "webpack-babel-multi-target-plugin",
+      "rawSpec": "2.3.3"
+    }
+  },
+  "28 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/webpack-babel-multi-target-plugin/2.3.3",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "29 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/webpack-merge/4.2.2",
+    "wanted": {
+      "name": "webpack-merge",
+      "rawSpec": "4.2.2"
+    }
+  },
+  "30 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/webpack-merge/4.2.2",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "31 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@polymer/iron-icon/3.0.1",
+    "wanted": {
+      "name": "@polymer/iron-icon",
+      "rawSpec": "3.0.1"
+    }
+  },
+  "32 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@polymer/iron-icon/3.0.1",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "33 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/webpack/4.42.0",
+    "wanted": {
+      "name": "webpack",
+      "rawSpec": "4.42.0"
+    }
+  },
+  "34 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/webpack/4.42.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "35 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/webpack-cli/3.3.11",
+    "wanted": {
+      "name": "webpack-cli",
+      "rawSpec": "3.3.11"
+    }
+  },
+  "36 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/webpack-cli/3.3.11",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "37 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@polymer/iron-list/3.0.2",
+    "wanted": {
+      "name": "@polymer/iron-list",
+      "rawSpec": "3.0.2"
+    }
+  },
+  "38 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@polymer/iron-list/3.0.2",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "39 debug pnpm:_dependency_resolved": {
+    "resolution": "link:target/flow-frontend",
+    "wanted": {
+      "name": "@vaadin/flow-frontend",
+      "rawSpec": "./target/flow-frontend"
+    }
+  },
+  "40 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/webpack-dev-server/3.10.3",
+    "wanted": {
+      "name": "webpack-dev-server",
+      "rawSpec": "3.10.3"
+    }
+  },
+  "41 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/webpack-dev-server/3.10.3",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "42 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@polymer/polymer/3.2.0",
+    "wanted": {
+      "name": "@polymer/polymer",
+      "rawSpec": "3.2.0"
+    }
+  },
+  "43 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@polymer/polymer/3.2.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "44 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@vaadin/vaadin-accordion/1.1.0",
+    "wanted": {
+      "name": "@vaadin/vaadin-accordion",
+      "rawSpec": "1.1.0"
+    }
+  },
+  "45 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-accordion/1.1.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "46 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@vaadin/vaadin-app-layout/2.1.0",
+    "wanted": {
+      "name": "@vaadin/vaadin-app-layout",
+      "rawSpec": "2.1.0"
+    }
+  },
+  "47 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-app-layout/2.1.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "48 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@vaadin/vaadin-button/2.3.0",
+    "wanted": {
+      "name": "@vaadin/vaadin-button",
+      "rawSpec": "2.3.0"
+    }
+  },
+  "49 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-button/2.3.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "50 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@vaadin/vaadin-checkbox/2.3.0",
+    "wanted": {
+      "name": "@vaadin/vaadin-checkbox",
+      "rawSpec": "2.3.0"
+    }
+  },
+  "51 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-checkbox/2.3.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "52 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@vaadin/vaadin-context-menu/4.4.0",
+    "wanted": {
+      "name": "@vaadin/vaadin-context-menu",
+      "rawSpec": "4.4.0"
+    }
+  },
+  "53 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-context-menu/4.4.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "54 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@vaadin/vaadin-combo-box/5.1.1",
+    "wanted": {
+      "name": "@vaadin/vaadin-combo-box",
+      "rawSpec": "5.1.1"
+    }
+  },
+  "55 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-combo-box/5.1.1",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "56 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@vaadin/vaadin-custom-field/1.1.0",
+    "wanted": {
+      "name": "@vaadin/vaadin-custom-field",
+      "rawSpec": "1.1.0"
+    }
+  },
+  "57 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-custom-field/1.1.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "58 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@vaadin/vaadin-date-picker/4.1.1",
+    "wanted": {
+      "name": "@vaadin/vaadin-date-picker",
+      "rawSpec": "4.1.1"
+    }
+  },
+  "59 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-date-picker/4.1.1",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "60 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@types/validator/10.11.3",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "found_in_store"
+  },
+  "61 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/html-webpack-plugin/3.2.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "found_in_store"
+  },
+  "62 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/progress-webpack-plugin/0.0.24",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "found_in_store"
+  },
+  "63 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/raw-loader/4.0.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "found_in_store"
+  },
+  "64 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/awesome-typescript-loader/5.2.1",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "found_in_store"
+  },
+  "65 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/script-ext-html-webpack-plugin/2.1.4",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "found_in_store"
+  },
+  "66 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@vaadin/vaadin-core-shrinkwrap/16.0.5",
+    "wanted": {
+      "name": "@vaadin/vaadin-core-shrinkwrap",
+      "rawSpec": "16.0.5"
+    }
+  },
+  "67 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-core-shrinkwrap/16.0.5",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "68 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/validator/12.0.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "found_in_store"
+  },
+  "69 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@vaadin/vaadin-date-time-picker/1.1.0",
+    "wanted": {
+      "name": "@vaadin/vaadin-date-time-picker",
+      "rawSpec": "1.1.0"
+    }
+  },
+  "70 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-date-time-picker/1.1.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "71 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/webpack-babel-multi-target-plugin/2.3.3",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "found_in_store"
+  },
+  "72 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/typescript/3.8.3",
+    "wanted": {
+      "name": "typescript",
+      "rawSpec": "3.8.3"
+    }
+  },
+  "73 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/typescript/3.8.3",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "74 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@vaadin/vaadin-details/1.1.0",
+    "wanted": {
+      "name": "@vaadin/vaadin-details",
+      "rawSpec": "1.1.0"
+    }
+  },
+  "75 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-details/1.1.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "76 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@vaadin/vaadin-dialog/2.4.3",
+    "wanted": {
+      "name": "@vaadin/vaadin-dialog",
+      "rawSpec": "2.4.3"
+    }
+  },
+  "77 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-dialog/2.4.3",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "78 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@vaadin/vaadin-form-layout/2.2.0",
+    "wanted": {
+      "name": "@vaadin/vaadin-form-layout",
+      "rawSpec": "2.2.0"
+    }
+  },
+  "79 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-form-layout/2.2.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "80 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@vaadin/vaadin-grid/5.6.7",
+    "wanted": {
+      "name": "@vaadin/vaadin-grid",
+      "rawSpec": "5.6.7"
+    }
+  },
+  "81 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-grid/5.6.7",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "82 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/webpack-merge/4.2.2",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "found_in_store"
+  },
+  "83 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@polymer/iron-icon/3.0.1",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "found_in_store"
+  },
+  "84 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/webpack-cli/3.3.11",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "found_in_store"
+  },
+  "85 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@vaadin/vaadin-icons/4.3.1",
+    "wanted": {
+      "name": "@vaadin/vaadin-icons",
+      "rawSpec": "4.3.1"
+    }
+  },
+  "86 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-icons/4.3.1",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "87 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/webpack-dev-server/3.10.3",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "found_in_store"
+  },
+  "88 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@vaadin/vaadin-item/2.2.0",
+    "wanted": {
+      "name": "@vaadin/vaadin-item",
+      "rawSpec": "2.2.0"
+    }
+  },
+  "89 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-item/2.2.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "90 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-accordion/1.1.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "found_in_store"
+  },
+  "91 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@vaadin/vaadin-list-box/1.3.0",
+    "wanted": {
+      "name": "@vaadin/vaadin-list-box",
+      "rawSpec": "1.3.0"
+    }
+  },
+  "92 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-list-box/1.3.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "93 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@vaadin/vaadin-login/1.1.0",
+    "wanted": {
+      "name": "@vaadin/vaadin-login",
+      "rawSpec": "1.1.0"
+    }
+  },
+  "94 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-login/1.1.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "95 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/copy-webpack-plugin/6.4.1",
+    "wanted": {
+      "name": "copy-webpack-plugin",
+      "rawSpec": "^6.0.4"
+    }
+  },
+  "96 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/copy-webpack-plugin/6.4.1",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "97 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@vaadin/vaadin-lumo-styles/1.6.0",
+    "wanted": {
+      "name": "@vaadin/vaadin-lumo-styles",
+      "rawSpec": "1.6.0"
+    }
+  },
+  "98 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-lumo-styles/1.6.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "99 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-app-layout/2.1.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "found_in_store"
+  },
+  "100 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-combo-box/5.1.1",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "found_in_store"
+  },
+  "101 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-custom-field/1.1.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "found_in_store"
+  },
+  "102 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@polymer/polymer/3.2.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "found_in_store"
+  },
+  "103 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-date-picker/4.1.1",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "found_in_store"
+  },
+  "104 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/compression-webpack-plugin/5.0.2",
+    "wanted": {
+      "name": "compression-webpack-plugin",
+      "rawSpec": "^5.0.1"
+    }
+  },
+  "105 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/compression-webpack-plugin/5.0.2",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "106 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/chokidar/3.5.1",
+    "wanted": {
+      "name": "chokidar",
+      "rawSpec": "^3.4.0"
+    }
+  },
+  "107 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/chokidar/3.5.1",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "108 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@vaadin/vaadin-material-styles/1.3.2",
+    "wanted": {
+      "name": "@vaadin/vaadin-material-styles",
+      "rawSpec": "1.3.2"
+    }
+  },
+  "109 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-material-styles/1.3.2",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "110 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-core-shrinkwrap/16.0.5",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "found_in_store"
+  },
+  "111 debug pnpm:fetching-progress": {
+    "attempt": 1,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "size": 73832,
+    "status": "started"
+  },
+  "112 debug pnpm:fetching-progress": {
+    "downloaded": 653,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "status": "in_progress"
+  },
+  "113 debug pnpm:fetching-progress": {
+    "downloaded": 2022,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "status": "in_progress"
+  },
+  "114 debug pnpm:fetching-progress": {
+    "downloaded": 3391,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "status": "in_progress"
+  },
+  "115 debug pnpm:fetching-progress": {
+    "downloaded": 4760,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "status": "in_progress"
+  },
+  "116 debug pnpm:fetching-progress": {
+    "downloaded": 6129,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "status": "in_progress"
+  },
+  "117 debug pnpm:fetching-progress": {
+    "downloaded": 7498,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "status": "in_progress"
+  },
+  "118 debug pnpm:fetching-progress": {
+    "downloaded": 8867,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "status": "in_progress"
+  },
+  "119 debug pnpm:fetching-progress": {
+    "downloaded": 10236,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "status": "in_progress"
+  },
+  "120 debug pnpm:fetching-progress": {
+    "downloaded": 11605,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "status": "in_progress"
+  },
+  "121 debug pnpm:fetching-progress": {
+    "downloaded": 12974,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "status": "in_progress"
+  },
+  "122 debug pnpm:fetching-progress": {
+    "downloaded": 14343,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "status": "in_progress"
+  },
+  "123 debug pnpm:fetching-progress": {
+    "downloaded": 15712,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "status": "in_progress"
+  },
+  "124 debug pnpm:fetching-progress": {
+    "downloaded": 17081,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "status": "in_progress"
+  },
+  "125 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@vaadin/vaadin-menu-bar/1.1.0",
+    "wanted": {
+      "name": "@vaadin/vaadin-menu-bar",
+      "rawSpec": "1.1.0"
+    }
+  },
+  "126 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-menu-bar/1.1.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "resolved"
+  },
+  "127 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-dialog/2.4.3",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "found_in_store"
+  },
+  "128 error pnpm": {
+    "message": {
+      "code": "ERR_PNPM_NO_IMPORTER_MANIFEST_FOUND"
+    },
+    "err": {
+      "name": "Error",
+      "message": "No package.json (or package.yaml, or package.json5) was found in \"/Users/michael/git/vaadin-petstore/target/flow-frontend/form\".",
+      "code": "ERR_PNPM_NO_IMPORTER_MANIFEST_FOUND",
+      "stack": "Error: No package.json (or package.yaml, or package.json5) was found in \"/Users/michael/git/vaadin-petstore/target/flow-frontend/form\".\n    at readImporterManifest (/Users/michael/.vaadin/node_modules/pnpm/lib/node_modules/@pnpm/read-importer-manifest/lib/index.js:20:11)\n    at async Object.readImporterManifestOnly (/Users/michael/.vaadin/node_modules/pnpm/lib/node_modules/@pnpm/read-importer-manifest/lib/index.js:24:26)\n    at async Object.resolveLocal [as default] (/Users/michael/.vaadin/node_modules/pnpm/lib/node_modules/@pnpm/local-resolver/lib/index.js:28:35)\n    at async Object.resolve (/Users/michael/.vaadin/node_modules/pnpm/lib/node_modules/@pnpm/default-resolver/lib/index.js:14:20)\n    at async run (/Users/michael/.vaadin/node_modules/pnpm/lib/node_modules/p-queue/dist/index.js:255:29)"
+    }
+  },
+  "129 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vaadin/vaadin-form-layout/2.2.0",
+    "requester": "/Users/michael/git/vaadin-petstore",
+    "status": "found_in_store"
+  },
+  "130 debug pnpm:fetching-progress": {
+    "downloaded": 18450,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "status": "in_progress"
+  },
+  "131 debug pnpm:fetching-progress": {
+    "downloaded": 19819,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "status": "in_progress"
+  },
+  "132 debug pnpm:fetching-progress": {
+    "downloaded": 21188,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "status": "in_progress"
+  },
+  "133 debug pnpm:fetching-progress": {
+    "downloaded": 22557,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "status": "in_progress"
+  },
+  "134 debug pnpm:fetching-progress": {
+    "downloaded": 23926,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "status": "in_progress"
+  },
+  "135 debug pnpm:fetching-progress": {
+    "downloaded": 25295,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "status": "in_progress"
+  },
+  "136 debug pnpm:fetching-progress": {
+    "downloaded": 26664,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "status": "in_progress"
+  },
+  "137 debug pnpm:fetching-progress": {
+    "downloaded": 28033,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "status": "in_progress"
+  },
+  "138 debug pnpm:fetching-progress": {
+    "downloaded": 29402,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "status": "in_progress"
+  },
+  "139 debug pnpm:fetching-progress": {
+    "downloaded": 30771,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "status": "in_progress"
+  },
+  "140 debug pnpm:fetching-progress": {
+    "downloaded": 31983,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "status": "in_progress"
+  },
+  "141 debug pnpm:fetching-progress": {
+    "downloaded": 33352,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "status": "in_progress"
+  },
+  "142 debug pnpm:fetching-progress": {
+    "downloaded": 34721,
+    "packageId": "registry.npmjs.org/lit-element/2.3.1",
+    "status": "in_progress"
+  }
+}
