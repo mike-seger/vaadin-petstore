@@ -1,7 +1,8 @@
 # Vaadin Pet Store
 
-A pet store management application implemented in [Vaadin](https://vaadin.com/).  
+A minimalistic pet store management application implemented in [Vaadin](https://vaadin.com/).  
 The application uses Vaadin 19+, Spring Boot 2.4+, JPA and Liquibase to demonstrate all [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations.
+Data editing is collaborative, as the data gets updated in every user's browser in real-time.
 
 ![Screenshot](doc/vaadin-petstore-dark.png)
 ![Screenshot](doc/vaadin-petstore-light.png)
