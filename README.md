@@ -45,8 +45,10 @@ A free account can be created at [Heroku](https://heroku.com/). Once registered,
 Provided [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line) is installed, then the following commands must be run in order to deploy the WAR file:
 ```
 heroku login
-heroku deploy:jar target/*.war --app unique-vaadin-petstore-application
-heroku ps:scale web=1 -a unique-vaadin-petstore-application
+heroku plugins:install java
+heroku create --no-remote unique-vaadin-petstore-application
+heroku deploy:jar target/*.jar --app unique-vaadin-petstore-application
+# heroku ps:scale web=1 -a unique-vaadin-petstore-application
 ```
 
 ### Generate liquibase schema snapshot from DB
@@ -68,3 +70,4 @@ https://demo.vaadin.com/lumo-editor/
 - [Sample Application with Spring Boot and Vaadin](https://www.baeldung.com/spring-boot-vaadin)
 - [Vaadin: Theme Variants](https://vaadin.com/docs/v14/flow/styling/theme-variants)
 - [Vaadin: Lumo Customization](https://vaadin.com/docs/v14/flow/styling/lumo/customization)
+- [Using the Heroku Java CLI Plugin](https://devcenter.heroku.com/articles/deploying-executable-jar-files#using-the-heroku-java-cli-plugin)
