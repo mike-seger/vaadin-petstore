@@ -1,8 +1,11 @@
 # Vaadin Pet Store
 
 A minimalistic pet store management application implemented in [Vaadin](https://vaadin.com/).  
-The application uses Vaadin 19+, Spring Boot 2.4+, JPA and Liquibase to demonstrate all [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations.
-Data editing is collaborative, as the data gets updated in every user's browser in real-time.
+The application demonstrates the following aspects: 
+- Vaadin 19+, Spring Boot 2.4+, JPA and Liquibase 
+- All [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations.
+- UX customizations via CSS and theme switching. 
+- Collaborative data editing with real-time updates of data changes in all browsers.
 
 ![Screenshot](doc/vaadin-petstore-dark.png)
 ![Screenshot](doc/vaadin-petstore-light.png)
@@ -42,8 +45,9 @@ docker run -it -p9999:9999 petstore:1.0.0-SNAPSHOT
 ```
 
 ### Run in Heroku
-A free account can be created at [Heroku](https://heroku.com/). Once registered, the WAR file above can directly be deployed by creating a new app with a unique name.
-Provided [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line) is installed, then the following commands must be run in order to deploy the WAR file:
+A free account can be created at [Heroku](https://heroku.com/).  
+Once registered, the WAR file above can directly be deployed by creating a new app with a unique name.  
+Provided [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line) is installed, the following commands must be run in order to deploy the WAR file:
 ```
 heroku login
 heroku plugins:install java
