@@ -23,7 +23,7 @@ If successful, the vaadin-petstore can be accessed locally by opening http://loc
 
 In order to deploy the application productively, the production WAR file can be built by running:
 ```
-gradle clean build
+./gradlew clean build
 # or
 mvn clean package -Pproduction
 ```
