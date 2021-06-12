@@ -37,7 +37,6 @@ public class MainView extends FlexLayout implements KeyNotifier {
         //final Button toggleButton = new Button("Toggle dark theme", click -> toggleDarkTheme());
         Button toggleButton = new Button(VaadinIcon.MENU.create(), click -> toggleDarkTheme());
 
-
         toggleButton.addClickShortcut(Key.KEY_T, KeyModifier.ALT);
 
         AppBar appBar = new AppBar("Pet Store", toggleButton);
@@ -57,7 +56,7 @@ public class MainView extends FlexLayout implements KeyNotifier {
 
     void toggleDarkTheme() {
         ThemeList themeList = UI.getCurrent().getElement().getThemeList();
-        if (themeList.contains(Lumo.LIGHT)) {
+        if (themeList.contains(Lumo.LIGHT) || !themeList.contains(Lumo.DARK)) {
             themeList.remove(Lumo.LIGHT);
             themeList.add(Lumo.DARK);
         } else {

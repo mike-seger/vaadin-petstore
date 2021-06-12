@@ -1,0 +1,62 @@
+plugins {
+    id "org.springframework.boot" version "2.5.1"
+    id "io.spring.dependency-management" version "1.0.11.RELEASE"
+    id "com.vaadin" version "20.0.1" 
+    id "java"
+    id "maven-publish"
+}
+
+ext {
+    vaadinVersion = '20.0.1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "com.vaadin:vaadin-bom:${vaadinVersion}"
+    }
+}
+
+dependencies {
+    implementation "com.vaadin:vaadin-spring-boot-starter:20.0.1"
+    implementation "org.springframework.boot:spring-boot-starter-webflux:2.5.1"
+    implementation "org.springframework.boot:spring-boot-starter-web:2.5.1"
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.5.1'
+    implementation "org.springframework.boot:spring-boot-starter-jdbc:2.5.1"
+    implementation "org.springframework.boot:spring-boot-starter-actuator:2.5.1"
+    implementation "org.springframework.boot:spring-boot-starter-tomcat:2.5.1"
+    implementation "org.projectlombok:lombok:1.18.20"
+    implementation "org.hibernate.validator:hibernate-validator:6.2.0.Final"
+    implementation "org.liquibase:liquibase-core:4.3.3"
+    implementation "com.h2database:h2:1.4.200"
+    implementation "org.postgresql:postgresql:42.2.20"
+    annotationProcessor "org.projectlombok:lombok:1.18.20"
+    runtimeOnly "org.springframework.boot:spring-boot-devtools:2.5.1"
+}
+
+group = "com.net128.application.vaadin"
+version = "1.0.4"
+description = "petstore"
+java.sourceCompatibility = JavaVersion.VERSION_1_8
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
+
+tasks.withType(JavaCompile) { options.encoding = "UTF-8" }
+
+vaadin {
+    optimizeBundle = true
+    productionMode = true
+}
+
+bootRun { dependsOn vaadinBuildFrontend }
+
+build { dependsOn vaadinBuildFrontend }
