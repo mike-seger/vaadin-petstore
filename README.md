@@ -1,9 +1,10 @@
 # Vaadin Pet Store
 
 A pet store management application implemented in [Vaadin](https://vaadin.com/).  
-The application uses Vaadin 19+, Spring Boot 2.4+, JPA and Liquibase to show all [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations.
+The application uses Vaadin 19+, Spring Boot 2.4+, JPA and Liquibase to demonstrate all [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations.
 
-![Screenshot](doc/vaadin-petstore.png)
+![Screenshot](doc/vaadin-petstore-dark.png)
+![Screenshot](doc/vaadin-petstore-light.png)
 
 Try out this application at:
 [ms-vaadin-petstore @ heroku](https://ms-vaadin-petstore.herokuapp.com/)
@@ -54,11 +55,16 @@ A file from the current DB data can be generated in order to pre-populate a new 
 mvn liquibase:generateChangeLog
 ```
 
+## Customization
 
+### Theme colors
+https://demo.vaadin.com/lumo-editor/  
+--> add the css to frontend/style
 
 ## Further Reading
 
 - [Introduction to Vaadin](https://www.baeldung.com/vaadin)
 - [Vaadin Components](https://vaadin.com/components)
 - [Sample Application with Spring Boot and Vaadin](https://www.baeldung.com/spring-boot-vaadin)
-- [Vaadin 10: Templating your views with FlexLayout](https://mekaso.rocks/vaadin-10-templating-your-views-with-flexlayout)
+- [Vaadin: Theme Variants](https://vaadin.com/docs/v14/flow/styling/theme-variants)
+- [Vaadin: Lumo Customization](https://vaadin.com/docs/v14/flow/styling/lumo/customization)

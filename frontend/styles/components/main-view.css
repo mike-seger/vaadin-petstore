@@ -16,3 +16,7 @@ body {
     height: calc(100vh - 136px);
     overflow-y: auto;
 }
+
+[theme~="dark"] {
+  --lumo-base-color: rgb(36, 36, 36);
+}

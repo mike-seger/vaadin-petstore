@@ -1,10 +1,12 @@
 .app-bar {
-  background-color: rgb(44, 61, 82);
- /* background-color: var(--lumo-base-color);*/
-  color: white;
+  /* background-color: rgb(221, 222, 223); */
+  background-color: var(--lumo-base-color);
+  color: var(--lumo-header-text-color);
   font-size: 22px;
   font-weight: bold;
-  box-shadow: var(--lumo-box-shadow-s);
+  box-shadow: 0;
+  filter: brightness(98%);
+/*  box-shadow: var(--lumo-box-shadow-s);*/
   /*flex-direction: row;*/
   position: relative;
   z-index: 1;
@@ -16,7 +18,7 @@
 
 /* Container */
 .app-bar__container {
-background-color: rgb(44, 61, 82);
+  background-color: var(--lumo-base-color);
   padding-left: var(--lumo-space-r-l);
   padding-right: var(--lumo-space-r-l);
   transition: padding var(--transition-duration-m);
@@ -34,7 +36,7 @@ background-color: rgb(44, 61, 82);
 .app-bar__title {
   flex-grow: 1;
   font-size: 18px;
-  color: rgb(240,240,240);
+  color: var(--lumo-header-text-color);
  /* font-size: var(--lumo-font-size-l);*/
   margin: 0;
   overflow: hidden;
@@ -91,21 +93,5 @@ background-color: rgb(44, 61, 82);
 @media (min-width: 1024px) {
   .app-bar__navi-icon {
     display: none;
-  }
-}
-
-/* === IE 11 workarounds === */
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  /* IE 11 can't handle different themes for sub-parts of the application, without the parts having own
-     shadow roots. Instead of polluting the code for all browsers, the relevant colors of dark theme
-     is hard coded here. */
-  .app-bar {
-    color: hsl(214, 100%, 98%);
-    /*hsl(214, 35%, 21%); */
-    box-shadow: 0 2px 4px -1px hsla(214, 8%, 4%, 0.23), 0 3px 12px -1px hsla(214, 12%, 6%, 0.32);
-  }
-
-  .app-bar__title {
-    color: hsl(214, 100%, 98%);
   }
 }
