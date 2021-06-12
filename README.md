@@ -75,4 +75,5 @@ https://demo.vaadin.com/lumo-editor/
 - [Sample Application with Spring Boot and Vaadin](https://www.baeldung.com/spring-boot-vaadin)
 - [Vaadin: Theme Variants](https://vaadin.com/docs/v14/flow/styling/theme-variants)
 - [Vaadin: Lumo Customization](https://vaadin.com/docs/v14/flow/styling/lumo/customization)
+- [Vaadin: Starting a Project: gradle](https://vaadin.com/docs/latest/guide/start/gradle)
 - [Using the Heroku Java CLI Plugin](https://devcenter.heroku.com/articles/deploying-executable-jar-files#using-the-heroku-java-cli-plugin)
