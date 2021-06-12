@@ -52,7 +52,7 @@ Provided [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
 heroku login
 heroku plugins:install java
 heroku create --no-remote unique-vaadin-petstore-application
-heroku deploy:jar target/*.jar --app unique-vaadin-petstore-application
+heroku deploy:jar $(find build/libs/*.jar|grep -v plain) --app unique-vaadin-petstore-application
 # heroku ps:scale web=1 -a unique-vaadin-petstore-application
 ```
 

@@ -58,5 +58,6 @@ tasks.withType(JavaCompile) {
 }
 
 vaadin {
-    optimizeBundle = false
+    optimizeBundle = true
+    productionMode = true
 }
