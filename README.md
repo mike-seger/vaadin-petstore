@@ -15,9 +15,11 @@ Try out this application at:
 
 ## Running
 ```
+gradle bootRun
+# or
 mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Dserver.port=9999"
 ```
-If successful, the vaadin-petstore can be accessed locally by opening http://localhost:9999/ in a web browser . 
+If successful, vaadin-petstore can be accessed locally by opening http://localhost:9999/ in a web browser . 
 
 ## Deployment 
 
