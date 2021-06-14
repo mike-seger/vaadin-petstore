@@ -18,5 +18,5 @@ body {
 }
 
 [theme~="dark"] {
-  --lumo-base-color: rgb(36, 36, 36);
+  --lumo-base-color: rgb(15, 18, 22);
 }

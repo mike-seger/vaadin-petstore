@@ -19,6 +19,12 @@ public class Customer extends Identifiable {
     @NotBlank
     private String address;
     @NotBlank
+    private String zipCode;
+    @NotBlank
+    private String city;
+    @NotBlank
+    private String country;
+    @NotBlank
     @Pattern(regexp = "^\\+\\d{1,3}\\s\\d{1,14}(\\s\\d{1,13})?",
         message = "Required E164 format!\nValid examples:\n+1 1234 567890\n+44 1234567890")
     private String phone;

@@ -14,17 +14,32 @@ databaseChangeLog:
             name: ID
             type: BIGINT
         - column:
-            name: FIRST_NAME
-            constraints:
-              nullable: false
-            type: VARCHAR(255)
-        - column:
             name: LAST_NAME
             constraints:
               nullable: false
             type: VARCHAR(255)
         - column:
+            name: FIRST_NAME
+            constraints:
+              nullable: false
+            type: VARCHAR(255)
+        - column:
             name: ADDRESS
+            constraints:
+              nullable: false
+            type: VARCHAR(255)
+        - column:
+            name: ZIP_CODE
+            constraints:
+              nullable: false
+            type: VARCHAR(255)
+        - column:
+            name: CITY
+            constraints:
+              nullable: false
+            type: VARCHAR(255)
+        - column:
+            name: COUNTRY
             constraints:
               nullable: false
             type: VARCHAR(255)

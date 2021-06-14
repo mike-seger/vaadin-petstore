@@ -17,6 +17,9 @@ public class CustomerEditor extends EntityEditor<Customer> {
     protected TextField firstName = new TextField();
     protected TextField lastName = new TextField();
     protected TextField address = new TextField();
+    protected TextField zipCode = new TextField();
+    protected TextField city = new TextField();
+    protected TextField country = new TextField();
     protected TextField phone = new TextField();
 
     public CustomerEditor(CustomerRepository repository) {
@@ -24,6 +27,6 @@ public class CustomerEditor extends EntityEditor<Customer> {
     }
 
     public List<Component> createInputFields() {
-        return componentList(firstName, lastName, address, phone);
+        return componentList(firstName, lastName, address, zipCode, city, country, phone);
     }
 }
