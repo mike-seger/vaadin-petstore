@@ -21,7 +21,7 @@ import java.util.List;
 public class CustomerManager extends EntityManager<Customer> {
 
     final private CustomerRepository customerRepository;
-    final private TextField customerNameFilter = new TextField();
+    final private TextField customerFilter = new TextField();
 
     public CustomerManager(CustomerRepository customerRepository, CustomerEditor customerEditor) {
         super(customerEditor);
@@ -30,22 +30,22 @@ public class CustomerManager extends EntityManager<Customer> {
 
     public void setupGrid(Grid<Customer> grid) {
         grid.removeAllColumns();
-        grid.addColumn(TemplateRenderer.<Customer>of("[[item.customer]]")
-            .withProperty("customer", customer ->
-                customer.getFirstName() + " " + customer.getLastName())
-        ).setHeader("Customer");
-        grid.addColumns("address", "phone");
+        grid.addColumn(TemplateRenderer.<Customer>of("[[item.customer]]").withProperty("customer",
+            customer -> customer.getFirstName() + " " + customer.getLastName())).setHeader("Customer");
+        grid.addColumn(TemplateRenderer.<Customer>of("[[item.address]]").withProperty("address",
+            address -> address.getAddress() + ", " + address.getCity())).setHeader("Address");
+        grid.addColumns("phone");
     }
 
     public HorizontalLayout createActionBar(EntityEditor<Customer> customerEditor) {
-        customerNameFilter.setPlaceholder("Find in any name...");
-        customerNameFilter.setValueChangeMode(ValueChangeMode.EAGER);
-        customerNameFilter.addValueChangeListener(e -> updateGrid());
-        customerNameFilter.setPrefixComponent(VaadinIcon.SEARCH.create());
-        return new HorizontalLayout(customerNameFilter);
+        customerFilter.setPlaceholder("Find customer...");
+        customerFilter.setValueChangeMode(ValueChangeMode.EAGER);
+        customerFilter.addValueChangeListener(e -> updateGrid());
+        customerFilter.setPrefixComponent(VaadinIcon.SEARCH.create());
+        return new HorizontalLayout(customerFilter);
     }
 
     public List<Customer> filter() {
-        return customerRepository.filter(customerNameFilter.getValue());
+        return customerRepository.filter(customerFilter.getValue());
     }
 }

@@ -7,16 +7,17 @@ import org.springframework.util.StringUtils;
 import java.util.List;
 
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
-    List<Customer> findByLastNameContainingIgnoreCaseOrFirstNameContainingIgnoreCaseOrderById(String firstName, String lastName);
-    default List<Customer> filter(String name) {
-        if(StringUtils.isEmpty(name)) {
-            return findAll();
+    List<Customer> findByLastNameContainingIgnoreCaseOrFirstNameContainingIgnoreCaseOrAddressContainingIgnoreCaseOrCityContainingIgnoreCaseOrderByFirstNameAscLastNameAscIdAsc
+            (String firstName, String lastName, String address, String city);
+    default List<Customer> filter(String text) {
+        if(!StringUtils.hasText(text)) {
+            return findAllOrdered();
         }
-        return findByLastNameContainingIgnoreCaseOrFirstNameContainingIgnoreCaseOrderById(name, name);
+        return findByLastNameContainingIgnoreCaseOrFirstNameContainingIgnoreCaseOrAddressContainingIgnoreCaseOrCityContainingIgnoreCaseOrderByFirstNameAscLastNameAscIdAsc(text, text, text, text);
     }
 
-    List<Customer> findByOrderByLastNameAscFirstNameAsc();
+    List<Customer> findByOrderByFirstNameAscLastNameAscIdAsc();
     default List<Customer> findAllOrdered() {
-        return findByOrderByLastNameAscFirstNameAsc();
+        return findByOrderByFirstNameAscLastNameAscIdAsc();
     }
 }
