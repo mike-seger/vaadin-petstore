@@ -21,7 +21,7 @@ public class AppBar extends Header {
 	private H1 title;
 	private HorizontalLayout h = new HorizontalLayout();
 
-	public AppBar(String title, Component component) {
+	public AppBar(String title, Component ... components) {
 		setClassName(CLASS_NAME);
 		setWidthFull();
 		setHeight("40px");
@@ -35,7 +35,10 @@ public class AppBar extends Header {
 		h.setDefaultVerticalComponentAlignment(FlexComponent.Alignment.CENTER);
 		//h.setVerticalComponentAlignment(FlexComponent.Alignment.START, titleText);
 		//h.setVerticalComponentAlignment(FlexComponent.Alignment.STRETCH, component);
-		h.add(titleText, new HorizontalLayout(component, new Div()));
+		HorizontalLayout h2 = new HorizontalLayout(components);
+		h2.add(new Div());
+		h.add(titleText, h2);
+
 		add(h);
 		initTitle(title);
 	}

@@ -1,10 +1,11 @@
 package com.net128.application.vaadin.petstore.ui;
 
+import com.net128.application.vaadin.petstore.model.Preferences;
+import com.net128.application.vaadin.petstore.repo.PreferencesRepository;
 import com.net128.application.vaadin.petstore.ui.entity.managers.CustomerManager;
 import com.net128.application.vaadin.petstore.ui.entity.managers.PetManager;
 import com.net128.application.vaadin.petstore.ui.entity.managers.PurchaseManager;
 import com.net128.application.vaadin.petstore.ui.entity.managers.SpeciesManager;
-import com.net128.application.vaadin.petstore.ui.util.LocalStorage;
 import com.vaadin.flow.component.*;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
@@ -16,18 +17,22 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.Lumo;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Optional;
+
 @Route
 @CssImport("./styles/components/main-view.css")
 @JsModule("@vaadin/vaadin-lumo-styles/presets/compact.js")
 @Slf4j
 public class MainView extends FlexLayout implements KeyNotifier {
-    private final LocalStorage localStorage = new LocalStorage();
+    private final PreferencesRepository preferencesRepository;
 
     public MainView(CustomerManager customerManager,
             PetManager petManager,
             SpeciesManager speciesManager,
-            PurchaseManager purchaseManager) {
+            PurchaseManager purchaseManager,
+            PreferencesRepository preferencesRepository) {
 
+        this.preferencesRepository = preferencesRepository;
         setClassName("main-view");
         Button toggleButton = new Button(VaadinIcon.MENU.create(), click -> toggleDarkTheme());
 
@@ -45,7 +50,7 @@ public class MainView extends FlexLayout implements KeyNotifier {
 
         tabPageManager.setClassName("tab-page-manager");
 
-        add(localStorage, tabPageManager);
+        add(tabPageManager);
     }
 
     @Override
@@ -54,29 +59,38 @@ public class MainView extends FlexLayout implements KeyNotifier {
     }
 
     boolean isDark() {
-        System.out.println("Get dark: "+localStorage.getString("isDarkTheme"));
-        return Boolean.parseBoolean(localStorage.getString("isDarkTheme"));
+        Optional<Preferences> preferences = preferencesRepository.findById(getUserId());
+        if(! preferences.isPresent()) return false;
+        return preferences.get().getDarkMode();
     }
 
     void setDark(Boolean dark) {
+        Optional<Preferences> preferences = preferencesRepository.findById(getUserId());
+        if(! preferences.isPresent()) return;
+        Preferences p = preferences.get();
+        p.setDarkMode(dark);
         System.out.println("Set dark: "+dark.toString());
-        localStorage.setString("isDarkTheme", dark.toString());
+        preferencesRepository.saveOrUpdate(p);
     }
 
     void setDarkTheme(Boolean dark) {
         ThemeList themeList = UI.getCurrent().getElement().getThemeList();
         if (dark) {
-            themeList.add(Lumo.LIGHT);
-            themeList.remove(Lumo.DARK);
-            setDark(false);
-        } else {
             themeList.remove(Lumo.LIGHT);
             themeList.add(Lumo.DARK);
             setDark(true);
+        } else {
+            themeList.add(Lumo.LIGHT);
+            themeList.remove(Lumo.DARK);
+            setDark(false);
         }
     }
 
     void toggleDarkTheme() {
-        setDarkTheme(isDark());
+        setDarkTheme(!isDark());
+    }
+
+    long getUserId() {
+        return -1;
     }
 }

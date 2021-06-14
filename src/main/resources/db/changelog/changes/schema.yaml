@@ -127,6 +127,64 @@ databaseChangeLog:
             name: NAME
             type: VARCHAR(255)
         tableName: SPECIES
+
+- changeSet:
+    id: create user
+    author: petstore
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: CONSTRAINT_10
+            name: ID
+            type: BIGINT
+        - column:
+            name: NAME
+            constraints:
+              nullable: false
+            type: VARCHAR(255)
+        - column:
+            name: PASSWORD
+            constraints:
+              nullable: false
+            type: VARCHAR(255)
+        - column:
+            name: EMAIL
+            constraints:
+              nullable: false
+            type: VARCHAR(255)
+        tableName: USER
+- changeSet:
+    id: create preferences
+    author: petstore
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: CONSTRAINT_11
+            name: ID
+            type: BIGINT
+        - column:
+            name: DARK_MODE
+            defaultValueBoolean: false
+            constraints:
+              nullable: false
+            type: BOOLEAN
+        - column:
+            name: USER_ID
+            constraints:
+              nullable: false
+            type: BIGINT
+        tableName: PREFERENCES
+
 - changeSet:
     id: create purchase to customer index
     author: petstore
@@ -231,3 +289,15 @@ databaseChangeLog:
           separator: '	'
           quotchar: ''''
           tableName: PURCHASE
+    - loadData:
+          file: user.tsv
+          relativeToChangelogFile: true
+          separator: '	'
+          quotchar: ''''
+          tableName: USER
+    - loadData:
+          file: preferences.tsv
+          relativeToChangelogFile: true
+          separator: '	'
+          quotchar: ''''
+          tableName: PREFERENCES
