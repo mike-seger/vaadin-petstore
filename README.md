@@ -5,7 +5,7 @@ The application demonstrates the following aspects:
 - Vaadin 19+, Spring Boot 2.4+, JPA and Liquibase 
 - All [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations.
 - UX customizations via CSS and theme switching. 
-- Collaborative data editing with real-time updates of data changes in all browsers.
+- Collaborative data editing with real-time updates of data changes in all connected clients.
 
 ![Screenshot](doc/vaadin-petstore-dark.png)
 ![Screenshot](doc/vaadin-petstore-light.png)
@@ -15,9 +15,11 @@ Try out this application at:
 
 ## Running
 ```
+gradle bootRun
+# or
 mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Dserver.port=9999"
 ```
-If successful, the vaadin-petstore can be accessed locally by opening http://localhost:9999/ in a web browser . 
+If successful, vaadin-petstore can be accessed locally by opening http://localhost:9999/ in a web browser . 
 
 ## Deployment 
 
