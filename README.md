@@ -15,7 +15,7 @@ Try out this application at:
 
 ## Running
 ```
-gradle bootRun
+./gradlew bootRun
 # or
 mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Dserver.port=9999"
 ```
