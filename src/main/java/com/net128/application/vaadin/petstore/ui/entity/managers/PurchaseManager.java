@@ -2,9 +2,9 @@ package com.net128.application.vaadin.petstore.ui.entity.managers;
 
 import com.net128.application.vaadin.petstore.model.Purchase;
 import com.net128.application.vaadin.petstore.repo.PurchaseRepository;
+import com.net128.application.vaadin.petstore.ui.entity.editors.PurchaseEditor;
 import com.net128.application.vaadin.petstore.ui.entity.generic.EntityEditor;
 import com.net128.application.vaadin.petstore.ui.entity.generic.EntityManager;
-import com.net128.application.vaadin.petstore.ui.entity.editors.PurchaseEditor;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -38,18 +38,10 @@ public class PurchaseManager extends EntityManager<Purchase> {
         grid.addColumn(new LocalDateTimeRenderer<>(
             Purchase::getDate, "yyyy-MM-dd HH:mm"))
             .setComparator(Comparator.comparing(Purchase::getDate)).setSortable(true).setHeader("Purchased");
-//        grid.addColumn("customer.lastName").setHeader("Customer Name");
-//        grid.addColumn("customer.firstName").setHeader("Customer First Name");
         grid.addColumn(TemplateRenderer.<Purchase>of("[[item.customer]]")
             .withProperty("customer", customer ->
                 customer.getCustomer().getFirstName() + " " + customer.getCustomer().getLastName())
         ).setHeader("Customer");
-
-//        "<div>[[item.address.street]], number " +
-//                "[[item.address.number]]<br>" +
-//                "<small>[[item.address.postalCode]]</small>" +
-//                "</div>")
-//        .withProperty("address", Person::getAddress))
         grid.addColumn("pet.name").setHeader("Pet");
     }
 

@@ -2,13 +2,14 @@ package com.net128.application.vaadin.petstore.ui.entity.managers;
 
 import com.net128.application.vaadin.petstore.model.Customer;
 import com.net128.application.vaadin.petstore.repo.CustomerRepository;
+import com.net128.application.vaadin.petstore.ui.entity.editors.CustomerEditor;
 import com.net128.application.vaadin.petstore.ui.entity.generic.EntityEditor;
 import com.net128.application.vaadin.petstore.ui.entity.generic.EntityManager;
-import com.net128.application.vaadin.petstore.ui.entity.editors.CustomerEditor;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.renderer.TemplateRenderer;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
@@ -28,7 +29,12 @@ public class CustomerManager extends EntityManager<Customer> {
     }
 
     public void setupGrid(Grid<Customer> grid) {
-        grid.setColumns("firstName", "lastName", "address", "phone");
+        grid.removeAllColumns();
+        grid.addColumn(TemplateRenderer.<Customer>of("[[item.customer]]")
+            .withProperty("customer", customer ->
+                customer.getFirstName() + " " + customer.getLastName())
+        ).setHeader("Customer");
+        grid.addColumns("address", "phone");
     }
 
     public HorizontalLayout createActionBar(EntityEditor<Customer> customerEditor) {
