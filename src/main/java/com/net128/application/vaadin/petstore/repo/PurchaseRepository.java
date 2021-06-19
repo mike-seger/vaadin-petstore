@@ -17,15 +17,15 @@ public interface PurchaseRepository extends JpaRepository<Purchase, Long> {
     String orderClause = "order by p.date desc";
 
     @Query("select p from Purchase p " +
-        "where "+nameRestriction+" "+orderClause)
+        "where (" + nameRestriction + ") " + orderClause)
     List<Purchase> findByName(String name);
 
     @Query("select p from Purchase p " +
-            "where "+dateRestriction+" "+orderClause)
+            "where (" + dateRestriction + ") " + orderClause)
     List<Purchase> findByDate(LocalDateTime startDate, LocalDateTime endDate);
 
     @Query("select p from Purchase p " +
-            "where "+nameRestriction+" and "+dateRestriction+" "+orderClause)
+            "where (" + nameRestriction + ") and (" + dateRestriction + ") " + orderClause)
     List<Purchase> findByNameAndDate(String name, LocalDateTime startDate, LocalDateTime endDate);
 
     @Query("select p from Purchase p " + orderClause)
@@ -35,8 +35,8 @@ public interface PurchaseRepository extends JpaRepository<Purchase, Long> {
         if(!StringUtils.hasText(name) && startDate==null && endDate==null) {
             return findAllOrdered();
         }
-        if(startDate==null && endDate==null) {
-            findByName(name);
+        if(startDate==null && endDate==null && StringUtils.hasText(name)) {
+            return findByName(name);
         }
         LocalDateTime startDateTime=startDate==null?LocalDateTime.MIN:startDate.atStartOfDay();
         LocalDateTime endDateTime=endDate==null?LocalDateTime.now():endDate.atTime(23,59,59);
