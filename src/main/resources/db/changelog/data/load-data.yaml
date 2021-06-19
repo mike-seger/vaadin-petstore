@@ -1,0 +1,29 @@
+databaseChangeLog:
+- changeSet:
+    id: load data
+    author: petstore
+    changes:
+      - loadData:
+          file: 001-species.tsv
+          relativeToChangelogFile: true
+          separator: '	'
+          quotchar: ''''
+          tableName: SPECIES
+      - loadData:
+          file: 102-pet.tsv
+          relativeToChangelogFile: true
+          separator: '	'
+          quotchar: ''''
+          tableName: PET
+      - loadData:
+          file: 101-customer.tsv
+          relativeToChangelogFile: true
+          separator: '	'
+          quotchar: ''''
+          tableName: CUSTOMER
+      - loadData:
+          file: 202-purchase.tsv
+          relativeToChangelogFile: true
+          separator: '	'
+          quotchar: ''''
+          tableName: PURCHASE

@@ -1,7 +1,10 @@
 databaseChangeLog:
   - changeset:
-    id: 1
-    author: 'vaadin-petstore'
+      id: 1
+      author: 'vaadin-petstore'
+  - includeAll:
+      path: schema
+      relativeToChangelogFile: true
   - include:
-      file: db/changelog/changes/schema.yaml
-
+      file: data/load-data.yaml
+      relativeToChangelogFile: true
