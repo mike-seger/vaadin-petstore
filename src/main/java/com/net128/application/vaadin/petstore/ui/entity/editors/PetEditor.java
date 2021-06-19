@@ -34,7 +34,7 @@ public class PetEditor extends EntityEditor<Pet> {
     public List<Component> createInputFields() {
         species.setItemLabelGenerator(species -> species==null?"":species.getName());
         setEntityChangedHandler(entity ->  {
-            species.setDataProvider(DataProvider.ofCollection(speciesRepository.findAll()));
+            species.setItems(DataProvider.ofCollection(speciesRepository.findAll()));
             species.setRequiredIndicatorVisible(true);
         });
         return componentList(name, species, price);

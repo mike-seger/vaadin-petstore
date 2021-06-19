@@ -2,6 +2,7 @@ server.servlet.context-path: /petstore
 
 # Use PORT env var/sys prop from services like Heroku
 server.port: ${PORT:9999}
+server.tomcat.additional-tld-skip-patterns: '*.jar'
 
 spring:
   main.allow-bean-definition-overriding: true

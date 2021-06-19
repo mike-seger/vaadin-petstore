@@ -32,7 +32,7 @@ public interface PurchaseRepository extends JpaRepository<Purchase, Long> {
     List<Purchase> findAllOrdered();
 
     default List<Purchase> filter(String name, LocalDate startDate, LocalDate endDate) {
-        if(StringUtils.isEmpty(name) && startDate==null && endDate==null) {
+        if(!StringUtils.hasText(name) && startDate==null && endDate==null) {
             return findAllOrdered();
         }
         if(startDate==null && endDate==null) {
@@ -40,7 +40,7 @@ public interface PurchaseRepository extends JpaRepository<Purchase, Long> {
         }
         LocalDateTime startDateTime=startDate==null?LocalDateTime.MIN:startDate.atStartOfDay();
         LocalDateTime endDateTime=endDate==null?LocalDateTime.now():endDate.atTime(23,59,59);
-        if(StringUtils.isEmpty(name)) {
+        if(!StringUtils.hasText(name)) {
             return findByDate(startDateTime, endDateTime);
         }
         return findByNameAndDate(name, startDateTime, endDateTime);

@@ -31,12 +31,12 @@ public class PetManager extends EntityManager<Pet> {
         super(petEditor);
         this.petRepository = petRepository;
         this.speciesRepository = speciesRepository;
-        speciesFilter.setDataProvider(DataProvider.ofCollection(speciesRepository.findAll()));
+        speciesFilter.setItems(DataProvider.ofCollection(speciesRepository.findAll()));
     }
 
     public void entityChanged(Identifiable entity) {
         speciesFilter.removeAll();
-        speciesFilter.setDataProvider(DataProvider.ofCollection(speciesRepository.findAll()));
+        speciesFilter.setItems(DataProvider.ofCollection(speciesRepository.findAll()));
         super.entityChanged(entity);
     }
 

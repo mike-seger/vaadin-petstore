@@ -47,15 +47,15 @@ public class PurchaseManager extends EntityManager<Purchase> {
 
     public HorizontalLayout createActionBar(EntityEditor<Purchase> editor) {
         nameFilter = new TextField();
-        nameFilter.setPlaceholder("Find in any name...");
+        nameFilter.setPlaceholder("Find...");
         nameFilter.setValueChangeMode(ValueChangeMode.EAGER);
         nameFilter.addValueChangeListener(e -> updateGrid());
         nameFilter.setPrefixComponent(VaadinIcon.SEARCH.create());
         startDate = new DatePicker();
-        startDate.setPlaceholder("Starting from...");
+        startDate.setPlaceholder("Date from...");
         startDate.addValueChangeListener(e -> updateGrid());
         endDate = new DatePicker();
-        endDate.setPlaceholder("...ending");
+        endDate.setPlaceholder("to...");
         endDate.addValueChangeListener(e -> updateGrid());
         return new HorizontalLayout(nameFilter, startDate, endDate);
     }

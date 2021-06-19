@@ -23,6 +23,14 @@ dependencyManagement {
     }
 }
 
+allprojects {
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+        }
+    }
+}
+
 dependencies {
     implementation "com.vaadin:vaadin-spring-boot-starter:20.0.1"
     implementation "org.springframework.boot:spring-boot-starter-webflux"
@@ -33,7 +41,8 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-tomcat"
     implementation "org.projectlombok:lombok:1.18.20"
     implementation "org.hibernate.validator:hibernate-validator:6.2.0.Final"
-    implementation "org.liquibase:liquibase-core:4.3.3"
+    implementation "org.liquibase:liquibase-core:4.4.0"
+    implementation "org.yaml:snakeyaml:1.27"
     implementation "com.h2database:h2:1.4.200"
     implementation "org.postgresql:postgresql:42.2.20"
     annotationProcessor "org.projectlombok:lombok:1.18.20"

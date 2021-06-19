@@ -43,10 +43,10 @@ public class PurchaseEditor extends EntityEditor<Purchase> {
         pet.setItemLabelGenerator(c -> c==null?"":c.getName());
         setEntityChangedHandler(entity -> {
             if(entity==null || entity instanceof Customer) {
-                customer.setDataProvider(DataProvider.ofCollection(customerRepository.findAllOrdered()));
+                customer.setItems(DataProvider.ofCollection(customerRepository.findAllOrdered()));
             }
             if(entity==null || entity instanceof Pet) {
-                pet.setDataProvider(DataProvider.ofCollection(petRepository.findAllOrdered()));
+                pet.setItems(DataProvider.ofCollection(petRepository.findAllOrdered()));
             }
         });
 
