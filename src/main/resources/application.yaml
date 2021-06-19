@@ -23,10 +23,10 @@ spring:
       hibernate:
         ddl-auto: none
         dialect: org.hibernate.dialect.H2Dialect
-        format_sql: true
+        format_sql: false
         jdbc.lob.non_contextual_creation: true
         temp.use_jdbc_metadata_defaults: false
-    show-sql: true
+    show-sql: false
     open-in-view: false
   mustache.check-template-location: false
 
@@ -56,6 +56,9 @@ management:
 ---
 spring.config.activate.on-profile: sql-debug
 name: sql-debug-YAML
+
+spring.jpa.properties.hibernate.format_sql: true
+spring.jpa.show-sql: true
 
 logging.level:
   org.atmosphere.cpr: warn
