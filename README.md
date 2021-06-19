@@ -79,6 +79,19 @@ sed -i "s/author: .*generated.*/author: petstore/" \
 gradle -q --console=plain h2shell
 ```
 
+#### Country data
+##### Source
+https://github.com/dr5hn/countries-states-cities-database
+##### Convert countries.json to countries.tsv
+```
+(
+f=".id, .name, .iso2, .iso3, .emoji, .emojiU"
+echo "$f"|tr -d ". "|tr , "\t"
+jq -c --raw-output '.[] |['"$f"']|@tsv' ./countries.json
+) | sed -e "s/^/-/" |\
+    tee 103-countries.tsv | head -10
+```
+
 ## Customization
 
 ### Theme colors

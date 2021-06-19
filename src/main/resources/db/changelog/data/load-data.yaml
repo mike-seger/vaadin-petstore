@@ -10,17 +10,23 @@ databaseChangeLog:
           quotchar: ''''
           tableName: SPECIES
       - loadData:
+            file: 101-customer.tsv
+            relativeToChangelogFile: true
+            separator: '	'
+            quotchar: ''''
+            tableName: CUSTOMER
+      - loadData:
           file: 102-pet.tsv
           relativeToChangelogFile: true
           separator: '	'
           quotchar: ''''
           tableName: PET
       - loadData:
-          file: 101-customer.tsv
+          file: 103-countries.tsv
           relativeToChangelogFile: true
           separator: '	'
           quotchar: ''''
-          tableName: CUSTOMER
+          tableName: COUNTRY
       - loadData:
           file: 202-purchase.tsv
           relativeToChangelogFile: true
