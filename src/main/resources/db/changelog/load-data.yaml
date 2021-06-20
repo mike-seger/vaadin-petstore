@@ -4,32 +4,32 @@ databaseChangeLog:
     author: petstore
     changes:
       - loadData:
-          file: 001-species.tsv
+          file: data/002-countries.tsv
           relativeToChangelogFile: true
           separator: '	'
-          quotchar: ''''
-          tableName: SPECIES
-      - loadData:
-            file: 101-customer.tsv
-            relativeToChangelogFile: true
-            separator: '	'
-            quotchar: ''''
-            tableName: CUSTOMER
-      - loadData:
-          file: 102-pet.tsv
-          relativeToChangelogFile: true
-          separator: '	'
-          quotchar: ''''
-          tableName: PET
-      - loadData:
-          file: 103-countries.tsv
-          relativeToChangelogFile: true
-          separator: '	'
-          quotchar: ''''
+          quotchar: '"'
           tableName: COUNTRY
       - loadData:
-          file: 202-purchase.tsv
+          file: data/001-species.tsv
           relativeToChangelogFile: true
           separator: '	'
-          quotchar: ''''
+          quotchar: '"'
+          tableName: SPECIES
+      - loadData:
+            file: data/101-customer.tsv
+            relativeToChangelogFile: true
+            separator: '	'
+            quotchar: '"'
+            tableName: CUSTOMER
+      - loadData:
+          file: data/102-pet.tsv
+          relativeToChangelogFile: true
+          separator: '	'
+          quotchar: '"'
+          tableName: PET
+      - loadData:
+          file: data/202-purchase.tsv
+          relativeToChangelogFile: true
+          separator: '	'
+          quotchar: '"'
           tableName: PURCHASE

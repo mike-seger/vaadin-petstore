@@ -57,7 +57,7 @@ task liquibaseCleanup {
 			} else {
 				def files = file.getParentFile().listFiles()?.sort{a, b -> (a.name <=> b.name)}
 				def index = files.findIndexOf { it == file }
-				if(index > 0 && normalizedChangeSet(file.text) == normalizedChangeSet(files[index].text)) {
+				if(index > 0 && normalizedChangeSet(file.text) == normalizedChangeSet(files[index-1].text)) {
 					file.delete()
 					println("---- ${dbChangeLogFile}: prevented duplicate changeset")
 				} else {

@@ -1,0 +1,251 @@
+id	name	iso2	iso3	phone_code	emoji
+4277831	Afghanistan	AF	AFG	93	🇦🇫
+4279361	Aland Islands	AX	ALA	35818	🇦🇽
+4279362	Albania	AL	ALB	355	🇦🇱
+4479553	Algeria	DZ	DZA	213	🇩🇿
+4281165	American Samoa	AS	ASM	1684	🇦🇸
+4279876	Andorra	AD	AND	376	🇦🇩
+4278095	Angola	AO	AGO	244	🇦🇴
+4278593	Anguilla	AI	AIA	1264	🇦🇮
+4281409	Antarctica	AQ	ATA	🇦🇶	
+4281415	Antigua And Barbuda	AG	ATG	1268	🇦🇬
+4280903	Argentina	AR	ARG	54	🇦🇷
+4280909	Armenia	AM	ARM	374	🇦🇲
+4276823	Aruba	AW	ABW	297	🇦🇼
+4281683	Australia	AU	AUS	61	🇦🇺
+4281684	Austria	AT	AUT	43	🇦🇹
+4282949	Azerbaijan	AZ	AZE	994	🇦🇿
+4343891	Bahamas The	BS	BHS	1242	🇧🇸
+4343890	Bahrain	BH	BHR	973	🇧🇭
+4343620	Bangladesh	BD	BGD	880	🇧🇩
+4346434	Barbados	BB	BRB	1246	🇧🇧
+4344914	Belarus	BY	BLR	375	🇧🇾
+4343116	Belgium	BE	BEL	32	🇧🇪
+4344922	Belize	BZ	BLZ	501	🇧🇿
+4343118	Benin	BJ	BEN	229	🇧🇯
+4345173	Bermuda	BM	BMU	1441	🇧🇲
+4346958	Bhutan	BT	BTN	975	🇧🇹
+4345676	Bolivia	BO	BOL	591	🇧🇴
+4343123	Bonaire, Sint Eustatius and Saba	BQ	BES	599	🇧🇶
+4344136	Bosnia and Herzegovina	BA	BIH	387	🇧🇦
+4347713	Botswana	BW	BWA	267	🇧🇼
+4347476	Bouvet Island	BV	BVT	55	🇧🇻
+4346433	Brazil	BR	BRA	55	🇧🇷
+4804436	British Indian Ocean Territory	IO	IOT	246	🇮🇴
+4346446	Brunei	BN	BRN	673	🇧🇳
+4343634	Bulgaria	BG	BGR	359	🇧🇬
+4343361	Burkina Faso	BF	BFA	226	🇧🇫
+4342857	Burundi	BI	BDI	257	🇧🇮
+4933709	Cambodia	KH	KHM	855	🇰🇭
+4410706	Cameroon	CM	CMR	237	🇨🇲
+4407630	Canada	CA	CAN	1	🇨🇦
+4411478	Cape Verde	CV	CPV	238	🇨🇻
+4413773	Cayman Islands	KY	CYM	1345	🇰🇾
+4407622	Central African Republic	CF	CAF	236	🇨🇫
+5522244	Chad	TD	TCD	235	🇹🇩
+4409420	Chile	CL	CHL	56	🇨🇱
+4409422	China	CN	CHN	86	🇨🇳
+4413522	Christmas Island	CX	CXR	61	🇨🇽
+4408139	Cocos (Keeling) Islands	CC	CCK	61	🇨🇨
+4411212	Colombia	CO	COL	57	🇨🇴
+4411213	Comoros	KM	COM	269	🇰🇲
+4411207	Congo	CG	COG	242	🇨🇬
+4411204	Congo The Democratic Republic Of The	CD	COD	243	🇨🇩
+4411211	Cook Islands	CK	COK	682	🇨🇰
+4411977	Costa Rica	CR	CRI	506	🇨🇷
+4409686	Cote D'Ivoire (Ivory Coast)	CI	CIV	225	🇨🇮
+4739670	Croatia (Hrvatska)	HR	HRV	385	🇭🇷
+4412738	Cuba	CU	CUB	53	🇨🇺
+4412759	Curaçao	CW	CUW	599	🇨🇼
+4413776	Cyprus	CY	CYP	357	🇨🇾
+4414021	Czech Republic	CZ	CZE	420	🇨🇿
+4476491	Denmark	DK	DNK	45	🇩🇰
+4475465	Djibouti	DJ	DJI	253	🇩🇯
+4476225	Dominica	DM	DMA	1767	🇩🇲
+4476749	Dominican Republic	DO	DOM	1809 and 1829	🇩🇴
+5524563	East Timor	TL	TLS	670	🇹🇱
+4539221	Ecuador	EC	ECU	593	🇪🇨
+4540249	Egypt	EG	EGY	20	🇪🇬
+5459030	El Salvador	SV	SLV	503	🇸🇻
+4673105	Equatorial Guinea	GQ	GNQ	240	🇬🇶
+4543049	Eritrea	ER	ERI	291	🇪🇷
+4543316	Estonia	EE	EST	372	🇪🇪
+4543560	Ethiopia	ET	ETH	251	🇪🇹
+4607051	Falkland Islands	FK	FLK	500	🇫🇰
+4608591	Faroe Islands	FO	FRO	298	🇫🇴
+4606537	Fiji Islands	FJ	FJI	679	🇫🇯
+4606286	Finland	FI	FIN	358	🇫🇮
+4608577	France	FR	FRA	33	🇫🇷
+4674886	French Guiana	GF	GUF	594	🇬🇫
+5265734	French Polynesia	PF	PYF	689	🇵🇫
+4281414	French Southern Territories	TF	ATF	🇹🇫	
+4669762	Gabon	GA	GAB	241	🇬🇦
+4672834	Gambia The	GM	GMB	220	🇬🇲
+4670799	Georgia	GE	GEO	995	🇬🇪
+4474197	Germany	DE	DEU	49	🇩🇪
+4671553	Ghana	GH	GHA	233	🇬🇭
+4671810	Gibraltar	GI	GIB	350	🇬🇮
+4674115	Greece	GR	GRC	30	🇬🇷
+4674124	Greenland	GL	GRL	299	🇬🇱
+4674116	Grenada	GD	GRD	1473	🇬🇩
+4672592	Guadeloupe	GP	GLP	590	🇬🇵
+4674893	Guam	GU	GUM	1671	🇬🇺
+4674637	Guatemala	GT	GTM	502	🇬🇹
+4671321	Guernsey and Alderney	GG	GGY	441481	🇬🇬
+4671822	Guinea	GN	GIN	224	🇬🇳
+4673090	Guinea-Bissau	GW	GNB	245	🇬🇼
+4674905	Guyana	GY	GUY	592	🇬🇾
+4740169	Haiti	HT	HTI	509	🇭🇹
+4738372	Heard Island and McDonald Islands	HM	HMD	🇭🇲	
+4738628	Honduras	HN	HND	504	🇭🇳
+4737863	Hong Kong S.A.R.	HK	HKG	852	🇭🇰
+4740430	Hungary	HU	HUN	36	🇭🇺
+4805452	Iceland	IS	ISL	354	🇮🇸
+4804164	India	IN	IND	91	🇮🇳
+4801614	Indonesia	ID	IDN	62	🇮🇩
+4805198	Iran	IR	IRN	98	🇮🇷
+4805201	Iraq	IQ	IRQ	964	🇮🇶
+4805196	Ireland	IE	IRL	353	🇮🇪
+4805458	Israel	IL	ISR	972	🇮🇱
+4805697	Italy	IT	ITA	39	🇮🇹
+4866381	Jamaica	JM	JAM	1876	🇯🇲
+4870222	Japan	JP	JPN	81	🇯🇵
+4867417	Jersey	JE	JEY	441534	🇯🇪
+4869970	Jordan	JO	JOR	962	🇯🇴
+4931930	Kazakhstan	KZ	KAZ	7	🇰🇿
+4932942	Kenya	KE	KEN	254	🇰🇪
+4933970	Kiribati	KI	KIR	686	🇰🇮
+5263947	Korea North	KP	PRK	850	🇰🇵
+4935506	Korea South	KR	KOR	82	🇰🇷
+5786456	Kosovo	XK	XKX	383	🇽🇰
+4937556	Kuwait	KW	KWT	965	🇰🇼
+4933466	Kyrgyzstan	KG	KGZ	996	🇰🇬
+4997455	Laos	LA	LAO	856	🇱🇦
+5002817	Latvia	LV	LVA	371	🇱🇻
+4997710	Lebanon	LB	LBN	961	🇱🇧
+5002063	Lesotho	LS	LSO	266	🇱🇸
+4997714	Liberia	LR	LBR	231	🇱🇷
+4997721	Libya	LY	LBY	218	🇱🇾
+4999493	Liechtenstein	LI	LIE	423	🇱🇮
+5002325	Lithuania	LT	LTU	370	🇱🇹
+5002584	Luxembourg	LU	LUX	352	🇱🇺
+5062979	Macau S.A.R.	MO	MAC	853	🇲🇴
+5065540	Macedonia	MK	MKD	389	🇲🇰
+5063751	Madagascar	MG	MDG	261	🇲🇬
+5068617	Malawi	MW	MWI	265	🇲🇼
+5069139	Malaysia	MY	MYS	60	🇲🇾
+5063766	Maldives	MV	MDV	960	🇲🇻
+5065801	Mali	ML	MLI	223	🇲🇱
+5065812	Malta	MT	MLT	356	🇲🇹
+4803918	Man (Isle of)	IM	IMN	441624	🇮🇲
+5064780	Marshall Islands	MH	MHL	692	🇲🇭
+5067857	Martinique	MQ	MTQ	596	🇲🇶
+5067348	Mauritania	MR	MRT	222	🇲🇷
+5068115	Mauritius	MU	MUS	230	🇲🇺
+5069140	Mayotte	YT	MYT	262	🇾🇹
+5064024	Mexico	MX	MEX	52	🇲🇽
+4608845	Micronesia	FM	FSM	691	🇫🇲
+5063745	Moldova	MD	MDA	373	🇲🇩
+5063503	Monaco	MC	MCO	377	🇲🇨
+5066311	Mongolia	MN	MNG	976	🇲🇳
+5066309	Montenegro	ME	MNE	382	🇲🇪
+5067602	Montserrat	MS	MSR	1664	🇲🇸
+5062994	Morocco	MA	MAR	212	🇲🇦
+5066586	Mozambique	MZ	MOZ	258	🇲🇿
+5066066	Myanmar	MM	MMR	95	🇲🇲
+5128525	Namibia	NA	NAM	264	🇳🇦
+5132885	Nauru	NR	NRU	674	🇳🇷
+5132364	Nepal	NP	NPL	977	🇳🇵
+5131332	Netherlands The	NL	NLD	31	🇳🇱
+5129036	New Caledonia	NC	NCL	687	🇳🇨
+5134924	New Zealand	NZ	NZL	64	🇳🇿
+5130563	Nicaragua	NI	NIC	505	🇳🇮
+5129554	Niger	NE	NER	227	🇳🇪
+5130049	Nigeria	NG	NGA	234	🇳🇬
+5130581	Niue	NU	NIU	683	🇳🇺
+5129803	Norfolk Island	NF	NFK	672	🇳🇫
+5066320	Northern Mariana Islands	MP	MNP	1670	🇲🇵
+5132114	Norway	NO	NOR	47	🇳🇴
+5197134	Oman	OM	OMN	968	🇴🇲
+5259595	Pakistan	PK	PAK	92	🇵🇰
+5262423	Palau	PW	PLW	680	🇵🇼
+5264197	Palestinian Territory Occupied	PS	PSE	970	🇵🇸
+5259598	Panama	PA	PAN	507	🇵🇦
+5262919	Papua new Guinea	PG	PNG	675	🇵🇬
+5263961	Paraguay	PY	PRY	595	🇵🇾
+5260626	Peru	PE	PER	51	🇵🇪
+5261388	Philippines	PH	PHL	63	🇵🇭
+5260110	Pitcairn Island	PN	PCN	870	🇵🇳
+5263180	Poland	PL	POL	48	🇵🇱
+5263956	Portugal	PT	PRT	351	🇵🇹
+5263945	Puerto Rico	PR	PRI	1787 and 1939	🇵🇷
+5325140	Qatar	QA	QAT	974	🇶🇦
+5391701	Reunion	RE	REU	262	🇷🇪
+5394261	Romania	RO	ROU	40	🇷🇴
+5395795	Russia	RU	RUS	7	🇷🇺
+5396289	Rwanda	RW	RWA	250	🇷🇼
+5457998	Saint Helena	SH	SHN	290	🇸🇭
+4935233	Saint Kitts And Nevis	KN	KNA	1869	🇰🇳
+4997953	Saint Lucia	LC	LCA	1758	🇱🇨
+5460045	Saint Pierre and Miquelon	PM	SPM	508	🇵🇲
+5653332	Saint Vincent And The Grenadines	VC	VCT	1784	🇻🇨
+4344909	Saint-Barthelemy	BL	BLM	590	🇧🇱
+5062982	Saint-Martin (French part)	MF	MAF	590	🇲🇫
+5722957	Samoa	WS	WSM	685	🇼🇸
+5459282	San Marino	SM	SMR	378	🇸🇲
+5461072	Sao Tome and Principe	ST	STP	239	🇸🇹
+5456213	Saudi Arabia	SA	SAU	966	🇸🇦
+5457230	Senegal	SN	SEN	221	🇸🇳
+5460546	Serbia	RS	SRB	381	🇷🇸
+5462339	Seychelles	SC	SYC	248	🇸🇨
+5459013	Sierra Leone	SL	SLE	232	🇸🇱
+5457744	Singapore	SG	SGP	65	🇸🇬
+5462093	Sint Maarten (Dutch part)	SX	SXM	1721	🇸🇽
+5461579	Slovakia	SK	SVK	421	🇸🇰
+5461582	Slovenia	SI	SVN	386	🇸🇮
+5459010	Solomon Islands	SB	SLB	677	🇸🇧
+5459789	Somalia	SO	SOM	252	🇸🇴
+5914950	South Africa	ZA	ZAF	27	🇿🇦
+5457747	South Georgia	GS	SGS	🇬🇸	
+5460804	South Sudan	SS	SSD	211	🇸🇸
+4543312	Spain	ES	ESP	34	🇪🇸
+5000001	Sri Lanka	LK	LKA	94	🇱🇰
+5456974	Sudan	SD	SDN	249	🇸🇩
+5461330	Suriname	SR	SUR	597	🇸🇷
+5458509	Svalbard And Jan Mayen Islands	SJ	SJM	47	🇸🇯
+5461850	Swaziland	SZ	SWZ	268	🇸🇿
+5461829	Sweden	SE	SWE	46	🇸🇪
+4409413	Switzerland	CH	CHE	41	🇨🇭
+5462354	Syria	SY	SYR	963	🇸🇾
+5527374	Taiwan	TW	TWN	886	🇹🇼
+5524043	Tajikistan	TJ	TJK	992	🇹🇯
+5528129	Tanzania	TZ	TZA	255	🇹🇿
+5523521	Thailand	TH	THA	66	🇹🇭
+5523279	Togo	TG	TGO	228	🇹🇬
+5524300	Tokelau	TK	TKL	690	🇹🇰
+5525326	Tonga	TO	TON	676	🇹🇴
+5526607	Trinidad And Tobago	TT	TTO	1868	🇹🇹
+5526862	Tunisia	TN	TUN	216	🇹🇳
+5526866	Turkey	TR	TUR	90	🇹🇷
+5524301	Turkmenistan	TM	TKM	993	🇹🇲
+5522241	Turks And Caicos Islands	TC	TCA	1649	🇹🇨
+5526870	Tuvalu	TV	TUV	688	🇹🇻
+5588801	Uganda	UG	UGA	256	🇺🇬
+5589842	Ukraine	UA	UKR	380	🇺🇦
+4280901	United Arab Emirates	AE	ARE	971	🇦🇪
+4670034	United Kingdom	GB	GBR	44	🇬🇧
+5591873	United States	US	USA	1	🇺🇸
+5590345	United States Minor Outlying Islands	UM	UMI	1	🇺🇲
+5591641	Uruguay	UY	URY	598	🇺🇾
+5593666	Uzbekistan	UZ	UZB	998	🇺🇿
+5657940	Vanuatu	VU	VUT	678	🇻🇺
+5652820	Vatican City State (Holy See)	VA	VAT	379	🇻🇦
+5653838	Venezuela	VE	VEN	58	🇻🇪
+5656141	Vietnam	VN	VNM	84	🇻🇳
+5654338	Virgin Islands (British)	VG	VGB	1284	🇻🇬
+5654866	Virgin Islands (US)	VI	VIR	1340	🇻🇮
+5721158	Wallis And Futuna Islands	WF	WLF	681	🇼🇫
+4543304	Western Sahara	EH	ESH	212	🇪🇭
+5850445	Yemen	YE	YEM	967	🇾🇪
+5918018	Zambia	ZM	ZMB	260	🇿🇲
+5920581	Zimbabwe	ZW	ZWE	263	🇿🇼

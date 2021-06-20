@@ -1,6 +1,36 @@
 databaseChangeLog:
 - changeSet:
-    id: 1624098186407-1
+    id: 1624197744798-1
+    author: petstore
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: countryPK
+            name: id
+            type: BIGINT
+        - column:
+            name: emoji
+            type: VARCHAR(255)
+        - column:
+            name: iso2
+            type: VARCHAR(2)
+        - column:
+            name: iso3
+            type: VARCHAR(3)
+        - column:
+            name: name
+            type: VARCHAR(255)
+        - column:
+            name: phone_code
+            type: VARCHAR(255)
+        tableName: country
+- changeSet:
+    id: 1624197744798-2
     author: petstore
     changes:
     - createTable:
@@ -20,9 +50,6 @@ databaseChangeLog:
             name: city
             type: VARCHAR(255)
         - column:
-            name: country
-            type: VARCHAR(255)
-        - column:
             name: first_name
             type: VARCHAR(255)
         - column:
@@ -34,9 +61,14 @@ databaseChangeLog:
         - column:
             name: zip_code
             type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: country_id
+            type: BIGINT
         tableName: customer
 - changeSet:
-    id: 1624098186407-2
+    id: 1624197744798-3
     author: petstore
     changes:
     - createTable:
@@ -64,7 +96,7 @@ databaseChangeLog:
             type: BIGINT
         tableName: pet
 - changeSet:
-    id: 1624098186407-3
+    id: 1624197744798-4
     author: petstore
     changes:
     - createTable:
@@ -94,7 +126,7 @@ databaseChangeLog:
             type: BIGINT
         tableName: purchase
 - changeSet:
-    id: 1624098186407-4
+    id: 1624197744798-5
     author: petstore
     changes:
     - createTable:
@@ -112,7 +144,15 @@ databaseChangeLog:
             type: VARCHAR(255)
         tableName: species
 - changeSet:
-    id: 1624098186407-5
+    id: 1624197744798-6
+    author: petstore
+    changes:
+    - addUniqueConstraint:
+        columnNames: iso3
+        constraintName: UC_COUNTRYISO3_COL
+        tableName: country
+- changeSet:
+    id: 1624197744798-7
     author: petstore
     changes:
     - addUniqueConstraint:
@@ -120,7 +160,7 @@ databaseChangeLog:
         constraintName: UK163kp50gi7wpy24351aysjvfl
         tableName: purchase
 - changeSet:
-    id: 1624098186407-6
+    id: 1624197744798-8
     author: petstore
     changes:
     - addForeignKeyConstraint:
@@ -133,7 +173,7 @@ databaseChangeLog:
         referencedTableName: customer
         validate: true
 - changeSet:
-    id: 1624098186407-7
+    id: 1624197744798-9
     author: petstore
     changes:
     - addForeignKeyConstraint:
@@ -146,7 +186,7 @@ databaseChangeLog:
         referencedTableName: species
         validate: true
 - changeSet:
-    id: 1624098186407-8
+    id: 1624197744798-10
     author: petstore
     changes:
     - addForeignKeyConstraint:
@@ -157,5 +197,18 @@ databaseChangeLog:
         initiallyDeferred: false
         referencedColumnNames: id
         referencedTableName: pet
+        validate: true
+- changeSet:
+    id: 1624197744798-11
+    author: petstore
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: country_id
+        baseTableName: customer
+        constraintName: FKmkr4ai7dyofddp8a83hp7yu1h
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: country
         validate: true
 

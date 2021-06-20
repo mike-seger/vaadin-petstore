@@ -3,7 +3,10 @@ package com.net128.application.vaadin.petstore.model;
 import lombok.*;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 @Entity
@@ -22,10 +25,11 @@ public class Customer extends Identifiable {
     private String zipCode;
     @NotBlank
     private String city;
+    @NotNull
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Country country;
     @NotBlank
-    private String country;
-    @NotBlank
-    @Pattern(regexp = "^\\+\\d{1,3}\\s\\d{1,14}(\\s\\d{1,13})?",
+    @Pattern(regexp = "^\\+\\d{1,6}\\s\\d{1,14}(\\s\\d{1,13})?",
         message = "Required E164 format!\nValid examples:\n+1 1234 567890\n+44 1234567890")
     private String phone;
 }

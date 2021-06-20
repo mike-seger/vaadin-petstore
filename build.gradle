@@ -50,7 +50,7 @@ dependencies {
 }
 
 group = "com.net128.application.vaadin"
-version = "1.0.4"
+version = "1.0.5"
 description = "petstore"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
