@@ -15,10 +15,10 @@ public interface SpeciesRepository extends JpaRepository<Species, Long> {
     }
     default List<Species> filter(String name) {
         List<Species> species;
-        if (StringUtils.isEmpty(name)) {
-            species = findAllOrdered();
-        } else {
+        if (StringUtils.hasText(name)) {
             species = findByNameContainingIgnoreCaseOrderById(name);
+        } else {
+            species = findAllOrdered();
         }
         return species;
     }

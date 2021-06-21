@@ -1,13 +1,16 @@
+//file:noinspection GroovyAssignabilityCheck
+
 plugins {
     id "org.springframework.boot" version "2.5.1"
     id "io.spring.dependency-management" version "1.0.11.RELEASE"
     id "com.vaadin" version "20.0.1" 
     id "java"
     id "maven-publish"
+    id "org.liquibase.gradle" version "2.0.3"
 }
 
 ext {
-    vaadinVersion = '20.0.1'
+    vaadinVersion = "20.0.1"
 }
 
 repositories {
@@ -20,25 +23,34 @@ dependencyManagement {
     }
 }
 
+allprojects {
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+        }
+    }
+}
+
 dependencies {
     implementation "com.vaadin:vaadin-spring-boot-starter:20.0.1"
-    implementation "org.springframework.boot:spring-boot-starter-webflux:2.5.1"
-    implementation "org.springframework.boot:spring-boot-starter-web:2.5.1"
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.5.1'
-    implementation "org.springframework.boot:spring-boot-starter-jdbc:2.5.1"
-    implementation "org.springframework.boot:spring-boot-starter-actuator:2.5.1"
-    implementation "org.springframework.boot:spring-boot-starter-tomcat:2.5.1"
+    implementation "org.springframework.boot:spring-boot-starter-webflux"
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+    implementation "org.springframework.boot:spring-boot-starter-jdbc"
+    implementation "org.springframework.boot:spring-boot-starter-actuator"
+    implementation "org.springframework.boot:spring-boot-starter-tomcat"
     implementation "org.projectlombok:lombok:1.18.20"
     implementation "org.hibernate.validator:hibernate-validator:6.2.0.Final"
-    implementation "org.liquibase:liquibase-core:4.3.3"
+    implementation "org.liquibase:liquibase-core:4.4.0"
+    implementation "org.yaml:snakeyaml:1.27"
     implementation "com.h2database:h2:1.4.200"
     implementation "org.postgresql:postgresql:42.2.20"
     annotationProcessor "org.projectlombok:lombok:1.18.20"
-    runtimeOnly "org.springframework.boot:spring-boot-devtools:2.5.1"
+    runtimeOnly "org.springframework.boot:spring-boot-devtools"
 }
 
 group = "com.net128.application.vaadin"
-version = "1.0.4"
+version = "1.0.5"
 description = "petstore"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
@@ -58,5 +70,6 @@ vaadin {
 }
 
 bootRun { dependsOn vaadinBuildFrontend }
-
 build { dependsOn vaadinBuildFrontend }
+
+apply from: "liquibase.gradle"

@@ -63,7 +63,33 @@ heroku deploy:jar $(find build/libs/*.jar|grep -v plain) --app unique-vaadin-pet
 ### Generate liquibase schema snapshot from DB
 A file from the current DB data can be generated in order to pre-populate a new DB with other than the provided default data in [changelog/](src/main/resources/db/changelog/). 
 ```
-mvn liquibase:generateChangeLog
+# update (sync) db to current changelog state
+gradle update -PrunList=update
+
+# create a changelog against application entities 
+gradle diffChangeLog
+
+# change the author in the generated changelog
+sed -i "s/author: .*generated.*/author: petstore/" \
+    src/main/resources/db/changelog/schema/2*
+```
+
+#### H2 shell
+```
+gradle -q --console=plain h2shell
+```
+
+#### Country data
+##### Source
+https://github.com/dr5hn/countries-states-cities-database
+##### Convert countries.json to countries.tsv
+```
+(
+f=".id, .name, .iso2, .iso3, .emoji, .emojiU"
+echo "$f"|tr -d ". "|tr , "\t"
+jq -c --raw-output '.[] |['"$f"']|@tsv' ./countries.json
+) | sed -e "s/^/-/" |\
+    tee 103-countries.tsv | head -10
 ```
 
 ## Customization
@@ -72,7 +98,7 @@ mvn liquibase:generateChangeLog
 https://demo.vaadin.com/lumo-editor/  
 --> add the css to frontend/style
 
-## Further Reading
+## Links
 
 - [Introduction to Vaadin](https://www.baeldung.com/vaadin)
 - [Vaadin Components](https://vaadin.com/components)
@@ -81,3 +107,4 @@ https://demo.vaadin.com/lumo-editor/
 - [Vaadin: Lumo Customization](https://vaadin.com/docs/v14/flow/styling/lumo/customization)
 - [Vaadin: Starting a Project: gradle](https://vaadin.com/docs/latest/guide/start/gradle)
 - [Using the Heroku Java CLI Plugin](https://devcenter.heroku.com/articles/deploying-executable-jar-files#using-the-heroku-java-cli-plugin)
+- [Liquibase Gradle Plugin](https://github.com/liquibase/liquibase-gradle-plugin)

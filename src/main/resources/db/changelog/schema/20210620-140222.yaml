@@ -1,0 +1,214 @@
+databaseChangeLog:
+- changeSet:
+    id: 1624197744798-1
+    author: petstore
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: countryPK
+            name: id
+            type: BIGINT
+        - column:
+            name: emoji
+            type: VARCHAR(255)
+        - column:
+            name: iso2
+            type: VARCHAR(2)
+        - column:
+            name: iso3
+            type: VARCHAR(3)
+        - column:
+            name: name
+            type: VARCHAR(255)
+        - column:
+            name: phone_code
+            type: VARCHAR(255)
+        tableName: country
+- changeSet:
+    id: 1624197744798-2
+    author: petstore
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: customerPK
+            name: id
+            type: BIGINT
+        - column:
+            name: address
+            type: VARCHAR(255)
+        - column:
+            name: city
+            type: VARCHAR(255)
+        - column:
+            name: first_name
+            type: VARCHAR(255)
+        - column:
+            name: last_name
+            type: VARCHAR(255)
+        - column:
+            name: phone
+            type: VARCHAR(255)
+        - column:
+            name: zip_code
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: country_id
+            type: BIGINT
+        tableName: customer
+- changeSet:
+    id: 1624197744798-3
+    author: petstore
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: petPK
+            name: id
+            type: BIGINT
+        - column:
+            name: name
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: price
+            type: DOUBLE
+        - column:
+            constraints:
+              nullable: false
+            name: species_id
+            type: BIGINT
+        tableName: pet
+- changeSet:
+    id: 1624197744798-4
+    author: petstore
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: purchasePK
+            name: id
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: date
+            type: TIMESTAMP
+        - column:
+            constraints:
+              nullable: false
+            name: customer_id
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: pet_id
+            type: BIGINT
+        tableName: purchase
+- changeSet:
+    id: 1624197744798-5
+    author: petstore
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: speciesPK
+            name: id
+            type: BIGINT
+        - column:
+            name: name
+            type: VARCHAR(255)
+        tableName: species
+- changeSet:
+    id: 1624197744798-6
+    author: petstore
+    changes:
+    - addUniqueConstraint:
+        columnNames: iso3
+        constraintName: UC_COUNTRYISO3_COL
+        tableName: country
+- changeSet:
+    id: 1624197744798-7
+    author: petstore
+    changes:
+    - addUniqueConstraint:
+        columnNames: pet_id
+        constraintName: UK163kp50gi7wpy24351aysjvfl
+        tableName: purchase
+- changeSet:
+    id: 1624197744798-8
+    author: petstore
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: customer_id
+        baseTableName: purchase
+        constraintName: FK2pehe23hwdcyql94c531rbf70
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: customer
+        validate: true
+- changeSet:
+    id: 1624197744798-9
+    author: petstore
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: species_id
+        baseTableName: pet
+        constraintName: FK99r3ye65n5d263qxacwfu6ef1
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: species
+        validate: true
+- changeSet:
+    id: 1624197744798-10
+    author: petstore
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: pet_id
+        baseTableName: purchase
+        constraintName: FKg45am5a8s90eop5bjg3tt0cem
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: pet
+        validate: true
+- changeSet:
+    id: 1624197744798-11
+    author: petstore
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: country_id
+        baseTableName: customer
+        constraintName: FKmkr4ai7dyofddp8a83hp7yu1h
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: country
+        validate: true
+

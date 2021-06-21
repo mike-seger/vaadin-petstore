@@ -2,6 +2,7 @@ server.servlet.context-path: /petstore
 
 # Use PORT env var/sys prop from services like Heroku
 server.port: ${PORT:9999}
+server.tomcat.additional-tld-skip-patterns: '*.jar'
 
 spring:
   main.allow-bean-definition-overriding: true
@@ -22,7 +23,7 @@ spring:
       hibernate:
         ddl-auto: none
         dialect: org.hibernate.dialect.H2Dialect
-        format_sql: true
+        format_sql: false
         jdbc.lob.non_contextual_creation: true
         temp.use_jdbc_metadata_defaults: false
     show-sql: false
@@ -36,13 +37,10 @@ vaadin.urlMapping: /ui/*
 
 logging.level:
   org.atmosphere.cpr: warn
-  # debug
   liquibase: info
   org.hibernate.SQL: info
-  # trace
   org.hibernate.type.descriptor.sql.BasicBinder: info
   org.springframework.jdbc.core.StatementCreatorUtils: info
-  # debug
   org.springframework.jdbc.core.JdbcTemplate: info
 
 management:
@@ -54,3 +52,18 @@ management:
     sensitive: false
     enabled: true
     web.exposure.include: "*"
+
+---
+spring.config.activate.on-profile: sql-debug
+name: sql-debug-YAML
+
+spring.jpa.properties.hibernate.format_sql: true
+spring.jpa.show-sql: true
+
+logging.level:
+  org.atmosphere.cpr: warn
+  liquibase: debug
+  org.hibernate.SQL: debug
+  org.hibernate.type.descriptor.sql.BasicBinder: trace
+  org.springframework.jdbc.core.StatementCreatorUtils: trace
+  org.springframework.jdbc.core.JdbcTemplate: debug
