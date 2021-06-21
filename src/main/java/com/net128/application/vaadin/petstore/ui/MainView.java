@@ -17,14 +17,13 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.Lumo;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.Optional;
-
 @Route
 @CssImport("./styles/components/main-view.css")
 @JsModule("@vaadin/vaadin-lumo-styles/presets/compact.js")
 @Slf4j
 public class MainView extends FlexLayout implements KeyNotifier {
     private final PreferencesRepository preferencesRepository;
+    private final TabPageManager tabPageManager;
 
     public MainView(CustomerManager customerManager,
             PetManager petManager,
@@ -41,36 +40,46 @@ public class MainView extends FlexLayout implements KeyNotifier {
         AppBar appBar = new AppBar("Pet Store", toggleButton);
         add(appBar);
 
-        TabPageManager tabPageManager = new TabPageManager(
+        tabPageManager = new TabPageManager(
             new TabPage("Pets", petManager),
             new TabPage("Species", speciesManager),
             new TabPage("Customers", customerManager),
             new TabPage("Purchases", purchaseManager)
         );
 
-        tabPageManager.setClassName("tab-page-manager");
+        tabPageManager.addPageChangeConsumer(label ->
+            preferencesRepository.findById(getUserId()).ifPresent(preferences -> {
+                preferences.setCurrentTab(label);
+                preferencesRepository.saveOrUpdate(preferences);
 
+            }));
+
+        tabPageManager.setClassName("tab-page-manager");
         add(tabPageManager);
     }
 
     @Override
     protected void onAttach(AttachEvent attachEvent) {
-        setDarkTheme(isDark());
+        preferencesRepository.findById(getUserId()).ifPresentOrElse(
+            preferences -> {
+                setDarkTheme(preferences.getDarkMode());
+                String currentTab = preferences.getCurrentTab();
+                if(currentTab!=null) tabPageManager.switchPage(currentTab);
+        }, () -> {});
     }
 
     boolean isDark() {
-        Optional<Preferences> preferences = preferencesRepository.findById(getUserId());
-        if(! preferences.isPresent()) return false;
-        return preferences.get().getDarkMode();
+        return preferencesRepository.findById(getUserId())
+            .map(Preferences::getDarkMode).orElse(false);
     }
 
     void setDark(Boolean dark) {
-        Optional<Preferences> preferences = preferencesRepository.findById(getUserId());
-        if(! preferences.isPresent()) return;
-        Preferences p = preferences.get();
-        p.setDarkMode(dark);
-        System.out.println("Set dark: "+dark.toString());
-        preferencesRepository.saveOrUpdate(p);
+        preferencesRepository.findById(getUserId()).ifPresent(
+            (preferences) -> {
+                preferences.setDarkMode(dark);
+                System.out.println("Set dark: "+dark.toString());
+                preferencesRepository.saveOrUpdate(preferences);
+            });
     }
 
     void setDarkTheme(Boolean dark) {

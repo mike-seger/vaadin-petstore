@@ -14,6 +14,10 @@ public class TabPage {
         this.page = page;
     }
 
+    public String getLabel() {
+        return tab.getLabel();
+    }
+
     public TabPage(String tabLabel, Component page) {
         this(new Tab(tabLabel), page);
     }

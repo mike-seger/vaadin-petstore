@@ -33,3 +33,15 @@ databaseChangeLog:
           separator: '	'
           quotchar: '"'
           tableName: PURCHASE
+      - loadData:
+          file: data/003-user.tsv
+          relativeToChangelogFile: true
+          separator: '	'
+          quotchar: '"'
+          tableName: USER
+      - loadData:
+          file: data/103-preferences.tsv
+          relativeToChangelogFile: true
+          separator: '	'
+          quotchar: '"'
+          tableName: PREFERENCES

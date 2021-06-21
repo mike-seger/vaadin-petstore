@@ -15,8 +15,10 @@ import javax.validation.constraints.NotNull;
 public class Preferences extends Identifiable {
     @NotNull
     private Boolean darkMode;
+    
+    private String currentTab;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @NotNull
     private User user;
 
