@@ -1,0 +1,67 @@
+databaseChangeLog:
+- changeSet:
+    id: 1624306055198-1
+    author: petstore
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: preferencesPK
+            name: id
+            type: BIGINT
+        - column:
+            name: current_tab
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: dark_mode
+            type: BOOLEAN
+        - column:
+            constraints:
+              nullable: false
+            name: user_id
+            type: BIGINT
+        tableName: preferences
+- changeSet:
+    id: 1624306055198-2
+    author: petstore
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: userPK
+            name: id
+            type: BIGINT
+        - column:
+            name: email
+            type: VARCHAR(255)
+        - column:
+            name: name
+            type: VARCHAR(255)
+        - column:
+            name: password
+            type: VARCHAR(255)
+        tableName: user
+- changeSet:
+    id: 1624306055198-3
+    author: petstore
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: user_id
+        baseTableName: preferences
+        constraintName: FKbyi6g9peimaefkxcy1xh0t1pn
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: user
+        validate: true
+
