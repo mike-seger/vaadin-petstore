@@ -72,4 +72,10 @@ vaadin {
 bootRun { dependsOn vaadinBuildFrontend }
 build { dependsOn vaadinBuildFrontend }
 
+bootJar {
+	from ('system.properties') {
+    		into ''
+	}
+}
+
 apply from: "liquibase.gradle"
