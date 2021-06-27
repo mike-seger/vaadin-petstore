@@ -1,0 +1,58 @@
+body {
+  overflow: hidden;
+}
+
+.main-view {
+    flex-direction: column;
+    margin: 0 -24px 0 0;
+}
+
+.tab-page-manager {
+    margin: -12px;
+    margin-top: -8px;
+}
+
+.entity-grid {
+    height: calc(100vh - 136px);
+    overflow-y: auto;
+}
+
+.working-area {
+    margin: -10px 4px 4px 0;
+}
+
+[theme~="dark"] {
+    --lumo-base-color: rgb(15, 18, 22);
+}
+
+::-webkit-scrollbar              {
+  background-color: var(--lumo-contrast-20pct);
+}
+
+::-webkit-scrollbar-thumb        {
+  background-color: var(--lumo-contrast-30pct);
+}
+
+/* ::-webkit-scrollbar              {
+    background-color: rgb(28, 28, 28);
+}
+::-webkit-scrollbar-button       {
+    background-color: rgb(223, 96, 96);
+}
+::-webkit-scrollbar-track        {
+    background-color: rgb(223, 96, 96);
+}
+::-webkit-scrollbar-track-piece  {
+    background-color: rgb(223, 96, 96);
+}
+::-webkit-scrollbar-thumb        {
+    background-color: rgb(223, 96, 96);
+}
+::-webkit-scrollbar-corner       {
+    background-color: rgb(28, 28, 28);
+}
+::-webkit-resizer                {
+    background-color: rgb(28, 28, 28);
+} */
+
+

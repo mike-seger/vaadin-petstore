@@ -9,6 +9,7 @@ import com.net128.application.vaadin.petstore.ui.entity.managers.SpeciesManager;
 import com.vaadin.flow.component.*;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
+import com.vaadin.flow.component.dependency.JavaScript;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
@@ -18,7 +19,9 @@ import com.vaadin.flow.theme.lumo.Lumo;
 import lombok.extern.slf4j.Slf4j;
 
 @Route
-@CssImport("./styles/components/main-view.css")
+@CssImport(value = "./styles/components/custom-styles.css")
+@CssImport(value = "./styles/components/custom-styles.css", themeFor = "vaadin-grid")
+@CssImport(value = "./styles/components/custom-styles.css", themeFor = "vaadin-select-overlay")
 @JsModule("@vaadin/vaadin-lumo-styles/presets/compact.js")
 @Slf4j
 public class MainView extends FlexLayout implements KeyNotifier {

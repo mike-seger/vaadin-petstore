@@ -15,6 +15,7 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
+import java.util.Set;
 
 @SpringComponent
 @UIScope
@@ -58,6 +59,14 @@ public abstract class EntityManager<T extends Identifiable> extends WorkingArea 
         grid.setItems(filter());
         grid.setWidthFull();
         grid.setVerticalScrollingEnabled(true);
+//        grid.addSelectionListener(event -> {
+//            Set<T> selected = event.getAllSelectedItems();
+//            System.out.println(selected.size() + " items selected");
+//        });
+//        grid.addFocusListener(event -> {
+//            Grid grid = event.getSource();
+//            System.out.println(grid.getSelectedItems() + " items selected");
+//        });
         masterDetail.setWidthFull();
     }
 
