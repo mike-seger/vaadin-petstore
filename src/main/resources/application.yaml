@@ -26,6 +26,7 @@ spring:
         format_sql: false
         jdbc.lob.non_contextual_creation: true
         temp.use_jdbc_metadata_defaults: false
+        generate_statistics: true
     show-sql: false
     open-in-view: false
   mustache.check-template-location: false
