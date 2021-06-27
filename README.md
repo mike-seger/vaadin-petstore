@@ -10,7 +10,8 @@ The application demonstrates the following aspects:
 ![Screenshot](doc/vaadin-petstore-dark.png)
 ![Screenshot](doc/vaadin-petstore-light.png)
 
-Try out this application at:
+## Demo
+Try out this application at:  
 [ms-vaadin-petstore @ heroku](https://ms-vaadin-petstore.herokuapp.com/)
 
 ## Running
