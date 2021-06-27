@@ -17,31 +17,29 @@ Try out this application at:
 ## Running
 ```
 ./gradlew bootRun
-# or
-mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Dserver.port=9999"
 ```
-If successful, vaadin-petstore can be accessed locally by opening http://localhost:9999/ in a web browser . 
+If successful, vaadin-petstore can be accessed under: http://localhost:9999/ in a web browser . 
 
 ## Deployment 
 
-In order to deploy the application productively, the production WAR file can be built by running:
+In order to deploy the application productively, the production JAR file can be built by running:
 ```
 ./gradlew clean build
-# or
-mvn clean package -Pproduction
 ```
 
-The WAR file can be deployed in any servlet-capable server such as [Tomcat](http://tomcat.apache.org/), [Jetty](https://www.eclipse.org/jetty/) or it can simply be run as a JAR file:
+The JAR file can be run:
 ```
-java -jar target/*war
+java -jar  $(find build/libs/*.jar|grep -v plain)
 ```
+or renamed to *.WAR and deployed in any servlet-capable server such as:  
+[Tomcat](http://tomcat.apache.org/), [Jetty](https://www.eclipse.org/jetty/)
 
 ## Advanced
 
 ### Run with Docker
 Build image:
 ```
-mvn clean spring-boot:build-image -Pproduction
+./gradlew bootBuildImage
 ```
 
 Run:
