@@ -90,6 +90,5 @@ task h2Shell(type: JavaExec) {
 	classpath = sourceSets.main.runtimeClasspath
 	main = "org.h2.tools.Shell"
 	def cmdArgs = ["-url", dbUrl, "-user", dbUser, "-password", dbPassword ]
-	println cmdArgs
 	args(cmdArgs)
 }
