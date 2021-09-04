@@ -4,5 +4,4 @@ databaseChangeLog:
       id: 1
       author: petstore
   - includeAll:
-      path: changes
-      relativeToChangelogFile: true
+      path:  db/changelog/changes
