@@ -1,6 +1,30 @@
 databaseChangeLog:
 - logicalFilePath: 20210904-010403.yaml
 - changeSet:
+    id: 1630717444524-7
+    author: petstore
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: app_userPK
+            name: id
+            type: BIGINT
+        - column:
+            name: email
+            type: VARCHAR(255)
+        - column:
+            name: name
+            type: VARCHAR(255)
+        - column:
+            name: password
+            type: VARCHAR(255)
+        tableName: app_user
+- changeSet:
     id: 1630717444524-4
     author: petstore
     changes:
@@ -25,43 +49,19 @@ databaseChangeLog:
         - column:
             constraints:
               nullable: false
-            name: user_id
+            name: app_user_id
             type: BIGINT
         tableName: preferences
-- changeSet:
-    id: 1630717444524-7
-    author: petstore
-    changes:
-    - createTable:
-        columns:
-        - column:
-            autoIncrement: true
-            constraints:
-              nullable: false
-              primaryKey: true
-              primaryKeyName: userPK
-            name: id
-            type: BIGINT
-        - column:
-            name: email
-            type: VARCHAR(255)
-        - column:
-            name: name
-            type: VARCHAR(255)
-        - column:
-            name: password
-            type: VARCHAR(255)
-        tableName: user
 - changeSet:
     id: 1630717444524-12
     author: petstore
     changes:
     - addForeignKeyConstraint:
-        baseColumnNames: user_id
+        baseColumnNames: app_user_id
         baseTableName: preferences
         constraintName: FKbyi6g9peimaefkxcy1xh0t1pn
         deferrable: false
         initiallyDeferred: false
         referencedColumnNames: id
-        referencedTableName: user
+        referencedTableName: app_user
         validate: true

@@ -62,20 +62,24 @@ heroku deploy:jar $(find build/libs/*.jar|grep -v plain) --app unique-vaadin-pet
 ### Generate liquibase schema snapshot from DB
 A file from the current DB data can be generated in order to pre-populate a new DB with other than the provided default data in [changelog/](src/main/resources/db/changelog/). 
 ```
+# build
+./gradflew clean build
+
 # update (sync) db to current changelog state
-gradle update -PrunList=update
+./gradlew update -PrunList=update
 
 # create a changelog against application entities 
-gradle diffChangeLog
+./gradlew diffChangeLog
 
-# change the author in the generated changelog
-sed -i "s/author: .*generated.*/author: petstore/" \
-    src/main/resources/db/changelog/schema/2*
+# if you want to use a local postgres as your DB, you can run:
+docker run --rm --name local-postgres -p 5432:5432 -e POSTGRES_PASSWORD=sa  postgres
+# if using postgres you have to supply an addition parameter to diff and update above:
+-Ddb=postgres 
 ```
 
 #### H2 shell
 ```
-gradle -q --console=plain h2shell
+./gradlew -q --console=plain h2shell
 ```
 
 #### Country data

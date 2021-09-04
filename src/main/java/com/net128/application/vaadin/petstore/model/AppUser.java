@@ -3,6 +3,7 @@ package com.net128.application.vaadin.petstore.model;
 import lombok.*;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -11,7 +12,8 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User extends Identifiable {
+@Table(name = "APP_USER")
+public class AppUser extends Identifiable {
     @NotBlank
     private String name;
     @NotBlank

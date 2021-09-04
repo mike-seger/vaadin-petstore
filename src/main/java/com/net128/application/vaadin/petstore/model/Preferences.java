@@ -20,7 +20,7 @@ public class Preferences extends Identifiable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @NotNull
-    private User user;
+    private AppUser appUser;
 
     public void copy(Preferences preferences) {
         this.setDarkMode(preferences.getDarkMode());

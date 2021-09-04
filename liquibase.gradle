@@ -4,7 +4,6 @@ dependencies {
 	liquibaseRuntime "org.liquibase:liquibase-groovy-dsl:3.0.2"
 	liquibaseRuntime "org.liquibase.ext:liquibase-hibernate5:4.3.5"
 	liquibaseRuntime sourceSets.main.output
-	//liquibaseRuntime sourceSets.main.runtimeClasspath
 }
 
 configurations.liquibaseRuntime.extendsFrom configurations.implementation
@@ -14,11 +13,15 @@ def changeLogDir = "src/main/resources/db/changelog/"
 def timeStamp = new Date().format("yyyyMMdd-HHmmss", TimeZone.getTimeZone("UTC"))
 def dbChangeLogFileMaster = "${changeLogDir}db.changelog-master.yaml"
 def dbChangeLogFile = "${changeLogDir}/changes/${timeStamp}.yaml"
-def dbUrl = "jdbc:h2:./build/db/${entityPackage};DB_CLOSE_ON_EXIT=FALSE"
+def dbUrl = project.properties["db"] == 'postgres'?
+	"jdbc:postgresql://localhost/postgres?stringtype=unspecified":
+	"jdbc:h2:./build/db/${entityPackage};DB_CLOSE_ON_EXIT=FALSE"
+def dbUser = project.properties["db"] == 'postgres'?'postgres':''
+def dbPassword = project.properties["db"] == 'postgres'?'sa':''
 def refUrl = ( "hibernate:spring:${entityPackage}?" +
-		"dialect=org.hibernate.dialect.H2Dialect" +
-		"&hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy" +
-		"&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy"
+	"dialect=org.hibernate.dialect.H2Dialect" +
+	"&hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy" +
+	"&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy"
 )
 
 liquibase {
@@ -27,12 +30,16 @@ liquibase {
 			changeLogFile dbChangeLogFile
 			changeLogParameters([ author: 'generated'])
 			url dbUrl
+			username dbUser
+			password dbPassword
 			//referenceDriver "liquibase.ext.hibernate.database.connection.HibernateDriver"
 			referenceUrl refUrl
 		}
 		update {
 			changeLogFile dbChangeLogFileMaster
 			url dbUrl
+			username dbUser
+			password dbPassword
 			referenceUrl refUrl
 		}
 	}
@@ -82,5 +89,7 @@ task h2Shell(type: JavaExec) {
 	standardInput = System.in
 	classpath = sourceSets.main.runtimeClasspath
 	main = "org.h2.tools.Shell"
-	args("-url", dbUrl)
+	def cmdArgs = ["-url", dbUrl, "-user", dbUser, "-password", dbPassword ]
+	println cmdArgs
+	args(cmdArgs)
 }
