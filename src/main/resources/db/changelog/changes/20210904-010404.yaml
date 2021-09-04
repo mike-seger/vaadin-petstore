@@ -1,17 +1,16 @@
 databaseChangeLog:
-  - changeSet:
+- logicalFilePath: 20210904-010404.yaml
+- changeSet:
       id: load data user+preferences
       author: petstore
       changes:
         - loadData:
-            file: ../data/20210904-010404-user.tsv
-            relativeToChangelogFile: true
+            file: db/changelog/data/20210904-010404-user.tsv
             separator: '	'
             quotchar: '"'
             tableName: USER
         - loadData:
-            file: ../data/20210904-010404-preferences.tsv
-            relativeToChangelogFile: true
+            file: db/changelog/data/20210904-010404-preferences.tsv
             separator: '	'
             quotchar: '"'
             tableName: PREFERENCES

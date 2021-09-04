@@ -1,5 +1,6 @@
 databaseChangeLog:
-  - changeset:
+  - logicalFilePath: db.changelog-master.yaml
+  - changeSet:
       id: 1
       author: petstore
   - includeAll:

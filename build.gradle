@@ -6,7 +6,7 @@ plugins {
     id "com.vaadin" version "20.0.1" 
     id "java"
     id "maven-publish"
-    id "org.liquibase.gradle" version "2.0.3"
+    id "org.liquibase.gradle" version "2.0.4"
 }
 
 ext {
@@ -41,7 +41,7 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-tomcat"
     implementation "org.projectlombok:lombok:1.18.20"
     implementation "org.hibernate.validator:hibernate-validator:6.2.0.Final"
-    implementation "org.liquibase:liquibase-core:4.4.0"
+    implementation "org.liquibase:liquibase-core:4.4.3"
     implementation "org.yaml:snakeyaml:1.27"
     implementation "com.h2database:h2:1.4.200"
     implementation "org.postgresql:postgresql:42.2.20"
