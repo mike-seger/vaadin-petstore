@@ -71,10 +71,10 @@ A file from the current DB data can be generated in order to pre-populate a new 
 # create a changelog against application entities 
 ./gradlew diffChangeLog
 
-# if you want to use a local postgres as your DB, you can run:
+# if you want to use a local postgres instance as your DB, you can run:
 docker run --rm --name local-postgres -p 5432:5432 -e POSTGRES_PASSWORD=sa  postgres
-# if using postgres you have to supply an addition parameter to diff and update above:
--Ddb=postgres 
+# if using postgres you have to supply an additional parameter to diff and update above:
+-Pdb=postgres 
 ```
 
 #### H2 shell
