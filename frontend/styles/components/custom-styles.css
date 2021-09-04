@@ -13,7 +13,7 @@ body {
 }
 
 .entity-grid {
-    height: calc(100vh - 136px);
+    height: calc(100vh - 138px);
     overflow-y: auto;
 }
 
@@ -25,12 +25,16 @@ body {
     --lumo-base-color: rgb(15, 18, 22);
 }
 
-::-webkit-scrollbar              {
-  background-color: var(--lumo-contrast-20pct);
+::-webkit-scrollbar {
+  background-color: var(--lumo-contrast-5pct);
 }
 
-::-webkit-scrollbar-thumb        {
-  background-color: var(--lumo-contrast-30pct);
+::-webkit-scrollbar-thumb  {
+  background-color: var(--lumo-contrast-10pct);
+}
+
+::-webkit-scrollbar-corner       {
+    background-color: var(--lumo-contrast-5pct);
 }
 
 /* ::-webkit-scrollbar              {

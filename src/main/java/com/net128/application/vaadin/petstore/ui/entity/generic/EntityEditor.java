@@ -92,8 +92,6 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
 
         save.addClickShortcut(Key.ENTER);
         save.getElement().getThemeList().add("primary");
-        //delete.getElement().getThemeList().add("error");
-
         save.addClickListener(e -> save());
         delete.addClickListener(e -> delete());
         cancel.addClickListener(e -> cancel());
@@ -107,7 +105,7 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
     }
 
     private Label customMultilineLabel() {
-        Label label = new Label();
+        var label = new Label();
         label.getElement().getStyle().set("color", "hsl(3, 92%, 53%)");
         label.getElement().getStyle().set("white-space", "pre-wrap");
         label.getElement().getStyle().set("font-size", "14px");
@@ -118,12 +116,12 @@ public class EntityEditor<T extends Identifiable> extends VerticalLayout impleme
         if(fieldName==null) {
             return null;
         }
-        String name = fieldName.replaceAll("([a-z])([A-Z]+)", "$1 $2");
+        var name = fieldName.replaceAll("([a-z])([A-Z]+)", "$1 $2");
         return name.substring(0, 1).toUpperCase() + name.substring(1);
     }
 
     private static String getFieldName(Object fieldObject, Object parent) {
-        java.lang.reflect.Field[] allFields = parent.getClass().getDeclaredFields();
+        var allFields = parent.getClass().getDeclaredFields();
         for (java.lang.reflect.Field field : allFields) {
             field.setAccessible(true);
             Object currentFieldObject;

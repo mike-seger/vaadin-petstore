@@ -14,7 +14,7 @@ public class ExceptionFormatter {
         if(e instanceof ConstraintViolationException) {
             return formatConstraintViolationException((ConstraintViolationException)e);
         }
-        String message = ExceptionUtils.getRootCause(e).getMessage();
+        var message = ExceptionUtils.getRootCause(e).getMessage();
         message = message
             .replaceAll("(?m)^ *(Detail:)", "$1");
         return message;
@@ -26,11 +26,10 @@ public class ExceptionFormatter {
         for (ConstraintViolation<?> constraintViolation : constraintViolations) {
             errors.put(constraintViolation.getPropertyPath().toString(), constraintViolation.getMessage());
         }
-        String errorString = errors.keySet().stream()
+        return errors.keySet().stream()
             .map(key -> key + ": " + errors.get(key))
             .collect(Collectors.joining("\n"))
             //.replaceAll("\\n", "\n")
             ;
-        return errorString;
     }
 }

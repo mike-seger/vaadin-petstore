@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: load data user+preferences
+      author: petstore
+      changes:
+        - loadData:
+            file: ../data/20210904-010404-user.tsv
+            relativeToChangelogFile: true
+            separator: '	'
+            quotchar: '"'
+            tableName: USER
+        - loadData:
+            file: ../data/20210904-010404-preferences.tsv
+            relativeToChangelogFile: true
+            separator: '	'
+            quotchar: '"'
+            tableName: PREFERENCES

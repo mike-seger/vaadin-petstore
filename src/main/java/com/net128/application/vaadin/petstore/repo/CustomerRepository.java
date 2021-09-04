@@ -11,16 +11,18 @@ import java.util.List;
 
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
     String orderClause =  "order by c.firstName, c.lastName, c.country.name";
-    @Query("select c from Customer c where " +
-            "lower(concat(c.firstName, ' ',c.lastName,' ',c.address)) like lower(concat('%',:text, '%')) and " +
-            "(:countryId is null or c.country.id = :countryId) " + orderClause)
+    @Query("""
+            select c from Customer c
+            where lower(concat(c.firstName, ' ',c.lastName,' ',c.address)) like lower(concat('%',:text, '%')) 
+            and (:countryId is null or c.country.id = :countryId) 
+            """+ orderClause)
     List <Customer> filterFull(@Param("text") String text, @Param("countryId") Long countryId);
 
     @Query("select c from Customer c where :countryId is null or c.country.id = :countryId " + orderClause)
     List <Customer> filterCountry(@Param("countryId") Long countryId);
 
     default List<Customer> filter(String text, Country country) {
-        Long countryId=country==null?null:country.getId();
+        var countryId=country==null?null:country.getId();
         if(!StringUtils.hasText(text)) {
             return filterCountry(countryId);
         }

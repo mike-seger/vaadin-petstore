@@ -9,11 +9,9 @@ import com.net128.application.vaadin.petstore.ui.entity.managers.SpeciesManager;
 import com.vaadin.flow.component.*;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
-import com.vaadin.flow.component.dependency.JavaScript;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
-import com.vaadin.flow.dom.ThemeList;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.Lumo;
 import lombok.extern.slf4j.Slf4j;
@@ -36,11 +34,11 @@ public class MainView extends FlexLayout implements KeyNotifier {
 
         this.preferencesRepository = preferencesRepository;
         setClassName("main-view");
-        Button toggleButton = new Button(VaadinIcon.MENU.create(), click -> toggleDarkTheme());
+        var toggleButton = new Button(VaadinIcon.MENU.create(), click -> toggleDarkTheme());
 
         toggleButton.addClickShortcut(Key.KEY_T, KeyModifier.ALT);
 
-        AppBar appBar = new AppBar("Pet Store", toggleButton);
+        var appBar = new AppBar("Pet Store", toggleButton);
         add(appBar);
 
         tabPageManager = new TabPageManager(
@@ -80,13 +78,13 @@ public class MainView extends FlexLayout implements KeyNotifier {
         preferencesRepository.findById(getUserId()).ifPresent(
             (preferences) -> {
                 preferences.setDarkMode(dark);
-                System.out.println("Set dark: "+dark.toString());
+                log.info("Set dark: {}", dark);
                 preferencesRepository.saveOrUpdate(preferences);
             });
     }
 
     void setDarkTheme(Boolean dark) {
-        ThemeList themeList = UI.getCurrent().getElement().getThemeList();
+        var themeList = UI.getCurrent().getElement().getThemeList();
         if (dark) {
             themeList.remove(Lumo.LIGHT);
             themeList.add(Lumo.DARK);

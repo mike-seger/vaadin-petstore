@@ -12,7 +12,7 @@ def entityPackage = project.hasProperty("entityPackage")?project.ext.entityPacka
 def changeLogDir = "src/main/resources/db/changelog/"
 def timeStamp = new Date().format("yyyyMMdd-HHmmss", TimeZone.getTimeZone("UTC"))
 def dbChangeLogFileMaster = "${changeLogDir}db.changelog-master.yaml"
-def dbChangeLogFile = "${changeLogDir}/schema/${timeStamp}.yaml"
+def dbChangeLogFile = "${changeLogDir}/changes/${timeStamp}.yaml"
 def dbUrl = "jdbc:h2:./build/db/${entityPackage};DB_CLOSE_ON_EXIT=FALSE"
 def refUrl = ( "hibernate:spring:${entityPackage}?" +
 		"dialect=org.hibernate.dialect.H2Dialect" +

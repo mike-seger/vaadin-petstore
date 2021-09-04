@@ -1,6 +1,8 @@
 package com.net128.application.vaadin.petstore.model;
 
 import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,6 +29,7 @@ public class Customer extends Identifiable {
     private String city;
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER)
+    @Fetch(FetchMode.JOIN)
     private Country country;
     @NotBlank
     @Pattern(regexp = "^\\+\\d{1,6}\\s\\d{1,14}(\\s\\d{1,13})?",

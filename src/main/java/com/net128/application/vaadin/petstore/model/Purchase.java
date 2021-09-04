@@ -3,6 +3,8 @@ package com.net128.application.vaadin.petstore.model;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -21,11 +23,13 @@ public class Purchase extends Identifiable{
     private LocalDateTime date;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @Fetch(FetchMode.JOIN)
     @JoinColumn(name=petID)
     @NotNull
     private Pet pet;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @Fetch(FetchMode.JOIN)
     @NotNull
     private Customer customer;
 

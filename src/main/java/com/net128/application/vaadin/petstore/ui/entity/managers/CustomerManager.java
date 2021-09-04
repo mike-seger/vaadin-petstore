@@ -2,7 +2,6 @@ package com.net128.application.vaadin.petstore.ui.entity.managers;
 
 import com.net128.application.vaadin.petstore.model.Country;
 import com.net128.application.vaadin.petstore.model.Customer;
-import com.net128.application.vaadin.petstore.model.Species;
 import com.net128.application.vaadin.petstore.repo.CountryRepository;
 import com.net128.application.vaadin.petstore.repo.CustomerRepository;
 import com.net128.application.vaadin.petstore.ui.entity.editors.CustomerEditor;

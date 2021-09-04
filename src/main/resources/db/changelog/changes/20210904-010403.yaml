@@ -1,6 +1,6 @@
 databaseChangeLog:
 - changeSet:
-    id: 1624306055198-1
+    id: 1630717444524-4
     author: petstore
     changes:
     - createTable:
@@ -28,7 +28,7 @@ databaseChangeLog:
             type: BIGINT
         tableName: preferences
 - changeSet:
-    id: 1624306055198-2
+    id: 1630717444524-7
     author: petstore
     changes:
     - createTable:
@@ -52,7 +52,7 @@ databaseChangeLog:
             type: VARCHAR(255)
         tableName: user
 - changeSet:
-    id: 1624306055198-3
+    id: 1630717444524-12
     author: petstore
     changes:
     - addForeignKeyConstraint:
@@ -64,4 +64,3 @@ databaseChangeLog:
         referencedColumnNames: id
         referencedTableName: user
         validate: true
-

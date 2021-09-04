@@ -3,8 +3,5 @@ databaseChangeLog:
       id: 1
       author: petstore
   - includeAll:
-      path: schema
-      relativeToChangelogFile: true
-  - include:
-      file: load-data.yaml
+      path: changes
       relativeToChangelogFile: true

@@ -10,9 +10,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface PurchaseRepository extends JpaRepository<Purchase, Long> {
-    String nameRestriction = "lower(p.customer.lastName) like lower(concat('%', :name,'%')) " +
-        "or lower(p.customer.firstName) like lower(concat('%', :name,'%')) " +
-        "or lower(p.pet.name) like lower(concat('%', :name,'%'))";
+    String nameRestriction = """
+        lower(p.customer.lastName) like lower(concat('%', :name,'%'))
+        or lower(p.customer.firstName) like lower(concat('%', :name,'%'))
+        or lower(p.pet.name) like lower(concat('%', :name,'%'))
+        """;
     String dateRestriction = "(p.date >= :startDate and p.date <= :endDate)";
     String orderClause = "order by p.date desc";
 

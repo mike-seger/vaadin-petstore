@@ -29,7 +29,7 @@ public class RootServletConfig {
             @Override
             protected void prepareContext(Host host, ServletContextInitializer[] initializers) {
                 super.prepareContext(host, initializers);
-                StandardContext child = new StandardContext();
+                var child = new StandardContext();
                 child.addLifecycleListener(new Tomcat.FixContextListener());
                 child.setPath("");
                 ServletContainerInitializer initializer = getServletContextInitializer(getContextPath());
@@ -42,7 +42,7 @@ public class RootServletConfig {
 
     private ServletContainerInitializer getServletContextInitializer(String contextPath) {
         return (c, context) -> {
-            Servlet servlet = new HttpServlet() {
+            var servlet = new HttpServlet() {
                 @Override
                 protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
                     resp.sendRedirect(contextPath+"/ui");

@@ -15,7 +15,6 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
-import java.util.Set;
 
 @SpringComponent
 @UIScope
@@ -45,8 +44,8 @@ public abstract class EntityManager<T extends Identifiable> extends WorkingArea 
         entityEditor.setWidthFull();
 
         setupGrid(grid);
-        HorizontalLayout actionBar = createActionBar(entityEditor);
-        final Button newEntityButton = new Button("New "+getTypeName()+"...", VaadinIcon.PLUS.create());
+        var actionBar = createActionBar(entityEditor);
+        final var newEntityButton = new Button("New "+getTypeName()+"...", VaadinIcon.PLUS.create());
         newEntityButton.addClickListener(e -> entityEditor.editNew());
         actionBar.add(newEntityButton);
 
@@ -76,7 +75,7 @@ public abstract class EntityManager<T extends Identifiable> extends WorkingArea 
     }
 
     protected void onAttach(AttachEvent attachEvent) {
-        UI ui = attachEvent.getUI();
+        var ui = attachEvent.getUI();
         registration = EntityChangeBroadcaster.register(
             entity -> ui.access(() -> entityChanged(entity)));
         layout();
