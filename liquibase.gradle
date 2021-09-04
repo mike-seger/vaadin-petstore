@@ -4,6 +4,7 @@ dependencies {
 	liquibaseRuntime "org.liquibase:liquibase-groovy-dsl:3.0.2"
 	liquibaseRuntime "org.liquibase.ext:liquibase-hibernate5:4.3.5"
 	liquibaseRuntime sourceSets.main.output
+	//liquibaseRuntime sourceSets.main.runtimeClasspath
 }
 
 configurations.liquibaseRuntime.extendsFrom configurations.implementation
@@ -55,6 +56,12 @@ task liquibaseCleanup {
 				file.delete()
 				println("---- ${dbChangeLogFile}: prevented empty changeset")
 			} else {
+				if(! text.replace("\n","-").replace("\r", "").replaceAll("[^A-Za-z\\[\\]]","")
+					.startsWith("databaseChangeLog-logicalFilePath")) {
+					text = text.replaceFirst("databaseChangeLog:",
+						"databaseChangeLog:\n- logicalFilePath: $file.name")
+				}
+
 				def files = file.getParentFile().listFiles()?.sort{a, b -> (a.name <=> b.name)}
 				def index = files.findIndexOf { it == file }
 				if(index > 0 && normalizedChangeSet(file.text) == normalizedChangeSet(files[index-1].text)) {
