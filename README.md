@@ -63,7 +63,7 @@ heroku deploy:jar $(find build/libs/*.jar|grep -v plain) --app unique-vaadin-pet
 A file from the current DB data can be generated in order to pre-populate a new DB with other than the provided default data in [changelog/](src/main/resources/db/changelog/). 
 ```
 # build
-./gradflew clean build
+./gradlew clean build
 
 # update (sync) db to current changelog state
 ./gradlew update -PrunList=update
