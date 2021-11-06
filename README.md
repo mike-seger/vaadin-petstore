@@ -109,6 +109,7 @@ https://demo.vaadin.com/lumo-editor/
 ## Links
 
 - [Introduction to Vaadin](https://www.baeldung.com/vaadin)
+- [Vaadin Gradle Skeleton Starter Spring Boot](https://github.com/vaadin/base-starter-spring-gradle)
 - [Vaadin Components](https://vaadin.com/components)
 - [Sample Application with Spring Boot and Vaadin](https://www.baeldung.com/spring-boot-vaadin)
 - [Vaadin: Theme Variants](https://vaadin.com/docs/v14/flow/styling/theme-variants)
