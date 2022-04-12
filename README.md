@@ -110,6 +110,7 @@ https://demo.vaadin.com/lumo-editor/
 
 - [Introduction to Vaadin](https://www.baeldung.com/vaadin)
 - https://vaadin.com/docs/latest/ds/components/grid
+- https://vaadin.com/forum/thread/18266029/grid-with-multiple-row-inline-edit-mode
 - [Vaadin Gradle Skeleton Starter Spring Boot](https://github.com/vaadin/base-starter-spring-gradle)
 - [Vaadin Components](https://vaadin.com/components)
 - [Sample Application with Spring Boot and Vaadin](https://www.baeldung.com/spring-boot-vaadin)
