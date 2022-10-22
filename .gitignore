@@ -25,11 +25,6 @@ tsconfig.json
 types.d.ts
 .npmrc
 
-
-*.DS_Store
-*~
-db.changelog-1.yaml
-
 node_modules
 package.json
 pnpm-lock.yaml
@@ -38,5 +33,15 @@ tsconfig.json
 types.d.ts
 webpack.config.js
 webpack.generated.js
+
+frontend/index.html
+vite.config.ts
+vite.generated.ts
+
+
+*.DS_Store
+*~
+db.changelog-1.yaml
+
 
 /config
