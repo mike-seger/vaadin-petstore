@@ -1,5 +1,6 @@
 package com.net128.application.vaadin.petstore.model;
 
+import com.net128.oss.web.lib.jpa.csv.util.Props;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -20,6 +21,7 @@ public class Preferences extends Identifiable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @NotNull
+    @Props.RefMapping(labelField = "name")
     private AppUser appUser;
 
     public void copy(Preferences preferences) {

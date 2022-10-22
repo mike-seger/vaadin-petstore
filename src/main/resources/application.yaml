@@ -1,3 +1,4 @@
+spring.application.name: vaadin-petstore
 server.servlet.context-path: /petstore
 
 # Use PORT env var/sys prop from services like Heroku
@@ -34,7 +35,7 @@ spring:
 liquibase:
   change-log: db/changelog/db.changelog-master.yaml
 
-vaadin.urlMapping: /ui/*
+vaadin.urlMapping: /ux/*
 
 logging.level:
   org.atmosphere.cpr: warn

@@ -1,5 +1,6 @@
 package com.net128.application.vaadin.petstore.model;
 
+import com.net128.oss.web.lib.jpa.csv.util.Props;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -25,12 +26,14 @@ public class Purchase extends Identifiable{
     @ManyToOne(fetch = FetchType.EAGER)
     @Fetch(FetchMode.JOIN)
     @JoinColumn(name=petID)
+    @Props.RefMapping(labelField = "name")
     @NotNull
     private Pet pet;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @Fetch(FetchMode.JOIN)
     @NotNull
+    @Props.RefMapping(labelField = {"firstName", "lastName"})
     private Customer customer;
 
     @PrePersist

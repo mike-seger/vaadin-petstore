@@ -1,5 +1,6 @@
 package com.net128.application.vaadin.petstore.model;
 
+import com.net128.oss.web.lib.jpa.csv.util.Props;
 import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -30,6 +31,7 @@ public class Customer extends Identifiable {
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER)
     @Fetch(FetchMode.JOIN)
+    @Props.RefMapping(labelField = "name")
     private Country country;
     @NotBlank
     @Pattern(regexp = "^\\+\\d{1,6}\\s\\d{1,14}(\\s\\d{1,13})?",

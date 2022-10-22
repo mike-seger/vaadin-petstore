@@ -1,5 +1,6 @@
 package com.net128.application.vaadin.petstore.model;
 
+import com.net128.oss.web.lib.jpa.csv.util.Props;
 import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -25,6 +26,7 @@ public class Pet extends Identifiable {
     @JoinColumn(name = "species_id")
     @Fetch(FetchMode.JOIN)
     @NotNull
+    @Props.RefMapping(labelField = "name")
     private Species species;
 
     @NotNull
