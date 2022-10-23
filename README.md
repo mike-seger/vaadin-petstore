@@ -12,7 +12,7 @@ The application demonstrates the following features:
 
 ## Demo
 Try out this application at:  
-[ms-vaadin-petstore @ heroku](https://ms-vaadin-petstore.herokuapp.com/)
+[vaadin-petstore @ heroku](https://vaadin-petstore.herokuapp.com/)
 
 ## Running
 ```
@@ -44,7 +44,7 @@ Build image:
 
 Run:
 ```
-docker run -it -p9999:9999 petstore:1.0.0-SNAPSHOT
+docker run -it -p9999:9999 petstore:0.0.1-SNAPSHOT
 ```
 
 ### Run in Heroku

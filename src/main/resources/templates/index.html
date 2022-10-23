@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Petstore Admin</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,13 +20,12 @@
 	<h3>Petstore Admin</h3>
 	<a href="ux/">Petstore</a>
 	<a href="ui/w2ui/index.html">JPA Entities</a>
-	<a href="file-manager/index.html">File Manager</a>
-	<a href="file-explorer/">File Explorer</a>
+	<a th:href="'file-manager/index.html?path=' + ${@environment.getProperty('user.home')}">File Manager</a>
+	<a th:href="'file-explorer/?dir=' + ${@environment.getProperty('user.home')}">File Explorer</a>
 	<a href="web-shell/index.html">Web Shell</a>
 	<a href="h2">H2 Console</a>
 	<a href="swagger-ui/index.html">Swagger UI</a>
-	<a href="logs/">Log Viewer</a>
-<!--	<a href="sba/">Spring Boot Admin</a>-->
+	<a th:href="'logs/?dir=' + ${@environment.getProperty('logging-path')}">Log Viewer</a>
 </div>
 
 <div id="main"></div>

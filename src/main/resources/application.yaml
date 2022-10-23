@@ -1,7 +1,7 @@
 spring.application.name: vaadin-petstore
 server.servlet.context-path: /petstore
 
-spring.boot.admin.context-path: /sba
+spring.jackson.serialization.indent_output: true
 
 # Use PORT env var/sys prop from services like Heroku
 server.port: ${PORT:9999}
@@ -59,30 +59,29 @@ management:
     web.exposure.include: "*"
   endpoint.health.health.show-details: always
 
-logging.file.name: /var/log/${spring.application.name}.log
-#management.endpoint.logfile.external-file: ./logs/logviewer-sba.log
+# logging.path is unusable because ${java.io.tmpdir} in it is empty
+logging-path: "${java.io.tmpdir:/tmp/}${spring.application.name}/"
+logging:
+  file:
+    name: "${logging-path}${spring.application.name}.log"
+  logback.rollingpolicy:
+    file-name-pattern: "${logging.path}${spring.application.name}-%d{yyyy-MM-dd}.%i.log"
+    max-file-size: 5MB
+    max-history: 50
+    total-size-cap: 1000MB
+
 management.metrics.enable.jvm: true
 management.metrics.enable.all: true
 
 # log viewer
-logs.base.dir: /var/log/
-log-viewer.accessible-files.pattern: ${logs.base.dir}/*.log,${logs.base.dir}/raw/*log*
+#logs.base.dir: "${logging.path}"
+log-viewer.accessible-files.pattern: "*.log*,/var/log/*log*"
 log-viewer.disable-default-configuration-loader: true
-
 #log-viewer.custom.aggregated.logs.url=/all-logs/*
-log-viewer.custom.aggregated.logs: ${logs.base.dir}/app/logviewer-poc.log,${logs.base.dir}/raw/logviewer-poc.log
+#log-viewer.custom.aggregated.logs: ${logs.base.dir}/app/logviewer-poc.log,${logs.base.dir}/raw/logviewer-poc.log
 
 web-shell:
   root: /web-shell
   hostshells: zsh,bash,sh
   history:
-    file: ${java.io.tmpdir}/web-shell/history.log
-
-sfe4j:
-  title: "SFE4J Demo"
-  description: "Simple File Explorer for spring-boot based Java Web Application."
-  quick-links:
-    root: "/"
-    logs: "/var/log"
-  base-dir-path: "./"
-  restrict-to-base-dir: false
+    file: "./${spring.application.name}.logs/web-shell-history.log"

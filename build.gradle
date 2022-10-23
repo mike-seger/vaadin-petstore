@@ -3,7 +3,7 @@
 buildscript {
     ext {
         vaadinVersion = "23.2.4"
-        springBootVersion = "2.7.4"
+        springBootVersion = "2.7.5"
     }
 }
 
@@ -12,7 +12,9 @@ plugins {
     id "io.spring.dependency-management" version "1.0.11.RELEASE"
     id "com.vaadin" version "${vaadinVersion}"
     id "java"
+    id 'idea'
     id "maven-publish"
+    id 'signing'
     id "io.freefair.lombok" version "6.5.1"
     id "org.liquibase.gradle" version "2.0.4"
 }
@@ -58,6 +60,7 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-jdbc"
     implementation "org.springframework.boot:spring-boot-starter-actuator"
     implementation "org.springframework.boot:spring-boot-starter-validation"
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation "org.liquibase:liquibase-core:4.17.0"
     implementation "org.yaml:snakeyaml:1.33"
     implementation "com.h2database:h2"
@@ -85,7 +88,6 @@ dependencies {
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.11'
     implementation 'org.springdoc:springdoc-openapi-data-rest:1.6.12'
     implementation 'io.github.sevdokimov.logviewer:log-viewer-spring-boot:1.0.3'
-
     implementation 'com.amoylabs:sfe4j-spring-boot-starter:0.0.9'
 }
 
@@ -93,14 +95,6 @@ group = "com.net128.oss.web.app.vaadin"
 version = System.getProperty("VERSION", System.getenv("VERSION") ?: '0.0.1-SNAPSHOT')
 description = "petstore"
 java.sourceCompatibility = JavaVersion.VERSION_11
-
-publishing {
-    publications {
-        maven(MavenPublication) {
-            from(components.java)
-        }
-    }
-}
 
 tasks.withType(JavaCompile) { options.encoding = "UTF-8" }
 
@@ -112,8 +106,78 @@ vaadin {
 bootRun { dependsOn vaadinBuildFrontend }
 build { dependsOn vaadinBuildFrontend }
 
-bootJar {
-	from ("system.properties") { into "" }
+apply from: "liquibase.gradle"
+project.ext.appId = "petstore"
+
+task javadocJar(type: Jar) {
+    archiveClassifier.set('javadoc')
+    from javadoc
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
 }
 
-apply from: "liquibase.gradle"
+task sourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    from sourceSets.main.allSource
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+}
+
+jar {
+    enabled = true
+    archiveClassifier.set("")
+}
+
+publishing {
+    publications {
+        pluginMaven(MavenPublication) {
+            artifact bootJar
+            artifact sourcesJar
+            artifact javadocJar
+
+            pom {
+                name = appId
+                artifactId = appId
+                packaging = 'jar'
+
+                description = 'Vaadin Petstore Application'
+                url = 'https://github.com/mike-seger/web-modules/'
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'ms'
+                        name = 'Michael Seger'
+                        email = 'mike-001@net128.com<'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git@github.com:mike-seger/vaadin-petstore.git'
+                    developerConnection = 'scm:git:git@github.com:mike-seger/vaadin-petstore.git'
+                    url = 'https://github.com/mike-seger/vaadin-petstore'
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name = version.endsWith('SNAPSHOT') ? "ossrh" : "ossrhSnapshot"
+            def releasesRepoUrl = 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
+            def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+            credentials {
+                username = ossrhUsername
+                password = ossrhPassword
+            }
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.pluginMaven
+}

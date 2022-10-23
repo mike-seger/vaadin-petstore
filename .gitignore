@@ -42,6 +42,6 @@ vite.generated.ts
 *.DS_Store
 *~
 db.changelog-1.yaml
-
+/vaadin-petstore.logs
 
 /config

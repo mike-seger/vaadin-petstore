@@ -11,7 +11,6 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
-//@EnableAdminServer
 @Import({ JpaCsv.class,
     LogViewerSpringBootConfig.class,
     WebShell.class,
