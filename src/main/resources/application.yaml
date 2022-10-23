@@ -1,6 +1,8 @@
 spring.application.name: vaadin-petstore
 server.servlet.context-path: /petstore
 
+spring.boot.admin.context-path: /sba
+
 # Use PORT env var/sys prop from services like Heroku
 server.port: ${PORT:9999}
 server.tomcat.additional-tld-skip-patterns: '*.jar'
@@ -14,7 +16,7 @@ spring:
       settings:
         web-allow-others: true
   datasource:
-    url:  jdbc:h2:mem:vaadin-petstore;DB_CLOSE_ON_EXIT=FALSE
+    url:  jdbc:h2:mem:vaadin-petstore
     username: petuser
     password: petpass
   jpa:
@@ -46,6 +48,7 @@ logging.level:
   org.springframework.jdbc.core.JdbcTemplate: info
 
 management:
+  security.enabled: false.
   endpoints:
     configprops.enabled: true
     beans.enabled: true
@@ -54,18 +57,32 @@ management:
     sensitive: false
     enabled: true
     web.exposure.include: "*"
+  endpoint.health.health.show-details: always
 
----
-spring.config.activate.on-profile: sql-debug
-name: sql-debug-YAML
+logging.file.name: /var/log/${spring.application.name}.log
+#management.endpoint.logfile.external-file: ./logs/logviewer-sba.log
+management.metrics.enable.jvm: true
+management.metrics.enable.all: true
 
-spring.jpa.properties.hibernate.format_sql: true
-spring.jpa.show-sql: true
+# log viewer
+logs.base.dir: /var/log/
+log-viewer.accessible-files.pattern: ${logs.base.dir}/*.log,${logs.base.dir}/raw/*log*
+log-viewer.disable-default-configuration-loader: true
 
-logging.level:
-  org.atmosphere.cpr: warn
-  liquibase: debug
-  org.hibernate.SQL: debug
-  org.hibernate.type.descriptor.sql.BasicBinder: trace
-  org.springframework.jdbc.core.StatementCreatorUtils: trace
-  org.springframework.jdbc.core.JdbcTemplate: debug
+#log-viewer.custom.aggregated.logs.url=/all-logs/*
+log-viewer.custom.aggregated.logs: ${logs.base.dir}/app/logviewer-poc.log,${logs.base.dir}/raw/logviewer-poc.log
+
+web-shell:
+  root: /web-shell
+  hostshells: zsh,bash,sh
+  history:
+    file: ${java.io.tmpdir}/web-shell/history.log
+
+sfe4j:
+  title: "SFE4J Demo"
+  description: "Simple File Explorer for spring-boot based Java Web Application."
+  quick-links:
+    root: "/"
+    logs: "/var/log"
+  base-dir-path: "./"
+  restrict-to-base-dir: false

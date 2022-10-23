@@ -13,7 +13,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.provider.DataProvider;
-import com.vaadin.flow.data.renderer.TemplateRenderer;
+import com.vaadin.flow.data.renderer.LitRenderer;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
@@ -38,9 +38,9 @@ public class CustomerManager extends EntityManager<Customer> {
 
     public void setupGrid(Grid<Customer> grid) {
         grid.removeAllColumns();
-        grid.addColumn(TemplateRenderer.<Customer>of("[[item.customer]]").withProperty("customer",
+        grid.addColumn(LitRenderer.<Customer>of("${item.customer}").withProperty("customer",
             customer -> customer.getFirstName() + " " + customer.getLastName())).setHeader("Customer");
-        grid.addColumn(TemplateRenderer.<Customer>of("[[item.address]]").withProperty("address",
+        grid.addColumn(LitRenderer.<Customer>of("${item.address}").withProperty("address",
             address -> address.getAddress() + ", " + address.getCity())).setHeader("Address");
         grid.addColumns("phone");
     }

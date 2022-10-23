@@ -10,8 +10,8 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.renderer.LitRenderer;
 import com.vaadin.flow.data.renderer.LocalDateTimeRenderer;
-import com.vaadin.flow.data.renderer.TemplateRenderer;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
@@ -38,7 +38,7 @@ public class PurchaseManager extends EntityManager<Purchase> {
         grid.addColumn(new LocalDateTimeRenderer<>(
             Purchase::getDate, "yyyy-MM-dd HH:mm"))
             .setComparator(Comparator.comparing(Purchase::getDate)).setSortable(true).setHeader("Purchased");
-        grid.addColumn(TemplateRenderer.<Purchase>of("[[item.customer]]")
+        grid.addColumn(LitRenderer.<Purchase>of("${item.customer}")
             .withProperty("customer", customer ->
                 customer.getCustomer().getFirstName() + " " + customer.getCustomer().getLastName())
         ).setHeader("Customer");

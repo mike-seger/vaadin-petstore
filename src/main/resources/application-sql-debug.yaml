@@ -1,0 +1,10 @@
+spring.jpa.properties.hibernate.format_sql: true
+spring.jpa.show-sql: true
+
+logging.level:
+  org.atmosphere.cpr: warn
+  liquibase: debug
+  org.hibernate.SQL: debug
+  org.hibernate.type.descriptor.sql.BasicBinder: trace
+  org.springframework.jdbc.core.StatementCreatorUtils: trace
+  org.springframework.jdbc.core.JdbcTemplate: debug

@@ -1,16 +1,20 @@
 //file:noinspection GroovyAssignabilityCheck
 
-plugins {
-    id "org.springframework.boot" version "2.7.4"
-    id "io.spring.dependency-management" version "1.0.11.RELEASE"
-    id "com.vaadin" version "20.0.7"
-    id "java"
-    id "maven-publish"
-    id "org.liquibase.gradle" version "2.0.4"
+buildscript {
+    ext {
+        vaadinVersion = "23.2.4"
+        springBootVersion = "2.7.4"
+    }
 }
 
-ext {
-    vaadinVersion = "20.0.1"
+plugins {
+    id "org.springframework.boot" version "${springBootVersion}"
+    id "io.spring.dependency-management" version "1.0.11.RELEASE"
+    id "com.vaadin" version "${vaadinVersion}"
+    id "java"
+    id "maven-publish"
+    id "io.freefair.lombok" version "6.5.1"
+    id "org.liquibase.gradle" version "2.0.4"
 }
 
 repositories {
@@ -23,8 +27,11 @@ repositories {
             password = ossrhPassword
         }
     }
+    maven {
+        name = "sfe4j"
+        url = "https://raw.github.com/sfe4j/mvn-repo/master/"
+    }
 }
-
 
 dependencyManagement {
     imports {
@@ -32,7 +39,7 @@ dependencyManagement {
     }
 
     resolutionStrategy {
-        cacheChangingModulesFor 0, 'seconds'
+        cacheChangingModulesFor 0, "seconds"
     }
 }
 
@@ -45,30 +52,45 @@ allprojects {
 }
 
 dependencies {
-    implementation "com.vaadin:vaadin-spring-boot-starter:20.0.7"
-    implementation "org.springframework.boot:spring-boot-starter-webflux"
+    implementation "com.vaadin:vaadin-spring-boot-starter"
     implementation "org.springframework.boot:spring-boot-starter-web"
     implementation "org.springframework.boot:spring-boot-starter-data-jpa"
     implementation "org.springframework.boot:spring-boot-starter-jdbc"
     implementation "org.springframework.boot:spring-boot-starter-actuator"
-    implementation "org.springframework.boot:spring-boot-starter-tomcat"
-    implementation "org.projectlombok:lombok:1.18.24"
-    implementation 'org.hibernate.validator:hibernate-validator:8.0.0.Final'
-    implementation 'org.liquibase:liquibase-core:4.17.0'
-    implementation 'org.yaml:snakeyaml:1.33'
-    implementation 'com.h2database:h2:2.1.214'
-    implementation 'org.postgresql:postgresql:42.5.0'
-    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    implementation "org.springframework.boot:spring-boot-starter-validation"
+    implementation "org.liquibase:liquibase-core:4.17.0"
+    implementation "org.yaml:snakeyaml:1.33"
+    implementation "com.h2database:h2"
+    implementation "org.postgresql:postgresql:42.5.0"
     runtimeOnly "org.springframework.boot:spring-boot-devtools"
 
-    //implementation 'com.net128.oss.web.lib:web-modules-jpa-csv:0.0.1-SNAPSHOT'
-    implementation 'com.net128.oss.web.lib:web-modules-jpa-csv:0.2.0'
-    implementation 'com.net128.oss.web.lib:web-modules-iframe-navigator:0.2.0'
-    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.13.4'
+    // Admin
+    //implementation "com.net128.oss.web.lib:web-modules-jpa-csv:0.0.1-SNAPSHOT"
+    implementation "com.net128.oss.web.lib:web-modules-jpa-csv:0.2.0"
+
+    implementation 'com.net128.oss.web.lib:web-modules-web-shell:0.2.0'
+    implementation "org.springframework.boot:spring-boot-starter-websocket"
+    implementation "org.springframework.boot:spring-boot-starter-security"
+    implementation 'org.zeroturnaround:zt-exec:1.12'
+    implementation 'info.picocli:picocli:4.6.3'
+    implementation 'info.picocli:picocli-spring-boot-starter:4.6.3'
+    implementation 'org.reflections:reflections:0.10.2'
+    implementation 'org.codehaus.plexus:plexus-utils:3.4.2'
+    implementation 'com.google.guava:guava:31.1-jre'
+
+    implementation 'com.net128.oss.web.lib:web-modules-file-manager:0.2.0'
+    implementation "com.net128.oss.web.lib:web-modules-iframe-navigator:0.2.0"
+
+    implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.13.4"
+    implementation 'org.springdoc:springdoc-openapi-ui:1.6.11'
+    implementation 'org.springdoc:springdoc-openapi-data-rest:1.6.12'
+    implementation 'io.github.sevdokimov.logviewer:log-viewer-spring-boot:1.0.3'
+
+    implementation 'com.amoylabs:sfe4j-spring-boot-starter:0.0.9'
 }
 
-group = "com.net128.application.vaadin"
-version = "1.0.5"
+group = "com.net128.oss.web.app.vaadin"
+version = System.getProperty("VERSION", System.getenv("VERSION") ?: '0.0.1-SNAPSHOT')
 description = "petstore"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
@@ -91,9 +113,7 @@ bootRun { dependsOn vaadinBuildFrontend }
 build { dependsOn vaadinBuildFrontend }
 
 bootJar {
-	from ('system.properties') {
-    		into ''
-	}
+	from ("system.properties") { into "" }
 }
 
 apply from: "liquibase.gradle"
