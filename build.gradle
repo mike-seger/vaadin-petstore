@@ -28,10 +28,14 @@ repositories {
             username = ossrhUsername
             password = ossrhPassword
         }
+        //snapshotsOnly()
     }
     maven {
         name = "sfe4j"
         url = "https://raw.github.com/sfe4j/mvn-repo/master/"
+        content {
+            includeGroup "com.amoylabs"
+        }
     }
 }
 
@@ -61,10 +65,11 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-actuator"
     implementation "org.springframework.boot:spring-boot-starter-validation"
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    implementation "org.liquibase:liquibase-core:4.17.0"
+    implementation 'org.liquibase:liquibase-core:4.17.1'
     implementation "org.yaml:snakeyaml:1.33"
     implementation "com.h2database:h2"
     implementation "org.postgresql:postgresql:42.5.0"
+
     runtimeOnly "org.springframework.boot:spring-boot-devtools"
 
     // Admin
@@ -78,7 +83,7 @@ dependencies {
     implementation 'info.picocli:picocli:4.6.3'
     implementation 'info.picocli:picocli-spring-boot-starter:4.6.3'
     implementation 'org.reflections:reflections:0.10.2'
-    implementation 'org.codehaus.plexus:plexus-utils:3.4.2'
+    implementation 'org.codehaus.plexus:plexus-utils:3.5.0'
     implementation 'com.google.guava:guava:31.1-jre'
 
     implementation 'com.net128.oss.web.lib:web-modules-file-manager:0.2.0'
@@ -124,13 +129,17 @@ task sourcesJar(type: Jar) {
 }
 
 jar {
+    enabled = false }
+bootJar {
     enabled = true
     archiveClassifier.set("")
 }
 
 publishing {
     publications {
-        pluginMaven(MavenPublication) {
+        bootJava(MavenPublication) {
+
+//        pluginMaven(MavenPublication) {
             artifact bootJar
             artifact sourcesJar
             artifact javadocJar
@@ -179,5 +188,5 @@ publishing {
 }
 
 signing {
-    sign publishing.publications.pluginMaven
+    sign publishing.publications.bootJava
 }

@@ -16,7 +16,7 @@ spring:
       settings:
         web-allow-others: true
   datasource:
-    url:  jdbc:h2:mem:vaadin-petstore
+    url: jdbc:h2:mem:vaadin-petstore;DB_CLOSE_ON_EXIT=FALSE
     username: petuser
     password: petpass
   jpa:
@@ -29,7 +29,7 @@ spring:
         format_sql: false
         jdbc.lob.non_contextual_creation: true
         temp.use_jdbc_metadata_defaults: false
-        generate_statistics: true
+ #       generate_statistics: true
     show-sql: false
     open-in-view: false
   mustache.check-template-location: false
@@ -75,7 +75,7 @@ management.metrics.enable.all: true
 
 # log viewer
 #logs.base.dir: "${logging.path}"
-log-viewer.accessible-files.pattern: "*.log*,/var/log/*log*"
+log-viewer.accessible-files.pattern: "${logging-path}/*.log*,/var/log/*log*,${user.home}/*log,${user.home}/*out"
 log-viewer.disable-default-configuration-loader: true
 #log-viewer.custom.aggregated.logs.url=/all-logs/*
 #log-viewer.custom.aggregated.logs: ${logs.base.dir}/app/logviewer-poc.log,${logs.base.dir}/raw/logviewer-poc.log
