@@ -86,8 +86,8 @@ dependencies {
     implementation 'org.codehaus.plexus:plexus-utils:3.5.0'
     implementation 'com.google.guava:guava:31.1-jre'
 
-    implementation 'com.net128.oss.web.lib:web-modules-file-manager:0.2.2-SNAPSHOT'
-    implementation "com.net128.oss.web.lib:web-modules-iframe-navigator:0.2.2-SNAPSHOT"
+    implementation 'com.net128.oss.web.lib:web-modules-file-manager:0.2.2'
+    implementation "com.net128.oss.web.lib:web-modules-iframe-navigator:0.2.2"
 
     implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.13.4"
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.12'
